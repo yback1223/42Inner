@@ -10,18 +10,14 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Wed Aug 10 21:49:21 2022
+# Make data base, printed on Wed Aug 17 17:04:40 2022
 
 # Variables
 
-# environment
-VSCODE_GIT_ASKPASS_MAIN = /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-LC_CTYPE = UTF-8
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -35,7 +31,7 @@ CURDIR := /Users/yback/Desktop/42inner/42Inner
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
@@ -43,7 +39,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-0508d23e-f548-40c3-850e-b5c0fb06db5a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-1867d470-2e6e-4301-bbae-55c28dd94ad3.sock
 # environment
 VSCODE_CWD = /Users/yback/Desktop/42inner/42Inner
 # environment
@@ -51,15 +47,13 @@ PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-LaunchInstanceID = 2F8D653A-9B58-497D-AFFF-66C45168E2F5
-# environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.NzJCrnFZi0/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.ov9MgCByti/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -87,8 +81,6 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
-# environment
 XPC_FLAGS = 0x0
 # environment
 COLORTERM = truecolor
@@ -97,7 +89,7 @@ MAKE = $(MAKE_COMMAND)
 # environment
 LC_TERMINAL = iTerm2
 # environment
-SHLVL = 3
+SHLVL = 2
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -107,7 +99,7 @@ USER = yback
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:708FF852-B80E-4056-B9B4-F5A1F8EBDF6B
+TERM_SESSION_ID = w0t0p0:1F599110-466E-4E81-90F2-E9B6A87CA2A6
 # environment
 LESS = -R
 # automatic
@@ -115,9 +107,7 @@ LESS = -R
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # environment
-VSCODE_GIT_ASKPASS_EXTRA_ARGS = --ms-enable-electron-run-as-node
-# environment
-TERM_PROGRAM = vscode
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -126,8 +116,6 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /Users/yback/Library/Application Support/Code/1.67.2-main.sock
-# environment
-VSCODE_GIT_ASKPASS_NODE = /Applications/Visual Studio Code.app/Contents/MacOS/Electron
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -135,9 +123,9 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 1.67.2
+TERM_PROGRAM_VERSION = 3.3.7
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2788.DCFEB8E1-9CAB-4D32-A455-47E1A67D144A
+XPC_SERVICE_NAME = com.microsoft.VSCode.1016.B21A327F-B513-47BD-B9D9-BAB2227B2965
 # environment
 LC_TERMINAL_VERSION = 3.3.7
 # automatic
@@ -145,15 +133,11 @@ LC_TERMINAL_VERSION = 3.3.7
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:708FF852-B80E-4056-B9B4-F5A1F8EBDF6B
+ITERM_SESSION_ID = w0t0p0:1F599110-466E-4E81-90F2-E9B6A87CA2A6
 # environment
 COLORFGBG = 7;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x19825:0x3:0x33
-# environment
-COMMAND_MODE = unix2003
-# environment
-GIT_ASKPASS = /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
 # default
 MAKEFILES := 
 # automatic
@@ -164,8 +148,6 @@ ITERM_PROFILE = Default
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a4
 # automatic
 ^F = $(notdir $^)
 # default
@@ -173,15 +155,15 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
-VSCODE_GIT_IPC_HANDLE = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-git-412e96611e.sock
+MAKELEVEL := 0
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 1925
+VSCODE_PID = 2189
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=6/104=6%
+# Load=74/1024=7%, Rehash=0, Collisions=4/95=4%
 
 # Pattern-specific Variable Values
 
@@ -189,9 +171,9 @@ VSCODE_PID = 1925
 
 # Directories
 
-# . (device 16777225, inode 1152473): 9 files, no impossibilities.
+# . (device 16777225, inode 1152473): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -263,6 +245,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Wed Aug 10 21:49:21 2022
+# Finished Make data base on Wed Aug 17 17:04:40 2022
 
  
