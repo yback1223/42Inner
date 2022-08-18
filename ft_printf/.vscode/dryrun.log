@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/yback/Desktop/42inner/42Inner/ft_printf'
+make: Leaving directory `/Users/yback/Desktop/42inner/42Inner/ft_printf'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

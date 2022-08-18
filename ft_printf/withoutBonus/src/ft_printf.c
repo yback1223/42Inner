@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:13:38 by yback             #+#    #+#             */
-/*   Updated: 2022/08/17 20:19:07 by yback            ###   ########.fr       */
+/*   Updated: 2022/08/18 10:15:36 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	ft_whichformat(va_list ap, char c)
 	else if (c == 'x' || c == 'X')
 		total_length += ft_for_xx(va_arg(ap, unsigned int), c);
 	else if (c == '%')
-		total_length +=	ft_for_percent();
+		total_length += ft_for_percent();
 	return (total_length);
 }
 
-int ft_printf(const char *arr, ...)
+int	ft_printf(const char *arr, ...)
 {
 	va_list	ap;
 	int		total_length;
@@ -56,14 +56,4 @@ int ft_printf(const char *arr, ...)
 	}
 	va_end(ap);
 	return (total_length);
-}
-
-#include <stdio.h>
-int main(void)
-{
-	int a = 0, b = 0;
-	a = ft_printf("%X %x %%%c%d\n", -1, -1, 'c', 100);
-	b = printf("%X %x %%%c%d\n", -1, -1, 'c', 100);
-
-	printf("%d %d\n", a, b);
 }

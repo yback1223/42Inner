@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 20:33:20 by yback             #+#    #+#              #
-#    Updated: 2022/08/17 21:19:54 by yback            ###   ########.fr        #
+#    Updated: 2022/08/18 10:56:52 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,27 +35,23 @@ WHITE = \033[0;97m
 
 # Sources
 
-SRC_FILES	= ft_for_cspitoa ft_for_duxxper ft_hex_and_dec ft_printf
+SRC_FILES	=	ft_printf ft_for_cspitoa ft_for_duxxper ft_hex_and_dec
 
-SRC			= $(addprefix %(SRC_DIR), $(addprefix .c, $(SRC_FILES)))
-OBJ			= $(addprefix %(OBJ_DIR), $(addprefix .o, $(SRC_FILES)))
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ			= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 ###
-
-OBJF		=	.cache_exists
 
 all				:	$(NAME)
 
 $(NAME)			:	$(OBJ)
 					@$(AR) $(NAME) $(OBJ)
 					@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
-
-$(OBJ_DIR)%.o	:	$(SRC_DIR)%.c | $(OBJF)
+					
+$(OBJ_DIR)%.o	:	$(SRC_DIR)%.c
+					@mkdir -p $(OBJ_DIR)
 					@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 					@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-$(OBJF)			:	
-					@mkdir -p $(OBJ_DIR)
 
 clean			:
 					@$(RM) -rf $(OBJ_DIR)

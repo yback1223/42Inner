@@ -6,13 +6,13 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 19:57:51 by yback             #+#    #+#             */
-/*   Updated: 2022/08/17 20:16:51 by yback            ###   ########.fr       */
+/*   Updated: 2022/08/18 11:10:29 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_dec_len(long long num)
+int	ft_dec_len(long long num)
 {
 	int	i;
 
@@ -22,6 +22,8 @@ int		ft_dec_len(long long num)
 		i++;
 		num *= -1;
 	}
+	else if (num == 0)
+		return (1);
 	while (num)
 	{
 		num /= 10;
@@ -30,7 +32,7 @@ int		ft_dec_len(long long num)
 	return (i);
 }
 
-void	ft_print_hex(intptr_t address)
+void	ft_print_hex(uintptr_t address)
 {
 	if (address >= 16)
 	{
@@ -67,7 +69,7 @@ void	ft_print_hex2(unsigned int num, char xx)
 	}
 }
 
-int	ft_hex_len(intptr_t address)
+int	ft_hex_len(uintptr_t address)
 {
 	int	i;
 
@@ -85,6 +87,8 @@ int	ft_hex_len2(unsigned int num)
 	int	i;
 
 	i = 0;
+	if (num == 0)
+		return (1);
 	while (num)
 	{
 		num /= 16;
@@ -92,4 +96,3 @@ int	ft_hex_len2(unsigned int num)
 	}
 	return (i);
 }
-
