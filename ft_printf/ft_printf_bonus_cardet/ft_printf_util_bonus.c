@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:29:33 by youjeon           #+#    #+#             */
-/*   Updated: 2022/08/18 15:33:25 by yback            ###   ########.fr       */
+/*   Updated: 2022/08/18 16:40:20 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_free(void *ptr)
 {
 	free(ptr);
-	return (NULL);
+	ptr = NULL;
 }
 
 char	*ft_strchr(const char *str, int c)
@@ -50,41 +50,41 @@ void	init_info(t_info *info)
 	info->precision = 0;
 }
 
-int	info_get_zero(t_info *info, int index)
+int	info_get_zero(t_info *info, int i)
 {
 	if (info->period > -1)
 		info->precision = info->precision * 10;
 	else if (info->width)
 		info->width = info->width * 10;
 	else
-		info->zero = index;
+		info->zero = i;
 	return (1);
 }
 
-int	set_info(t_info *info, char *format, int index)
+int	set_info(t_info *info, char *arr, int i)
 {
-	if (ft_strchr("0", format[index]))
-		return (info_get_zero(info, index));
-	if (ft_strchr("-.# +", format[index]))
+	if (ft_strchr("0", arr[i]))
+		return (info_get_zero(info, i));
+	if (ft_strchr("-.# +", arr[i]))
 	{
-		if (format[index] == '-')
-			info->minus = index;
-		else if (format[index] == '.')
-			info->period = index;
-		else if (format[index] == '#')
-			info->hash = index;
-		else if (format[index] == ' ')
-			info->space = index;
-		else if (format[index] == '+')
-			info->plus = index;
+		if (arr[i] == '-')
+			info->minus = i;
+		else if (arr[i] == '.')
+			info->period = i;
+		else if (arr[i] == '#')
+			info->hash = i;
+		else if (arr[i] == ' ')
+			info->space = i;
+		else if (arr[i] == '+')
+			info->plus = i;
 		return (1);
 	}
-	if (ft_strchr("123456789", format[index]))
+	if (ft_strchr("123456789", arr[i]))
 	{
 		if (info->period > -1)
-			info->precision = (info->precision * 10) + (format[index] - '0');
+			info->precision = (info->precision * 10) + (arr[i] - '0');
 		else
-			info->width = (info->width * 10) + (format[index] - '0');
+			info->width = (info->width * 10) + (arr[i] - '0');
 		return (1);
 	}
 	return (0);
