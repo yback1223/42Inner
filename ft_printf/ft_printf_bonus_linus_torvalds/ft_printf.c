@@ -15,7 +15,7 @@
 
 #include "boot.h"
 
-static int skip_atoi(const char **s)
+static int skip_atoi(const char **s) //그냥 atoi
 {
 	int i = 0;
 
@@ -39,7 +39,7 @@ n = ((unsigned long) n) / (unsigned) base; \
 __res; })
 
 static char *number(char *str, long num, int base, int size, int precision,
-		    int type)
+		    int type) //type에 flag가 들어온다.
 {
 	/* we are called with base 8, 10 or 16, only, thus don't need "G..."  */
 	static const char digits[16] = "0123456789ABCDEF"; /* "GHIJKLMNOPQRSTUVWXYZ"; */
@@ -52,10 +52,10 @@ static char *number(char *str, long num, int base, int size, int precision,
 	 * produces same digits or (maybe lowercased) letters */
 	locase = (type & SMALL);
 	if (type & LEFT)
-		type &= ~ZEROPAD;
-	if (base < 2 || base > 16)
-		return NULL;
-	c = (type & ZEROPAD) ? '0' : ' ';
+		type &= ~ZEROPAD; //LEFT가 켜져 있으면 좌측정렬이 된 상태이므로, ZEROPAD, 즉 0으로 채워지는 것이 불가능하다.
+	if (base < 2 || base > 16) 
+		return NULL; //2~16진수만 취급한다.
+	c = (type & ZEROPAD) ? '0' : ' '; //0으로 채울건지 공백으로 채울건지 결정
 	sign = 0;
 	if (type & SIGN) {
 		if (num < 0) {
@@ -68,22 +68,26 @@ static char *number(char *str, long num, int base, int size, int precision,
 		} else if (type & SPACE) {
 			sign = ' ';
 			size--;
-		}
+		} //출력되는 숫자 앞에 부호가 있거나 공백이 있다면 size가 하나 채워지므로 size--를 한 것
 	}
-	if (type & SPECIAL) {
+	if (type & SPECIAL) { // SPECIAL은 진수를 의미
 		if (base == 16)
-			size -= 2;
+			size -= 2; //16진수면 "0x"가 들어가므로 size를 2 줄이는 것이다.
 		else if (base == 8)
-			size--;
+			size--; //8진수는 앞에 0이 붙어서 시작하므로 size를 1만 줄여준다.
 	}
+
+	/*여기까지 출력할 숫자의 앞부분을 처리한 것(부호나 공백)*/
+
 	i = 0;
 	if (num == 0)
-		tmp[i++] = '0';
+		tmp[i++] = '0'; //출력할 숫자가 0이면 0을 출력
 	else
 		while (num != 0)
-			tmp[i++] = (digits[__do_div(num, base)] | locase);
-	if (i > precision)
-		precision = i;
+			tmp[i++] = (digits[__do_div(num, base)] | locase); 
+			//num이 0이 아니라면 우리가 나타낼 진수로 num을 만들어주고, tmp에 저장한다.(tmp의 처음부터 저장하는데 반대로 저장되는 것에 주의)
+	if (i > precision) 
+		precision = i; //precision보다 진수로 구한 숫자가 더 길다면 precision에 그 숫자를 대입해준다.
 	size -= precision;
 	if (!(type & (ZEROPAD + LEFT)))
 		while (size-- > 0)
