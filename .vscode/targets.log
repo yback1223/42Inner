@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Wed Aug 17 17:04:40 2022
+# Make data base, printed on Sun Aug 21 13:48:35 2022
 
 # Variables
 
@@ -18,6 +18,8 @@ make: *** No rule to make target `all'.  Stop.
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# environment
+LC_CTYPE = UTF-8
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -31,7 +33,7 @@ CURDIR := /Users/yback/Desktop/42inner/42Inner
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
@@ -39,7 +41,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-1867d470-2e6e-4301-bbae-55c28dd94ad3.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-ca7fed6f-baa8-4eef-9ce2-9e0c1eace1f5.sock
 # environment
 VSCODE_CWD = /Users/yback/Desktop/42inner/42Inner
 # environment
@@ -47,13 +49,15 @@ PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
+LaunchInstanceID = 6889CE38-A5D6-45CC-ABD6-04304A7F3A1A
+# environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.ov9MgCByti/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.r1m6gcdWqX/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -99,7 +103,7 @@ USER = yback
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:1F599110-466E-4E81-90F2-E9B6A87CA2A6
+TERM_SESSION_ID = w0t0p0:463C2828-3F8B-4C11-883E-8A849DDE7A53
 # environment
 LESS = -R
 # automatic
@@ -125,7 +129,7 @@ MFLAGS = -Rrqp
 # environment
 TERM_PROGRAM_VERSION = 3.3.7
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1016.B21A327F-B513-47BD-B9D9-BAB2227B2965
+XPC_SERVICE_NAME = com.microsoft.VSCode.2152.CA3B927F-0BD4-4A48-AD3B-CE506F776394
 # environment
 LC_TERMINAL_VERSION = 3.3.7
 # automatic
@@ -133,11 +137,13 @@ LC_TERMINAL_VERSION = 3.3.7
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:1F599110-466E-4E81-90F2-E9B6A87CA2A6
+ITERM_SESSION_ID = w0t0p0:463C2828-3F8B-4C11-883E-8A849DDE7A53
 # environment
 COLORFGBG = 7;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x19825:0x3:0x33
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -148,6 +154,8 @@ ITERM_PROFILE = Default
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -161,9 +169,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2189
+VSCODE_PID = 71916
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=4/95=4%
+# Load=78/1024=8%, Rehash=0, Collisions=4/99=4%
 
 # Pattern-specific Variable Values
 
@@ -182,6 +190,7 @@ VSCODE_PID = 2189
 # Files
 
 # Not a target:
+ 
 all:
 #  Command-line target.
 #  Implicit rule search has been done.
@@ -245,6 +254,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Wed Aug 17 17:04:40 2022
+# Finished Make data base on Sun Aug 21 13:48:35 2022
 
  

@@ -1,0 +1,21 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus'
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/checkings.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/checkings.c -o obj/checkings.o
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/cook_cspdixx.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/cook_cspdixx.c -o obj/cook_cspdixx.o
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/cook_info.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/cook_info.c -o obj/cook_info.o
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/ft_printf_util.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/ft_printf_util.c -o obj/ft_printf_util.o
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/ft_printf.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/ft_printf.c -o obj/ft_printf.o
+ar rcs libftprintf.a obj/checkings.o obj/cook_cspdixx.o obj/cook_info.o obj/ft_printf_util.o obj/ft_printf.o
+echo "\033[0;92mft_printf compiled!\033[0;39m"
+make: Leaving directory `/Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus'
+ 
