@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
+#    By: yoyob1223 <yoyob1223@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 20:33:20 by yback             #+#    #+#              #
-#    Updated: 2022/08/22 15:07:30 by yback            ###   ########.fr        #
+#    Updated: 2022/08/23 05:08:20 by yoyob1223        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ WHITE = \033[0;97m
 
 # Sources
 
-SRC_FILES	=	checkings cook_cspdixx cook_info ft_printf_util ft_printf for_unsigned
+SRC_FILES	=	total
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
