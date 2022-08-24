@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   total.c                                            :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyob1223 <yoyob1223@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:58:05 by yback             #+#    #+#             */
-/*   Updated: 2022/08/23 16:15:25 by yoyob1223        ###   ########.fr       */
+/*   Updated: 2022/08/24 19:57:38 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct info_s
 {
 	int		zeropad;
-	char	sign;
+	int		sign;
 	int		plus;
 	int		space;
 	int		left;
@@ -26,6 +26,7 @@ typedef struct info_s
 	int		special;
 	int		width;
 	int		precision;
+	int		precisionstat;
 	char	*str;
 	int		base;
 	char	fmt;
@@ -55,8 +56,12 @@ int	ft_strnlen(char *s, int max)
 	int	i;
 
 	i = 0;
-	while (s[i] && i < max)
-		i++;
+	if (max == 0)
+		while (s[i])
+			i++;
+	else
+		while (s[i] && i < max)
+			i++;
 	return (i);
 }
 
@@ -65,7 +70,8 @@ void	init_info(info_t *info)
 	info->base = 10;
 	info->left = -1;
 	info->plus = -1;
-	info->precision = -1;
+	info->precision = 0;
+	info->precisionstat = -1;
 	info->sign = 0;
 	info->small = -1;
 	info->space = -1;
@@ -73,66 +79,72 @@ void	init_info(info_t *info)
 	info->width = -1;
 	info->zeropad = -1;
 	info->fmt = 0;
+	info->base = 10;
 }
 
 char	*number(info_t *info, long num, char *wow)
 {
-	char	digits[16] = "0123456789ABCDEF";
+	char	sign;
 	char	newarr[100];
-	char	c;
 	int		i;
 	int		tmp;
+	int		tmpwidth;
 
 	tmp = num;
+	tmpwidth = info->width;
+	sign = 0;
 	if (info->left == 1)
-		info->zeropad = 1;
+		info->zeropad = -1;
 	if (info->base < 2 || info->base > 16)
 		return (NULL);
-	if (info->zeropad == 1)
-		c = '0';
-	else if (info->zeropad == -1)
-		c = ' ';	
 	if (info->sign == 1)
 	{
 		if (num < 0)
 		{
-			info->sign = '-';
+			sign = '-';
 			num *= -1;
 			info->width--;
 		}
 		else if (info->plus == 1)
 		{
-			info->sign = '+';
+			sign = '+';
 			info->width--;
 		}
 		else if (info->space == 1)
 		{
-			info->sign = ' ';
+			sign = ' ';
 			info->width--;
 		}
 	}
 	if (info->special == 1)
 	{
-		if (info->base == 16)
+		if (info->base == 16 && tmp == 0x0 && info->fmt == 'p')
+			info->width -= 2;
+		else if (info->base == 16 && tmp != 0)
 			info->width -= 2;
 	}
 	i = 0;
-	if (num == 0 && info->precision == 0)
-		return (wow);
-	else if (num == 0)
-		newarr[i++] = '0';
+	if (num == 0)
+	{
+		if (info->precisionstat == 1)
+			newarr[i] = 0;
+		else
+			newarr[i++] = '0';
+	}
+	else if (num == '%')
+		newarr[i++] = '%';
 	else
 		while (num != 0)
 		{
 			if (info->small == 1)
 			{
-				newarr[i] = digits[ft_div(&num, info->base)];
+				newarr[i] = "0123456789ABCDEF"[ft_div(&num, info->base)];
 				if (newarr[i] >= 'A' && newarr[i] <= 'F')
 					newarr[i] += ('a' - 'A');
 				i++;
 			}
 			else
-				newarr[i++] = digits[ft_div(&num, info->base)];
+				newarr[i++] = "0123456789ABCDEF"[ft_div(&num, info->base)];
 		}	
 	if (i > info->precision)
 		info->precision = i;
@@ -143,29 +155,98 @@ char	*number(info_t *info, long num, char *wow)
 			*wow++ = ' ';
 			info->width--;
 		}
-	if (info->sign)
-		*wow++ = info->sign;
-	if (info->special == 1)
+	// printf("width = %d, precision = %d\n", info->width, info->precision);
+	if (info->left != 1 && info->zeropad == 1 && info->precisionstat == -1)
 	{
-		if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
+		if (info->special == 1)
 		{
-			*wow++ = '0';
-			if (info->small == 1)
-				*wow++ = 'x';
-			else
-				*wow++ = 'X';
+			if (info->sign && sign)
+				*wow++ = sign;
+			if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
+			{
+				*wow++ = '0';
+				if (info->small == 1)
+					*wow++ = 'x';
+				else
+					*wow++ = 'X';
+			}
 		}
-	}
-	if (info->left != 1)
+		if (info->special == -1)
+			if (info->sign && sign)
+				*wow++ = sign;
 		while (info->width > 0)
 		{
 			info->width--;
-			*wow++ = c;
+			*wow++ = '0';
 		}
-	while (i < info->precision--)
+	}
+	else if (info->left != 1 && info->zeropad == 1 && tmpwidth > info->precision)
+	{
+		if (info->fmt == '%' && info->left != 1)
+		{
+			info->width--;
+			while (info->width > 0)
+			{
+				info->width--;
+				*wow++ = '0';
+			}
+			while (info->precision > 0)
+			{
+				info->precision--;
+				*wow++ = '0';
+			}
+		}
+		while (info->width > 0)
+		{
+			info->width--;
+			*wow++ = ' ';
+		}
+		if (info->special == -1)
+			if (info->sign && sign)
+				*wow++ = sign;
+		if (info->special == 1)
+		{
+			if (info->sign && sign)
+				*wow++ = sign;
+			if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
+			{
+				*wow++ = '0';
+				if (info->small == 1)
+					*wow++ = 'x';
+				else
+					*wow++ = 'X';
+			}
+		}
+	}
+	else
+	{
+		if (info->special == -1)
+			if (info->sign && sign)
+				*wow++ = sign;
+		if (info->special == 1)
+		{
+			if (info->sign && sign)
+				*wow++ = sign;
+			if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
+			{
+				*wow++ = '0';
+				if (info->small == 1)
+					*wow++ = 'x';
+				else
+					*wow++ = 'X';
+			}
+		}
+	}
+	while (i < info->precision)
+	{
 		*wow++ = '0';
+		info->precision--;
+	}
 	while (i > 0)
-		*wow++ = newarr[--i];
+	{
+		i--;
+		*wow++ = newarr[i];
+	}
 	while (info->width > 0)
 	{
 		info->width--;
@@ -185,9 +266,10 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 	wow = buf;
 	while (*fmt)
 	{
+		// printf("%c\n", *fmt);
 		init_info(info);
-		if (*fmt != '%')
-		{
+		if (*fmt != '%' && *fmt)
+		{	
 			*wow++ = *fmt++;
 			continue;
 		}
@@ -210,6 +292,7 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 			info->width = ft_atoi(&fmt);
 		if (*fmt == '.')
 		{
+			info->precisionstat = 1;
 			fmt++;
 			if (*fmt >= '0' && *fmt <= '9')
 				info->precision = ft_atoi(&fmt);
@@ -240,8 +323,17 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 		}
 		else if (*fmt == 's')
 		{
+			len = 0;
 			s = va_arg(ap, char *);
-			len = ft_strnlen(s, info->precision);
+			if (s == 0)
+				s = "(null)";
+			if (info->precisionstat == 1 && info->precision == 0)
+			{
+				if (info->width == 0)
+					return (0);
+			}
+			else
+				len = ft_strnlen(s, info->precision);
 			if (info->left == -1)
 			{
 				while (len < info->width)
@@ -250,6 +342,7 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 					info->width--;
 				}
 			}
+			i = 0;
 			while (i < len)
 			{
 				*wow++ = *s++;
@@ -273,8 +366,9 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 			continue;
 		}
 		else if (*fmt == '%')
-		{
-			*wow++ = '%';
+		{			
+			num = '%';
+			wow = number(info, num, wow);
 			fmt++;
 			continue;
 		}
@@ -292,15 +386,13 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 			*wow++ = '%';
 			if (*fmt)
 				*wow++ = *fmt;
-			else
-				--fmt;
 			fmt++;
 			continue;
 		}
 		if (info->sign == 1)
 			num = va_arg(ap, int);
 		else
-			num = va_arg(ap, unsigned int);		
+			num = va_arg(ap, unsigned int);
 		wow = number(info, num, wow);
 		fmt++;
 	}
@@ -310,24 +402,62 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 
 int ft_printf(const char *fmt, ...)
 {
-	char	arr[1024];
+	char	arr[1000000];
 	va_list	ap;
 	info_t	info;
 	int		i;
+	int		j;
 
+	j = 0;
+	i = 0;
 	va_start(ap, fmt);
 	i = ft_vsprintf(arr, fmt, ap, &info);
 	va_end(ap);
 
-	write(1, arr, i);
+	// printf("%s", arr);
+	while (j < i)
+		printf("%c", arr[j++]);
 	return (i);
 }
 
-#define A "  %u %#x %#X %c\n"
-#define B  -2147483648, -2147483648, -2147483648, 97
+// #define A "^.^/%17s%s^.^/"
+// #define B "(null)", 0
 
-int main(void)
-{
-	printf("length of printf = %d\n\n", printf(A, B));
-	printf("length of ft_printf = %d\n\n", ft_printf(A, B));
-}
+// #define A "\\!/%038.4d\\!/"
+// #define B 0
+
+// #define A "^.^/%016d^.^/"
+// #define B -644797325
+
+// #define A "42%#62.12x42"
+// #define B 0
+
+// #define A "!%42p!"
+// #define B 0x0
+
+// #define A "\\!/%#4.2x\\!/"
+// #define B 0x0
+
+// #define A "42%0#49.40x42"
+// #define B 1110709706
+
+// #define A "%05.3%"
+// #define B 
+
+// #define A "42%34.42s42"
+// #define B NULL
+
+// #define A "%.7s"
+// #define B "hello"
+
+// #define A "%.0x"
+// #define B 0
+
+// int main(void)
+// {
+// 	printf("length of printf = %d\n\n", printf(A, B));
+// 	printf("length of ft_printf = %d\n\n", ft_printf(A, B));
+
+// 	// printf("length of printf = %d\n\n", printf(A));
+// 	// printf("length of ft_printf = %d\n\n", ft_printf(A));
+// }

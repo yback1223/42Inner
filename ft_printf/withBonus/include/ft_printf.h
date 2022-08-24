@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:26:35 by yback             #+#    #+#             */
-/*   Updated: 2022/08/22 20:57:40 by yback            ###   ########.fr       */
+/*   Updated: 2022/08/24 13:42:41 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct info_s
 {
 	int		zeropad;
-	int		sign;
+	char	sign;
 	int		plus;
 	int		space;
 	int		left;
@@ -26,9 +26,9 @@ typedef struct info_s
 	int		special;
 	int		width;
 	int		precision;
-	char	str[1024];
-	int		i_for_str;
+	char	*str;
 	int		base;
+	char	fmt;
 }	info_t;
 
 #endif
