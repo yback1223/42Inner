@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:58:05 by yback             #+#    #+#             */
-/*   Updated: 2022/08/24 19:57:38 by yback            ###   ########.fr       */
+/*   Updated: 2022/08/25 16:28:06 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,37 +82,24 @@ void	init_info(info_t *info)
 	info->base = 10;
 }
 
-char	*number(info_t *info, long num, char *wow)
+void	making_sign_and_spe(info_t *info, char *sign, int tmp, long *num)
 {
-	char	sign;
-	char	newarr[100];
-	int		i;
-	int		tmp;
-	int		tmpwidth;
-
-	tmp = num;
-	tmpwidth = info->width;
-	sign = 0;
-	if (info->left == 1)
-		info->zeropad = -1;
-	if (info->base < 2 || info->base > 16)
-		return (NULL);
 	if (info->sign == 1)
 	{
-		if (num < 0)
+		if (*num < 0)
 		{
-			sign = '-';
-			num *= -1;
+			*sign = '-';
+			*num *= -1;
 			info->width--;
 		}
 		else if (info->plus == 1)
 		{
-			sign = '+';
+			*sign = '+';
 			info->width--;
 		}
 		else if (info->space == 1)
 		{
-			sign = ' ';
+			*sign = ' ';
 			info->width--;
 		}
 	}
@@ -123,31 +110,42 @@ char	*number(info_t *info, long num, char *wow)
 		else if (info->base == 16 && tmp != 0)
 			info->width -= 2;
 	}
-	i = 0;
+}
+
+char	*making_newarr(info_t *info, long num, int *i)
+{
+	char	*newarr;
+
+	newarr = (char *)malloc(100);
 	if (num == 0)
 	{
 		if (info->precisionstat == 1)
-			newarr[i] = 0;
+			newarr[(*i)] = 0;
 		else
-			newarr[i++] = '0';
+			newarr[(*i)++] = '0';
 	}
 	else if (num == '%')
-		newarr[i++] = '%';
+		newarr[(*i)++] = '%';
 	else
 		while (num != 0)
 		{
 			if (info->small == 1)
 			{
-				newarr[i] = "0123456789ABCDEF"[ft_div(&num, info->base)];
-				if (newarr[i] >= 'A' && newarr[i] <= 'F')
-					newarr[i] += ('a' - 'A');
-				i++;
+				newarr[*i] = "0123456789ABCDEF"[ft_div(&num, info->base)];
+				if (newarr[*i] >= 'A' && newarr[*i] <= 'F')
+					newarr[*i] += ('a' - 'A');
+				(*i)++;
 			}
 			else
-				newarr[i++] = "0123456789ABCDEF"[ft_div(&num, info->base)];
-		}	
-	if (i > info->precision)
-		info->precision = i;
+				newarr[(*i)++] = "0123456789ABCDEF"[ft_div(&num, info->base)];
+		}
+	return (newarr);
+}
+
+char	*making_setting_one(info_t *info, int *i, char *wow)
+{
+	if (*i > info->precision)
+		info->precision = *i;
 	info->width -= info->precision;
 	if (info->zeropad != 1 && info->left != 1)
 		while (info->width > 0)
@@ -155,47 +153,55 @@ char	*number(info_t *info, long num, char *wow)
 			*wow++ = ' ';
 			info->width--;
 		}
-	// printf("width = %d, precision = %d\n", info->width, info->precision);
-	if (info->left != 1 && info->zeropad == 1 && info->precisionstat == -1)
+	return (wow);
+}
+
+char	*making_setting_two(info_t *info, char sign, char *wow, int tmp)
+{
+	if (info->special == 1)
 	{
-		if (info->special == 1)
+		if (info->sign && sign)
+			*wow++ = sign;
+		if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
 		{
-			if (info->sign && sign)
-				*wow++ = sign;
-			if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
-			{
-				*wow++ = '0';
-				if (info->small == 1)
-					*wow++ = 'x';
-				else
-					*wow++ = 'X';
-			}
-		}
-		if (info->special == -1)
-			if (info->sign && sign)
-				*wow++ = sign;
-		while (info->width > 0)
-		{
-			info->width--;
 			*wow++ = '0';
+			if (info->small == 1)
+				*wow++ = 'x';
+			else
+				*wow++ = 'X';
 		}
 	}
-	else if (info->left != 1 && info->zeropad == 1 && tmpwidth > info->precision)
+	if (info->special == -1)
+		if (info->sign && sign)
+			*wow++ = sign;
+	while (info->width > 0)
 	{
+		info->width--;
+		*wow++ = '0';
+	}
+	return (wow);
+}
+
+char	*making_setting_mini_one(info_t *info, char *wow)
+{
+	info->width--;
+	while (info->width > 0)
+	{
+		info->width--;
+		*wow++ = '0';
+	}
+	while (info->precision > 0)
+	{
+		info->precision--;
+		*wow++ = '0';
+	}
+	return (wow);
+}
+
+char	*making_setting_three(info_t *info, char *wow, char sign, int tmp)
+{
 		if (info->fmt == '%' && info->left != 1)
-		{
-			info->width--;
-			while (info->width > 0)
-			{
-				info->width--;
-				*wow++ = '0';
-			}
-			while (info->precision > 0)
-			{
-				info->precision--;
-				*wow++ = '0';
-			}
-		}
+			wow = making_setting_mini_one(info, wow);
 		while (info->width > 0)
 		{
 			info->width--;
@@ -217,26 +223,32 @@ char	*number(info_t *info, long num, char *wow)
 					*wow++ = 'X';
 			}
 		}
-	}
-	else
+	return (wow);
+}
+
+char	*making_setting_four(info_t *info, char *wow, char sign, int tmp)
+{
+	if (info->special == -1)
+		if (info->sign && sign)
+				*wow++ = sign;
+	if (info->special == 1)
 	{
-		if (info->special == -1)
-			if (info->sign && sign)
-				*wow++ = sign;
-		if (info->special == 1)
+		if (info->sign && sign)
+			*wow++ = sign;
+		if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
 		{
-			if (info->sign && sign)
-				*wow++ = sign;
-			if (info->base == 16 && !((info->fmt == 'x' || info->fmt == 'X') && tmp == 0))
-			{
-				*wow++ = '0';
-				if (info->small == 1)
-					*wow++ = 'x';
-				else
-					*wow++ = 'X';
-			}
+			*wow++ = '0';
+			if (info->small == 1)
+				*wow++ = 'x';
+			else
+				*wow++ = 'X';
 		}
 	}
+	return (wow);
+}
+
+char	*finish_part(info_t *info, int i, char *wow, char *newarr)
+{
 	while (i < info->precision)
 	{
 		*wow++ = '0';
@@ -252,6 +264,36 @@ char	*number(info_t *info, long num, char *wow)
 		info->width--;
 		*wow++ = ' ';
 	}
+	free(newarr);
+	return (wow);
+}
+
+char	*number(info_t *info, long num, char *wow)
+{
+	char	sign;
+	char	*newarr;
+	int		i;
+	int		tmp;
+	int		tmpwidth;
+
+	i = 0;
+	tmp = num;
+	tmpwidth = info->width;
+	sign = 0;
+	if (info->left == 1)
+		info->zeropad = -1;
+	if (info->base < 2 || info->base > 16)
+		return (NULL);
+	making_sign_and_spe(info, &sign, tmp, &num);
+	newarr = making_newarr(info, num, &i);
+	wow = making_setting_one(info, &i, wow);
+	if (info->left != 1 && info->zeropad == 1 && info->precisionstat == -1)
+		wow = making_setting_two(info, sign, wow, tmp);
+	else if (info->left != 1 && info->zeropad == 1 && tmpwidth > info->precision)
+		wow = making_setting_three(info, wow, sign, tmp);
+	else
+		wow = making_setting_four(info, wow, sign, tmp);
+	wow = finish_part(info, i, wow, newarr);
 	return (wow);
 }
 
@@ -266,7 +308,6 @@ int	ft_vsprintf(char *buf, const char *fmt, va_list ap, info_t *info)
 	wow = buf;
 	while (*fmt)
 	{
-		// printf("%c\n", *fmt);
 		init_info(info);
 		if (*fmt != '%' && *fmt)
 		{	
