@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 20:33:20 by yback             #+#    #+#              #
-#    Updated: 2022/08/24 13:29:47 by yback            ###   ########.fr        #
+#    Updated: 2022/08/25 20:36:10 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ WHITE = \033[0;97m
 
 # Sources
 
-SRC_FILES	=	ft_printf
+SRC_FILES	=	ft_printf ft_making_main_printf ft_making_number_one ft_making_number_two ft_printf_utils
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

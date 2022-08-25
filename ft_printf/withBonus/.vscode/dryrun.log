@@ -1,9 +1,15 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus'
 mkdir -p obj/
-echo "\033[0;93mCompiling: src/ft_printf.c \033[0;39m"
-gcc -Wall -Werror -Wextra -I include -c src/ft_printf.c -o obj/ft_printf.o
-ar rcs libftprintf.a obj/ft_printf.o
+echo "\033[0;93mCompiling: src/ft_making_number_one.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/ft_making_number_one.c -o obj/ft_making_number_one.o
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/ft_making_number_two.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/ft_making_number_two.c -o obj/ft_making_number_two.o
+mkdir -p obj/
+echo "\033[0;93mCompiling: src/ft_printf_utils.c \033[0;39m"
+gcc -Wall -Werror -Wextra -I include -c src/ft_printf_utils.c -o obj/ft_printf_utils.o
+ar rcs libftprintf.a obj/ft_printf.o obj/ft_making_main_printf.o obj/ft_making_number_one.o obj/ft_making_number_two.o obj/ft_printf_utils.o
 echo "\033[0;92mft_printf compiled!\033[0;39m"
 make: Leaving directory `/Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus'
  

@@ -1,3 +1,10 @@
 {
-	"makefile.extensionOutputFolder": "./.vscode"
+	"makefile.extensionOutputFolder": "./.vscode",
+	"files.associations": {
+		"ratio": "c",
+		"bitset": "c",
+		"functional": "c",
+		"iterator": "c",
+		"memory": "c"
+	}
 }
