@@ -8,20 +8,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu Aug 25 20:36:42 2022
+# Make data base, printed on Mon Aug 29 21:43:23 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 41)
+# makefile (from `Makefile', line 31)
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-# makefile (from `Makefile', line 27)
-GRAY = \033[0;90m
-# makefile (from `Makefile', line 40)
+# makefile (from `Makefile', line 30)
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 # environment
 VSCODE_LOG_NATIVE = false
@@ -35,33 +32,37 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 21)
-RM = rm -f
+# makefile (from `Makefile', line 22)
+RM = rm
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 20)
-CFLAGS = -Wall -Werror -Wextra -I
-# makefile (from `Makefile', line 31)
-BLUE = \033[0;94m
+# makefile (from `Makefile', line 21)
+CFLAGS = -Wall -Werror -Wextra
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# makefile (from `Makefile', line 18)
+# makefile (from `Makefile', line 17)
 OBJ_DIR = obj/
 # environment
 VSCODE_VERBOSE_LOGGING = true
+# makefile (from `Makefile', line 43)
+S_DIR = $(SRC_DIR)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-67d654f9-0198-468a-a27b-0038a1adc7cb.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-0d4e236b-3745-4a5a-a9e1-29c6e1ada2a8.sock
 # environment
 VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+# makefile (from `Makefile', line 41)
+OBJ_TOTAL = $(OBJ)
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
+# makefile (from `Makefile', line 18)
+SRC_BONUS_DIR = src_bonus/
 # environment
-LaunchInstanceID = 3016DB5E-4163-4548-8CD6-8CB911D56779
-# makefile (from `Makefile', line 22)
+LaunchInstanceID = 5CD8048A-2FCC-4C66-B0CC-01BBDE2C8B4D
+# makefile (from `Makefile', line 23)
 AR = ar rcs
 # environment
 VSCODE_LOG_STACK = false
@@ -69,8 +70,10 @@ VSCODE_LOG_STACK = false
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# makefile (from `Makefile', line 28)
+SRC_BONUS_FILES = ft_printf ft_making_main_printf ft_making_number_one ft_making_number_two ft_printf_utils
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.XOWDPKz5Zb/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.ilVHuK9CV5/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -79,8 +82,6 @@ VSCODE_PIPE_LOGGING = true
 PWD = /Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
-# makefile (from `Makefile', line 29)
-GREEN = \033[0;92m
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -93,6 +94,8 @@ VSCODE_CODE_CACHE_PATH = /Users/yback/Library/Application Support/Code/CachedDat
 LOGNAME = yback
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from `Makefile', line 33)
+SRC_BONUS = $(addprefix $(SRC_BONUS_DIR), $(addsuffix .c, $(SRC_BONUS_FILES)))
 # environment
 ZSH = /Users/yback/.oh-my-zsh
 # environment
@@ -105,13 +108,9 @@ XPC_FLAGS = 0x0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from `Makefile', line 26)
-DEF_COLOR = \033[0;39m
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 34)
-WHITE = \033[0;97m
-# makefile (from `Makefile', line 19)
+# makefile (from `Makefile', line 20)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -119,10 +118,10 @@ MAKE_VERSION := 3.81
 USER = yback
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from `Makefile', line 16)
-INCLUDE = include
 # makefile (from `Makefile', line 15)
 NAME = libftprintf.a
+# makefile (from `Makefile', line 19)
+OBJ_BONUS_DIR = obj_bonus/
 # environment
 LESS = -R
 # automatic
@@ -137,8 +136,8 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /Users/yback/Library/Application Support/Code/1.67.2-main.sock
-# makefile (from `Makefile', line 28)
-RED = \033[0;91m
+# makefile (from `Makefile', line 42)
+O_DIR = $(OBJ_DIR)
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -146,14 +145,9 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
- 
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000005.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from `Makefile', line 30)
-YELLOW = \033[0;93m
-# makefile (from `Makefile', line 33)
-CYAN = \033[0;96m
 # automatic
 +F = $(notdir $+)
 # environment
@@ -162,7 +156,7 @@ __CF_USER_TEXT_ENCODING = 0x19825:0x3:0x33
 COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
-# makefile (from `Makefile', line 17)
+# makefile (from `Makefile', line 16)
 SRC_DIR = src/
 # automatic
 <F = $(notdir $<)
@@ -170,26 +164,26 @@ SRC_DIR = src/
 PAGER = less
 # environment
 LC_ALL = C
+# makefile (from `Makefile', line 34)
+OBJ_BONUS = $(addprefix $(OBJ_BONUS_DIR), $(addsuffix .o, $(SRC_BONUS_FILES)))
 # environment
-SECURITYSESSIONID = 186a6
+SECURITYSESSIONID = 186c1
 # automatic
 ^F = $(notdir $^)
-# makefile (from `Makefile', line 38)
-SRC_FILES = ft_printf ft_making_main_printf ft_making_number_one ft_making_number_two ft_printf_utils
+# makefile (from `Makefile', line 27)
+SRC_FILES = ft_for_cspitoa ft_for_duxxper ft_hex_and_dec ft_printf
 # default
 SUFFIXES := 
 # default
 .INCLUDE_DIRS = /usr/local/include
-# makefile (from `Makefile', line 32)
-MAGENTA = \033[0;95m
 # environment
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3970
+VSCODE_PID = 58559
 # variable set hash-table stats:
-# Load=87/1024=8%, Rehash=0, Collisions=6/127=5%
+# Load=85/1024=8%, Rehash=0, Collisions=8/126=6%
 
 # Pattern-specific Variable Values
 
@@ -198,31 +192,21 @@ VSCODE_PID = 3970
 # Directories
 
 # . (device 16777225, inode 1187458): 7 files, no impossibilities.
-# src (device 16777225, inode 1247713): 6 files, no impossibilities so far.
+# src (device 16777225, inode 1296806): 3 files, no impossibilities so far.
 
-# 13 files, no impossibilities in 2 directories.
+# 10 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c
-#  commands to execute (from `Makefile', line 54):
-	@mkdir -p $(OBJ_DIR)
-	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+#  commands to execute (from `Makefile', line 55):
+	@mkdir -p $(O_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 	
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
-
-# Not a target:
-src/ft_making_main_printf.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-25 20:16:22
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: libftprintf.a
 #  Phony target (prerequisite of .PHONY).
@@ -232,7 +216,7 @@ all: libftprintf.a
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
@@ -240,10 +224,13 @@ all: libftprintf.a
 #  File has not been updated.
 
 # Not a target:
-obj/ft_printf_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/ft_for_cspitoa.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 10:15:33
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .SUFFIXES:
@@ -254,82 +241,49 @@ obj/ft_printf_utils.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 20:36:10
+#  Last modified 2022-08-29 17:53:54
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-obj/ft_making_number_one.o: src/ft_making_number_one.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `ft_making_number_one'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/ft_making_number_one.o
-# automatic
-# % := 
-# automatic
-# * := ft_making_number_one
-# automatic
-# + := src/ft_making_number_one.c
-# automatic
-# | := 
-# automatic
-# < := src/ft_making_number_one.c
-# automatic
-# ^ := src/ft_making_number_one.c
-# automatic
-# ? := src/ft_making_number_one.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/19=11%
-#  commands to execute (from `Makefile', line 54):
-	@mkdir -p $(OBJ_DIR)
-	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-	
-
-bonus: libftprintf.a
+# Not a target:
+obj/ft_for_duxxper.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+bonus:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 49):
+	@make BONUS_OPT=1 $(NAME)
+	
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 63):
+#  commands to execute (from `Makefile', line 62):
 	@$(RM) -f $(NAME)
-	@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
 	
 
 # Not a target:
-src/ft_making_number_one.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-25 20:31:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-obj/ft_printf.o: src/ft_printf.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `ft_printf'
-#  Last modified 2022-08-25 20:36:33
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 54):
-	@mkdir -p $(OBJ_DIR)
-	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-	
+obj/ft_printf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/ft_hex_and_dec.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -339,9 +293,6 @@ re: fclean all
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 67):
-	@echo "$(Green)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
-	
 
 clean:
 #  Phony target (prerequisite of .PHONY).
@@ -349,53 +300,52 @@ clean:
 #  File does not exist.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 59):
-	@$(RM) -rf $(OBJ_DIR)
-	@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+	@$(RM) -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
 	
 
-obj/ft_making_main_printf.o: src/ft_making_main_printf.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `ft_making_main_printf'
-#  Last modified 2022-08-25 20:36:33
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 54):
-	@mkdir -p $(OBJ_DIR)
-	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-	
-
-# Not a target:
-src/ft_printf.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-25 20:34:52
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-libftprintf.a: obj/ft_printf.o obj/ft_making_main_printf.o obj/ft_making_number_one.o obj/ft_making_number_two.o obj/ft_printf_utils.o
+libftprintf.a: obj/ft_for_cspitoa.o obj/ft_for_duxxper.o obj/ft_hex_and_dec.o obj/ft_printf.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
-#  commands to execute (from `Makefile', line 50):
-	@$(AR) $(NAME) $(OBJ)
-	@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+#  commands to execute (from `Makefile', line 52):
+	@$(AR) $(NAME) $(OBJ_TOTAL)
 	
 
-# Not a target:
-obj/ft_making_number_two.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/ft_for_cspitoa.o: src/ft_for_cspitoa.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_for_cspitoa'
+ 
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/ft_for_cspitoa.o
+# automatic
+# % := 
+# automatic
+# * := ft_for_cspitoa
+# automatic
+# + := src/ft_for_cspitoa.c
+# automatic
+# | := 
+# automatic
+# < := src/ft_for_cspitoa.c
+# automatic
+# ^ := src/ft_for_cspitoa.c
+# automatic
+# ? := src/ft_for_cspitoa.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  commands to execute (from `Makefile', line 55):
+	@mkdir -p $(O_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	
 
 # files hash-table stats:
-# Load=18/1024=2%, Rehash=0, Collisions=0/54=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/43=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -407,6 +357,6 @@ obj/ft_making_number_two.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug 25 20:36:42 2022
+# Finished Make data base on Mon Aug 29 21:43:23 2022
 
  
