@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Aug 18 18:28:34 2022
+# Make data base, printed on Mon Aug 29 17:35:19 2022
 
 # Variables
 
@@ -39,15 +39,13 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-a2431902-bff6-4af1-b315-eea3874ff422.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cr4m003615/T/vscode-ipc-77fd9078-521a-431f-9026-3aa9bea03099.sock
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/yback/Desktop/42inner/42Inner/ft_printf
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-LaunchInstanceID = 4ED2847A-815E-47B1-8088-C29B6D49443A
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -55,7 +53,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.t4FPip06VD/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.4KmHzN5Hl3/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -84,24 +82,32 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
 # environment
-SHLVL = 1
+LC_TERMINAL = iTerm2
+# environment
+SHLVL = 2
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = yback
 # makefile
 .DEFAULT_GOAL := 
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t0p0:A4CAA66D-F094-4A5F-96E0-131741A0BBC3
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -117,25 +123,31 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
+TERM_PROGRAM_VERSION = 3.3.7
+# environment
+XPC_SERVICE_NAME = com.microsoft.VSCode.1184.34222094-F755-490E-B64B-0464D1F66F01
+# environment
+LC_TERMINAL_VERSION = 3.3.7
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x19825:0x3:0x33
+ITERM_SESSION_ID = w0t0p0:A4CAA66D-F094-4A5F-96E0-131741A0BBC3
 # environment
-COMMAND_MODE = unix2003
+COLORFGBG = 7;0
+# environment
+__CF_USER_TEXT_ENCODING = 0x19825:0x3:0x33
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
+ITERM_PROFILE = Default
+# environment
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -147,9 +159,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3941
+TERM = xterm-256color
+# environment
+VSCODE_PID = 96374
 # variable set hash-table stats:
-# Load=67/1024=7%, Rehash=0, Collisions=1/88=1%
+# Load=74/1024=7%, Rehash=0, Collisions=4/95=4%
 
 # Pattern-specific Variable Values
 
@@ -157,9 +171,9 @@ VSCODE_PID = 3941
 
 # Directories
 
-# . (device 16777225, inode 1167604): 8 files, no impossibilities.
+# . (device 16777225, inode 1167604): 11 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -200,7 +214,6 @@ makefile:
 #  File has been updated.
 #  Failed to be updated.
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
@@ -232,6 +245,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Aug 18 18:28:34 2022
+# Finished Make data base on Mon Aug 29 17:35:19 2022
 
  

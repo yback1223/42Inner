@@ -1,0 +1,13 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus'
+mkdir -p obj/
+gcc -Wall -Werror -Wextra -c src/ft_for_cspitoa.c -o obj/ft_for_cspitoa.o
+mkdir -p obj/
+gcc -Wall -Werror -Wextra -c src/ft_for_duxxper.c -o obj/ft_for_duxxper.o
+mkdir -p obj/
+gcc -Wall -Werror -Wextra -c src/ft_hex_and_dec.c -o obj/ft_hex_and_dec.o
+mkdir -p obj/
+gcc -Wall -Werror -Wextra -c src/ft_printf.c -o obj/ft_printf.o
+ar rcs libftprintf.a obj/ft_for_cspitoa.o obj/ft_for_duxxper.o obj/ft_hex_and_dec.o obj/ft_printf.o
+make: Leaving directory `/Users/yback/Desktop/42inner/42Inner/ft_printf/withBonus'
+ 
