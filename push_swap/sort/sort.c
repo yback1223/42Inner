@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:32:35 by yback             #+#    #+#             */
-/*   Updated: 2022/12/24 13:56:48 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/26 17:39:59 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void    large_amount_sort(t_stack *a, t_stack *b)
 
 void    a_to_b(t_stack *a, t_stack *b, int formula, int i)
 {
-    int length;
-    
-    length = a->length - 1;
     while (a->length != 0)
     {
         if (get_top(a) <= i)
@@ -64,7 +61,6 @@ void    a_to_b(t_stack *a, t_stack *b, int formula, int i)
             else
                 ra(a);
         }
-        length--;
     }
 }
 
