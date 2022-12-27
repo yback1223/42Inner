@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:16:39 by yback             #+#    #+#             */
-/*   Updated: 2022/07/10 20:37:14 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/27 14:47:02 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 
 int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 	int	len;
 
 	i = 0;

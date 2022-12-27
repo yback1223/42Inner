@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:57:01 by yback             #+#    #+#             */
-/*   Updated: 2022/12/26 17:10:46 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/27 14:31:37 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 		exit(1);
-    init_stack(&a, 1024);
+	init_stack(&a, 512);
 	input_validator(&a, argv);
 	stack_index(&a);
 	init_stack(&b, a.total);
