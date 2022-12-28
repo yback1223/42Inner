@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -65,25 +66,25 @@ void	stack_index(t_stack *a);
 void	print_error(int err);
 int		check_space(char c);
 void	free_str(char **str);
+int		compare_command(char *str1, char *str2);
 
 /* utils/stack.c */
 void	init_stack(t_stack *stack, int length);
 void	insert_into_stack(t_stack *stack, int num);
 
-/* utils/ft_memcpy.c */
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-
-/* utils/ft_putstr_fd.c */
-void	ft_putstr_fd(char *s, int fd);
-int		ft_strlen(char *s);
-
-/* util/ft_split.c */
-char	**ft_split(char const *s, char c);
-
 /* validator/validator.c */
-int		make_num(const char *str);
+int		make_num(char *str);
 void	input_validator(t_stack *stack, char *argv[]);
 int		already_sorted(t_stack *stack);
 void	check_dup(t_stack *stack);
+
+/* GNL */
+# define BUFFER_SIZE 10
+
+char	*get_next_line(int fd);
+char	*ft_get_lstr(int fd, char *lstr);
+char	*ft_get_line(char *lstr);
+char	*ft_reset_lstr(char *lstr);
+char	*gnl_strjoin(char *s1, char *s2);
 
 #endif

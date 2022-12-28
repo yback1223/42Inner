@@ -12,6 +12,16 @@
 
 #include "../header/push_swap.h"
 
+int	compare_command(char *str1, char *str2)
+{
+	int		i;
+
+	i = 0;
+	while (*(str1 + i) && *(str1 + i) == *(str2 + i))
+		i++;
+	return (*((unsigned char *)str1 + i) - *((unsigned char *)str2 + i));
+}
+
 void	print_error(int err)
 {
 	if (err == 1)

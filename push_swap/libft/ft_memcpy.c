@@ -6,11 +6,11 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:31:16 by yback             #+#    #+#             */
-/*   Updated: 2022/12/27 14:46:05 by yback            ###   ########.fr       */
+/*   Updated: 2022/07/12 12:54:51 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 17:05:57 by yback             #+#    #+#             */
-/*   Updated: 2022/07/12 13:42:14 by yback            ###   ########.fr       */
+/*   Created: 2022/07/08 17:04:55 by yback             #+#    #+#             */
+/*   Updated: 2022/07/13 16:25:33 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if (src < dst && dst < src + len)
+	size_t	needle_len;
+
+	needle_len = ft_strlen(needle);
+	if (needle_len == 0)
+		return ((char *)haystack);
+	while (*haystack && len >= needle_len)
 	{
-		while (len > 0)
-		{
-			--len;
-			((unsigned char *)dst)[len] = ((const unsigned char *)src)[len];
-		}
-		return (dst);
+		if (ft_strncmp(haystack, needle, needle_len) == 0)
+			return ((char *)haystack);
+		haystack++;
+		len--;
 	}
-	return (ft_memcpy(dst, src, len));
+	return (NULL);
 }

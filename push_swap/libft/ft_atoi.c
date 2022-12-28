@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 17:05:57 by yback             #+#    #+#             */
-/*   Updated: 2022/07/12 13:42:14 by yback            ###   ########.fr       */
+/*   Created: 2022/07/08 19:10:49 by yback             #+#    #+#             */
+/*   Updated: 2022/07/11 20:12:00 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_atoi(const char *str)
 {
-	if (src < dst && dst < src + len)
+	long	ret;
+	int		sign;
+
+	ret = 0;
+	sign = 1;
+	while (*str == ' ' || (9 <= *str && *str <= 13))
+		str++;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			sign *= -1;
+	while ('0' <= *str && *str <= '9')
 	{
-		while (len > 0)
-		{
-			--len;
-			((unsigned char *)dst)[len] = ((const unsigned char *)src)[len];
-		}
-		return (dst);
+		ret = ret * 10 + (*str++ - '0');
+		if (ret < 0)
+			return ((sign + 1) / -2);
 	}
-	return (ft_memcpy(dst, src, len));
+	return (sign * ret);
 }

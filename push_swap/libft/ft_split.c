@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "libft.h"
 
 int	length_of_word(char *str, char c)
 {

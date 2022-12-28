@@ -12,13 +12,10 @@
 
 #include "libft.h"
 
-//lst의 마지막 노드를 반환하는 함수
 t_list	*ft_lstlast(t_list *lst)
 {
-	//while의 파라미터 lst->next를 넣어준다면 마지막 노드까지 가지 못하고 그 전까지 밖에 못간다.
 	while (lst)
 	{
-		//만약 다음의 노드가 널이라면 마지막 노드라는 뜻이므로 while문을 벗어난다.
 		if (lst->next == 0)
 			break ;
 		lst = lst->next;

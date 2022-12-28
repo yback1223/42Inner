@@ -46,7 +46,7 @@ void	func(char *arr, long long num, int size)
 char	*ft_itoa(int n)
 {
 	int			size;
-	long long	num; 
+	long long	num;
 	char		*arr;
 
 	num = n;

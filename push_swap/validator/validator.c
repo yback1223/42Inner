@@ -34,7 +34,7 @@ void	input_validator(t_stack *stack, char *argv[])
 		exit(1);
 }
 
-int	make_num(const char *str)
+int	make_num(char *str)
 {
 	int			i;
 	int			sign;
