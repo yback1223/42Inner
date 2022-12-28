@@ -18,7 +18,7 @@ void	init_stack(t_stack *stack, int length)
 	if (stack->arr == 0)
 		print_error(1);
 	stack->length = 0;
-	stack->total = length;
+	stack->limit_length = length;
 }
 
 void	insert_into_stack(t_stack *stack, int num)
@@ -26,17 +26,17 @@ void	insert_into_stack(t_stack *stack, int num)
 	int	*tmp;
 	int	index;
 
-	index = stack->length;
-	if (stack->length >= stack->total)
+	if (stack->length >= stack->limit_length)
 	{
-		tmp = malloc(sizeof(int) * (stack->total * 2));
+		tmp = malloc(sizeof(int) * (stack->limit_length * 2));
 		if (tmp == 0)
 			print_error(1);
 		ft_memcpy(tmp, stack->arr, (stack->length * sizeof(int)));
 		free(stack->arr);
 		stack->arr = tmp;
-		stack->total *= 2;
+		stack->limit_length *= 2;
 	}
+	index = stack->length;
 	while (index > 0)
 	{
 		stack->arr[index] = stack->arr[index - 1];

@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:41:43 by yback             #+#    #+#             */
-/*   Updated: 2022/12/27 14:52:16 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/27 16:05:08 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	input_validator(t_stack *stack, char *argv[])
 {
-	char	**arr;
+	char	**tmp_arr;
 	int		i;
 	int		j;
 
@@ -22,16 +22,16 @@ void	input_validator(t_stack *stack, char *argv[])
 	while (argv[i] != NULL)
 	{
 		j = 0;
-		arr = ft_split(argv[i++], ' ');
-		if (arr == NULL)
+		tmp_arr = ft_split(argv[i++], ' ');
+		if (tmp_arr == NULL)
 			print_error(1);
-		while (arr[j] != 0)
-			insert_into_stack(stack, make_num(arr[j++]));
-		free_str(arr);
+		while (tmp_arr[j] != 0)
+			insert_into_stack(stack, make_num(tmp_arr[j++]));
+		free_str(tmp_arr);
 	}
+	check_dup(stack);
 	if (already_sorted(stack) == 1)
 		exit(1);
-	check_dup(stack);
 }
 
 int	make_num(const char *str)
@@ -92,7 +92,7 @@ int	already_sorted(t_stack *stack)
 	length = stack->length - 1;
 	while (i < length)
 	{
-		if (stack->arr[i] > stack->arr[i + 1])
+		if (stack->arr[i] < stack->arr[i + 1])
 			return (0);
 		i++;
 	}

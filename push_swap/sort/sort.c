@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:32:35 by yback             #+#    #+#             */
-/*   Updated: 2022/12/27 14:42:33 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/27 16:54:53 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	a_to_b(t_stack *a, t_stack *b, int formula, int i)
 			rb(b);
 			i++;
 		}
-		else if (get_top(a) > (i + formula))
+		else if ((i + formula) < get_top(a))
 		{
-			if (i < a->length / 2 && i >= 0)
+			if (0 <= i && i < a->length / 2)
 				rra(a);
 			else
 				ra(a);

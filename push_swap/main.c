@@ -19,10 +19,10 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 		exit(1);
-	init_stack(&a, 512);
+	init_stack(&a, 500);
 	input_validator(&a, argv);
 	stack_index(&a);
-	init_stack(&b, a.total);
+	init_stack(&b, a.limit_length);
 	sort_stack(&a, &b);
 	free(a.arr);
 	free(b.arr);

@@ -20,7 +20,7 @@ typedef struct s_stack
 {
 	int	*arr;
 	int	length;
-	int	total;
+	int	limit_length;
 }	t_stack;
 
 /* command/etc.cc */
