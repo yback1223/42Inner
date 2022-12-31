@@ -6,54 +6,68 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:21:28 by hyunjung          #+#    #+#             */
-/*   Updated: 2022/12/31 16:49:01 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/31 20:44:50 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-// char	*ft_strchr(char *str, int c)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (str == 0)
-// 		return (0);
-// 	while (str[i] != 0)
-// 	{
-// 		if (str[i] == c)
-// 			return ((char *)&str[i]);
-// 		i++;
-// 	}
-// 	if (str[i] == c)
-// 		return ((char *)&str[i]);
-// 	return (0);
-// }
-
-char	*gnl_strjoin(char *s1, char *s2)
+int	ft_strlen_gnl(char *str)
 {
-	char	*str;
-	int		i;
-	int		j;
+	int	i;
 
-	if (s1 == 0)
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strchr_gnl(char *s, int c)
+{
+	int	i;
+	int	size;
+
+	size = 0;
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
 	{
-		s1 = malloc(sizeof(char) * 1);
-		s1[0] = '\0';
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
 	}
-	if (s1 == 0 || s2 == 0)
+	while (s[size])
+		size++;
+	if (c == 0)
+		return ((char *)&s[size]);
+	return (0);
+}
+
+char	*ft_strjoin_gnl(char *backup, char *tmp)
+{
+	char	*arr;
+	int		i;
+	int		tmp_i;
+
+	if (!backup)
+	{
+		backup = (char *)malloc(1 * sizeof(char));
+		backup[0] = 0;
+	}
+	if (!tmp)
+		return (0);
+	arr = (char *)malloc((ft_strlen_gnl(backup) + ft_strlen_gnl(tmp)) + 1);
+	if (!arr)
 		return (0);
 	i = -1;
-	j = 0;
-	str = malloc (sizeof(char) * ((int)ft_strlen(s1) + (int)ft_strlen(s2) + 1));
-	if (str == 0)
-		return (0);
-	while (s1[++i] != 0)
-		str[i] = s1[i];
-	while (s2[j] != 0)
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	free(s1);
-	s1 = 0;
-	return (str);
+	while (backup[++i] && backup)
+		arr[i] = backup[i];
+	tmp_i = i;
+	i = 0;
+	while (tmp[i])
+		arr[tmp_i++] = tmp[i++];
+	arr[tmp_i] = 0;
+	free(backup);
+	return (arr);
 }

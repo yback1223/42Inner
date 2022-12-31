@@ -80,17 +80,16 @@ void	check_dup(t_stack *stack);
 
 /* checker.c */
 void	check_command(t_stack *a, t_stack *b);
-char	*get_command(int fd);
 void	command_bonus(t_stack *a, t_stack *b, char *command);
 void	print_result(t_stack *a, t_stack *b);
 
 /* GNL */
-# define BUFFER_SIZE 10
-
+int		ft_strlen_gnl(char *str);
+char	*ft_strchr_gnl(char *s, int c);
+char	*ft_strjoin_gnl(char *backup, char *tmp);
+char	*making_backup(int fd, char *backup);
+char	*making_newbackup(char *backup);
+char	*making_ans(char *backup);
 char	*get_next_line(int fd);
-char	*ft_get_lstr(int fd, char *lstr);
-char	*ft_get_line(char *lstr);
-char	*ft_reset_lstr(char *lstr);
-char	*gnl_strjoin(char *s1, char *s2);
 
 #endif

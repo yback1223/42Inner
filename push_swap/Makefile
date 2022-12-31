@@ -11,38 +11,38 @@
 # **************************************************************************** #
 
 NAME = push_swap
-LIBFT	=	libft
-LIBFT_A	=	libft.a
+LIBFT	=	mandatory/libft
+LIBFT_A	=	mandatory/libft.a
 BONUS	=	checker
 RM = rm -rf
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = 	command/etc.c\
-		command/reverse_rotate.c\
-		command/rotate.c\
-		command/utils.c\
-		sort/sort.c\
-		sort/utils.c\
-		utils/array.c\
-		utils/stacks.c\
-		utils/utils.c\
-		validator/validator.c\
-		main.c
+SRCS = 	mandatory/command/etc.c\
+		mandatory/command/reverse_rotate.c\
+		mandatory/command/rotate.c\
+		mandatory/command/utils.c\
+		mandatory/sort/sort.c\
+		mandatory/sort/utils.c\
+		mandatory/utils/array.c\
+		mandatory/utils/stacks.c\
+		mandatory/utils/utils.c\
+		mandatory/validator/validator.c\
+		mandatory/main.c
 
-SRCS_B =checker.c\
-		command/etc.c\
-		command/reverse_rotate.c\
-		command/rotate.c\
-		command/utils.c\
-		sort/sort.c\
-		sort/utils.c\
-		utils/array.c\
-		utils/stacks.c\
-		utils/utils.c\
-		validator/validator.c\
-		gnl/get_next_line_utils.c\
-		gnl/get_next_line.c
+SRCS_B =bonus/checker.c\
+		bonus/command/etc.c\
+		bonus/command/reverse_rotate.c\
+		bonus/command/rotate.c\
+		bonus/command/utils.c\
+		bonus/sort/sort.c\
+		bonus/sort/utils.c\
+		bonus/utils/array.c\
+		bonus/utils/stacks.c\
+		bonus/utils/utils.c\
+		bonus/validator/validator.c\
+		bonus/gnl/get_next_line_utils.c\
+		bonus/gnl/get_next_line.c
 		
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
@@ -51,6 +51,8 @@ LIBC	= ar rc
 ifdef WITH_BONUS
 	NAME = $(BONUS)
 	OBJECTS = $(OBJS_B)
+	LIBFT	=	bonus/libft
+	LIBFT_A	=	bonus/libft.a
 else
 	OBJECTS = $(OBJS)
 endif
@@ -59,7 +61,7 @@ all : $(NAME)
 
 $(NAME):	$(OBJECTS)
 			make all -C $(LIBFT)/
-			$(CC) -o $(NAME) $(OBJECTS) -Llibft	-lft
+			$(CC) -o $(NAME) $(OBJECTS) -L $(LIBFT)	-lft
 
 %.o	: %.c
 			$(CC)	$(CFLAG) -c $^	-I./ -o $@
@@ -69,13 +71,16 @@ bonus	:
 
 clean	:
 		$(RM) -f $(OBJS) $(OBJS_B)
-		make clean -C $(LIBFT)
+		make clean -C mandatory/libft
+		make clean -C bonus/libft
 
 fclean	: clean
 		$(RM) -f $(NAME)
-		$(RM) -f $(LIBFT_A)
+		$(RM) -f mandatory/libft.a
+		$(RM) -f bonus/libft.a
 		$(RM) -f $(BONUS)
-		make fclean -C $(LIBFT)
+		make fclean -C mandatory/libft
+		make fclean -C bonus/libft
 
 re : fclean all
 
