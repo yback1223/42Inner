@@ -6,25 +6,11 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:43 by yback             #+#    #+#             */
-/*   Updated: 2022/12/28 20:53:16 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/31 16:54:57 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	main(int ac, char *av[])
-{
-	t_stack	a;
-	t_stack	b;
-
-	if (ac < 2)
-		exit(1);
-	init_stack(&a, 512);
-	input_validator(&a, av);
-	init_stack(&b, a.limit_length);
-	check_command(&a, &b);
-	print_result(&a, &b);
-}
+#include "header/push_swap.h"
 
 void	check_command(t_stack *a, t_stack *b)
 {
@@ -98,4 +84,18 @@ void	print_result(t_stack *a, t_stack *b)
 		ft_putstr_fd("KO\n", 1);
 		exit(1);
 	}
+}
+
+int	main(int ac, char *av[])
+{
+	t_stack	a;
+	t_stack	b;
+
+	if (ac < 2)
+		exit(1);
+	init_stack(&a, 512);
+	input_validator(&a, av);
+	init_stack(&b, a.limit_length);
+	check_command(&a, &b);
+	print_result(&a, &b);
 }

@@ -6,29 +6,29 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:21:28 by hyunjung          #+#    #+#             */
-/*   Updated: 2022/12/28 20:11:51 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/31 16:49:01 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../header/push_swap.h"
 
-char	*ft_strchr(char *str, int c)
-{
-	size_t	i;
+// char	*ft_strchr(char *str, int c)
+// {
+// 	size_t	i;
 
-	i = 0;
-	if (str == 0)
-		return (0);
-	while (str[i] != 0)
-	{
-		if (str[i] == c)
-			return ((char *)&str[i]);
-		i++;
-	}
-	if (str[i] == c)
-		return ((char *)&str[i]);
-	return (0);
-}
+// 	i = 0;
+// 	if (str == 0)
+// 		return (0);
+// 	while (str[i] != 0)
+// 	{
+// 		if (str[i] == c)
+// 			return ((char *)&str[i]);
+// 		i++;
+// 	}
+// 	if (str[i] == c)
+// 		return ((char *)&str[i]);
+// 	return (0);
+// }
 
 char	*gnl_strjoin(char *s1, char *s2)
 {

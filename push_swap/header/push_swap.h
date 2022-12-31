@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_stack
 {
@@ -77,6 +77,12 @@ int		make_num(char *str);
 void	input_validator(t_stack *stack, char *argv[]);
 int		already_sorted(t_stack *stack);
 void	check_dup(t_stack *stack);
+
+/* checker.c */
+void	check_command(t_stack *a, t_stack *b);
+char	*get_command(int fd);
+void	command_bonus(t_stack *a, t_stack *b, char *command);
+void	print_result(t_stack *a, t_stack *b);
 
 /* GNL */
 # define BUFFER_SIZE 10

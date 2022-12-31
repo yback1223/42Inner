@@ -11,45 +11,72 @@
 # **************************************************************************** #
 
 NAME = push_swap
+LIBFT	=	libft
+LIBFT_A	=	libft.a
+BONUS	=	checker
 RM = rm -rf
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-OBJS = 	command/etc.c\
+SRCS = 	command/etc.c\
 		command/reverse_rotate.c\
 		command/rotate.c\
 		command/utils.c\
 		sort/sort.c\
 		sort/utils.c\
 		utils/array.c\
-		utils/ft_memcpy.c\
-		utils/ft_putstr_fd.c\
-		utils/ft_split.c\
 		utils/stacks.c\
 		utils/utils.c\
 		validator/validator.c\
 		main.c
 
-SRCS = $(OBJS)
-SRCS_FILES = $(SRCS:c=o)
+SRCS_B =checker.c\
+		command/etc.c\
+		command/reverse_rotate.c\
+		command/rotate.c\
+		command/utils.c\
+		sort/sort.c\
+		sort/utils.c\
+		utils/array.c\
+		utils/stacks.c\
+		utils/utils.c\
+		validator/validator.c\
+		gnl/get_next_line_utils.c\
+		gnl/get_next_line.c
+		
+OBJS	= $(SRCS:.c=.o)
+OBJS_B	= $(SRCS_B:.c=.o)
+LIBC	= ar rc
 
-%.o : %c
-	$(CC) $(CFLAGS) -c $< -I.
-
-$(NAME) : $(SRCS_FILES)
-	$(CC) $(CFLAGS) -o $@ $^
-
+ifdef WITH_BONUS
+	NAME = $(BONUS)
+	OBJECTS = $(OBJS_B)
+else
+	OBJECTS = $(OBJS)
+endif
 
 all : $(NAME)
 
-clean :
-	$(RM) $(SRCS_FILES)
+$(NAME):	$(OBJECTS)
+			make all -C $(LIBFT)/
+			$(CC) -o $(NAME) $(OBJECTS) -Llibft	-lft
 
-fclean : clean
-	$(RM) $(NAME)
+%.o	: %.c
+			$(CC)	$(CFLAG) -c $^	-I./ -o $@
 
-re :
-	make fclean
-	make all
+bonus	:
+		make WITH_BONUS=1
 
-.PHONY: all clean fclean re
+clean	:
+		$(RM) -f $(OBJS) $(OBJS_B)
+		make clean -C $(LIBFT)
+
+fclean	: clean
+		$(RM) -f $(NAME)
+		$(RM) -f $(LIBFT_A)
+		$(RM) -f $(BONUS)
+		make fclean -C $(LIBFT)
+
+re : fclean all
+
+.PHONY : all clean fclean re bonus

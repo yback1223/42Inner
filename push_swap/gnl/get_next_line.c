@@ -6,11 +6,11 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:23:31 by yback             #+#    #+#             */
-/*   Updated: 2022/12/28 19:26:17 by yback            ###   ########.fr       */
+/*   Updated: 2022/12/31 16:47:44 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../header/push_swap.h"
 
 char	*ft_reset_lstr(char *lstr)
 {
