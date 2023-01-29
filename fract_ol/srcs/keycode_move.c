@@ -19,7 +19,7 @@ int	ft_exit(void)
 	return (0);
 }
 
-void	move_with_arrows(int keycode, mlx_data *mlx)
+void	move_with_arrows(int keycode, t_mlx *mlx)
 {
 	float	dx;
 	float	dy;
@@ -42,7 +42,7 @@ void	move_with_arrows(int keycode, mlx_data *mlx)
 	}
 }
 
-int	keycode_funcs(int keycode, mlx_data *mlx)
+int	keycode_funcs(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC_EXIT)
 		exit(0);

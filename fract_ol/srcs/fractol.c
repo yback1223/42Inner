@@ -12,7 +12,7 @@
 
 #include "../include/fract_ol.h"
 
-void	direct_to_draw(mlx_data *mlx)
+void	direct_to_draw(t_mlx *mlx)
 {
 	if (mlx->fractal_type == 1)
 		draw_mandelbrot(mlx);
@@ -23,7 +23,7 @@ void	direct_to_draw(mlx_data *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
-void	what_to_draw(char *fractal_type, mlx_data *mlx)
+void	what_to_draw(char *fractal_type, t_mlx *mlx)
 {
 	if (ft_strcmp(fractal_type, "Mandelbrot") == 0)
 		mlx->fractal_type = 1;
@@ -36,7 +36,7 @@ void	what_to_draw(char *fractal_type, mlx_data *mlx)
 
 int	main(int argc, char *argv[])
 {
-	mlx_data	mlx;
+	t_mlx mlx;
 
 	if (argc < 2)
 		return (0);

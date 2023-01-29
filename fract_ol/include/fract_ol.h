@@ -45,7 +45,7 @@ typedef struct m_data
 	double	julia_x;
 	double	julia_y;
 	int		julia_input_exist;
-}	mlx_data;
+}	t_mlx;
 
 int		ft_exit(void);
 int		zoom(int keycode, int x, int y, mlx_data *mlx);

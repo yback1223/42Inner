@@ -12,7 +12,7 @@
 
 #include "../include/fract_ol.h"
 
-void	init_julia_input(mlx_data *mlx, char **argv)
+void	init_julia_input(t_mlx *mlx, char **argv)
 {
 	if (mlx->julia_input_exist == 1)
 	{
@@ -26,7 +26,7 @@ void	init_julia_input(mlx_data *mlx, char **argv)
 	}
 }
 
-void	mlx_size_init(mlx_data *mlx)
+void	mlx_size_init(t_mlx *mlx)
 {
 	mlx->xmax = 2;
 	mlx->xmin = -2;
@@ -34,7 +34,7 @@ void	mlx_size_init(mlx_data *mlx)
 	mlx->ymin = -2;
 }
 
-void	init_mlx(mlx_data *mlx, char **argv)
+void	init_mlx(t_mlx *mlx, char **argv)
 {
 	mlx->mlx = mlx_init();
 	mlx_size_init(mlx);
@@ -46,7 +46,7 @@ void	init_mlx(mlx_data *mlx, char **argv)
 			&mlx->line_length, &mlx->endian);
 }
 
-void	my_mlx_pixel_put(mlx_data *mlx, int color)
+void	my_mlx_pixel_put(t_mlx *mlx, int color)
 {
 	char	*dst;
 

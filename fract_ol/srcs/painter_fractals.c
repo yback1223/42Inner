@@ -12,7 +12,7 @@
 
 #include "../include/fract_ol.h"
 
-void	mandelbrot_check(double c_x, double c_y, int iter, mlx_data *mlx)
+void	mandelbrot_check(double c_x, double c_y, int iter, t_mlx *mlx)
 {
 	double	x_n_plus;
 	double	y_n_plus;
@@ -35,7 +35,7 @@ void	mandelbrot_check(double c_x, double c_y, int iter, mlx_data *mlx)
 	my_mlx_pixel_put(mlx, 0);
 }
 
-void	julia_check(double z_x, double z_y, int iter, mlx_data *mlx)
+void	julia_check(double z_x, double z_y, int iter, t_mlx *mlx)
 {
 	double	x_n_plus;
 	double	y_n_plus;
@@ -58,7 +58,7 @@ void	julia_check(double z_x, double z_y, int iter, mlx_data *mlx)
 	my_mlx_pixel_put(mlx, 0);
 }
 
-void	burningship_check(double c_x, double c_y, int iter, mlx_data *mlx)
+void	burningship_check(double c_x, double c_y, int iter, t_mlx *mlx)
 {
 	double	x_n_plus;
 	double	y_n_plus;

@@ -13,7 +13,7 @@
 #include "../include/fract_ol.h"
 #include "../include/keycodes.h"
 
-void	zoom_in(int x, int y, mlx_data *mlx)
+void	zoom_in(int x, int y, t_mlx *mlx)
 {
 	float	dx;
 	float	dy;
@@ -26,7 +26,7 @@ void	zoom_in(int x, int y, mlx_data *mlx)
 	mlx->ymin = (mlx->ymin + ((dy * (WIN_HEIGHT - y)) * 0.5));
 }
 
-void	zoom_out(int x, int y, mlx_data *mlx)
+void	zoom_out(int x, int y, t_mlx *mlx)
 {
 	float	dx;
 	float	dy;
@@ -39,7 +39,7 @@ void	zoom_out(int x, int y, mlx_data *mlx)
 	mlx->ymin = (mlx->ymin - ((dy * (WIN_HEIGHT - y)) * 0.5));
 }
 
-int	zoom(int keycode, int x, int y, mlx_data *mlx)
+int	zoom(int keycode, int x, int y, t_mlx *mlx)
 {
 	if (keycode == MOUSE_UP_ZOOM_IN)
 		zoom_in(x, y, mlx);

@@ -12,7 +12,7 @@
 
 #include "../include/fract_ol.h"
 
-void	draw_mandelbrot(mlx_data *mlx)
+void	draw_mandelbrot(t_mlx *mlx)
 {
 	double	c_x;
 	double	c_y;
@@ -33,7 +33,7 @@ void	draw_mandelbrot(mlx_data *mlx)
 	}
 }
 
-void	draw_julia(mlx_data *mlx)
+void	draw_julia(t_mlx *mlx)
 {
 	double	z_x;
 	double	z_y;
@@ -54,7 +54,7 @@ void	draw_julia(mlx_data *mlx)
 	}
 }
 
-void	draw_burningship(mlx_data *mlx)
+void	draw_burningship(t_mlx *mlx)
 {
 	double	z_x;
 	double	z_y;
