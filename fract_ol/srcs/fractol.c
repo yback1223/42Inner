@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:09 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 17:49:30 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 17:58:16 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	what_to_draw(char *fractal_type, t_mlx *mlx)
 
 int	main(int argc, char *argv[])
 {
-	t_mlx mlx;
+	t_mlx	mlx;
 
 	if (argc < 2)
 		return (0);
