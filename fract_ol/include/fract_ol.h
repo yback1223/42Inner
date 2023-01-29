@@ -48,22 +48,22 @@ typedef struct m_data
 }	t_mlx;
 
 int		ft_exit(void);
-int		zoom(int keycode, int x, int y, mlx_data *mlx);
-int		keycode_funcs(int keycode, mlx_data *mlx);
+int		zoom(int keycode, int x, int y, t_mlx *mlx);
+int		keycode_funcs(int keycode, t_mlx *mlx);
 int		ft_strcmp(char *s1, char *s2);
-void	init_mlx(mlx_data *mlx, char **argv);
-void	my_mlx_pixel_put(mlx_data *mlx, int color);
-void	mandelbrot_check(double c_x, double c_y, int iter, mlx_data *mlx);
-void	julia_check(double z_x, double z_y, int iter, mlx_data *mlx);
-void	burningship_check(double c_x, double c_y, int iter, mlx_data *mlx);
-void	draw_mandelbrot(mlx_data *mlx);
-void	draw_julia(mlx_data *mlx);
-void	draw_burningship(mlx_data *mlx);
+void	init_mlx(t_mlx *mlx, char **argv);
+void	my_mlx_pixel_put(t_mlx *mlx, int color);
+void	mandelbrot_check(double c_x, double c_y, int iter, t_mlx *mlx);
+void	julia_check(double z_x, double z_y, int iter, t_mlx *mlx);
+void	burningship_check(double c_x, double c_y, int iter, t_mlx *mlx);
+void	draw_mandelbrot(t_mlx *mlx);
+void	draw_julia(t_mlx *mlx);
+void	draw_burningship(t_mlx *mlx);
 float	ft_strtod(char *str, int decimal_found, int place);
 int		what_sign(char *str, int *sign);
 float	my_pow(int place);
 double	my_abs(double num);
-void	what_to_draw(char *fractal_type, mlx_data *mlx);
-void	direct_to_draw(mlx_data *mlx);
+void	what_to_draw(char *fractal_type, t_mlx *mlx);
+void	direct_to_draw(t_mlx *mlx);
 
 #endif

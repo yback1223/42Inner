@@ -48,9 +48,9 @@ int	main(int argc, char *argv[])
 	{
 		init_mlx(&mlx, argv);
 		what_to_draw(argv[1], &mlx);
-		mlx_key_hook(mlx.win, keycode_funcs, &mlx);
+		mlx_key_hook(mlx.win, keycode_funcs,&mlx.mlx);
 		mlx_hook(mlx.win, 17, 2, ft_exit, 0);
-		mlx_mouse_hook(mlx.win, zoom, &mlx);
+		mlx_mouse_hook(mlx.win, zoom, &mlx.mlx);
 		mlx_loop(mlx.mlx);
 	}
 	return (0);
