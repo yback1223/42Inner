@@ -49,9 +49,9 @@ int	keycode_funcs(int keycode, mlx_data *mlx)
 	if (ARROW_LEFT_MOVE_LEFT <= keycode && keycode <= ARROW_UP_MOVE_UP)
 		move_with_arrows(keycode, mlx);
 	if (keycode == Q_CHANGE_COLOR_UP)
-		mlx->color += 0x00008000;
+		mlx->color += 10;
 	if (keycode == W_CHANGE_COLOR_DOWN)
-		mlx->color -= 0x00008000;
+		mlx->color -= 10;
 	direct_to_draw(mlx);
 	return (0);
 }

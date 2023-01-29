@@ -17,7 +17,7 @@ void	direct_to_draw(mlx_data *mlx)
 	if (mlx->fractal_type == 1)
 		draw_mandelbrot(mlx);
 	if (mlx->fractal_type == 2)
-		draw_burningship(mlx);
+		draw_julia(mlx);
 	if (mlx->fractal_type == 3)
 		draw_burningship(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
