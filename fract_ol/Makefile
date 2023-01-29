@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 15:09:08 by yback             #+#    #+#              #
-#    Updated: 2023/01/25 09:07:55 by yback            ###   ########.fr        #
+#    Updated: 2023/01/28 21:00:00 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ MFLAGS  = -framework OpenGL -framework AppKit
 CC		= cc
 RM		= rm -f
 FILES	= srcs/fractol.c srcs/julia_arg.c srcs/manage_mlx.c srcs/keycode_move.c srcs/keycode_zoom.c srcs/painter_fractals.c srcs/painter.c srcs/utils.c
-# FILES = srcs/test.c
 OBJECTS	= $(FILES:.c=.o)
 INCLUDE	= -I./include
 
@@ -29,10 +28,6 @@ $(NAME): $(OBJECTS)
 	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o $@ $^ \
 	-L$(MLX_DIR) -l$(MLX) $(MFLAGS)
-
-# %.o: %.c
-#     $(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
-
 
 $(SRC)/%.o: $(SRC)/%.c $(HEADER)/fractol.h $(HEADER)/keycodes.h
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(HEADER)

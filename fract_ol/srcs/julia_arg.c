@@ -6,20 +6,20 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:32:13 by yback             #+#    #+#             */
-/*   Updated: 2023/01/25 09:42:33 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 16:02:32 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fract_ol.h"
 
-float	my_pow(int decimal_places)
+float	my_pow(int place)
 {
 	int		i;
 	float	result;
-	
+
 	i = 0;
 	result = 1;
-	while (decimal_places != i)
+	while (place != i)
 	{
 		result *= 10;
 		i++;
@@ -42,31 +42,31 @@ int	what_sign(char *str, int *sign)
 	return (i);
 }
 
-
-float	ft_strtod(char *str, int decimal_found, int decimal_places)
+float	ft_strtod(char *str, int decimal_found, int place)
 {
 	int		sign;
 	float	result;
-	
+	int		i;
+
 	sign = 1;
-	str += what_sign(str, &sign);
-	while (*str)
+	i = what_sign(str, &sign);
+	while (str[i])
 	{
-		if (!(('0' <= *str && *str <= '9') || *str == '.'))
+		if (!(('0' <= str[i] && str[i] <= '9') || str[i] == '.'))
 			exit(1);
-		if (*str == '.')
+		if (str[i] == '.')
 		{
 			if (decimal_found == 1)
 				exit(1);
-			str++;
+			i++;
 			decimal_found = 1;
-			continue;
+			continue ;
 		}
 		if (!decimal_found)
-			result = result * 10 + (*str - '0');
+			result = result * 10 + (str[i] - '0');
 		else
-			result = result + ((float)(*str - '0') / my_pow(++decimal_places));
-		str++;
+			result = result + ((float)(str[i] - '0') / my_pow(++place));
+		i++;
 	}
-	return result * sign;
+	return (result * sign);
 }

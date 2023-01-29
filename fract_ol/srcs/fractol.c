@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:09 by yback             #+#    #+#             */
-/*   Updated: 2023/01/25 08:45:34 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 16:04:41 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	direct_to_draw(mlx_data *mlx)
 		draw_burningship(mlx);
 	if (mlx->fractal_type == 3)
 		draw_burningship(mlx);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
 void	what_to_draw(char *fractal_type, mlx_data *mlx)
@@ -41,11 +42,15 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (3 <= argc && argc <= 4)
 		mlx.julia_input_exist = 1;
-	if (ft_strcmp(argv[1], "Mandelbrot") == 0 || ft_strcmp(argv[1], "Julia") == 0 || ft_strcmp(argv[1], "Burning Ship") == 0)
+	if (ft_strcmp(argv[1], "Mandelbrot") == 0
+		|| ft_strcmp(argv[1], "Julia") == 0
+		|| ft_strcmp(argv[1], "Burning Ship") == 0)
 	{
 		init_mlx(&mlx, argv);
 		what_to_draw(argv[1], &mlx);
-		mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
+		mlx_key_hook(mlx.win, keycode_funcs, &mlx);
+		mlx_hook(mlx.win, 17, 2, ft_exit, 0);
+		mlx_mouse_hook(mlx.win, zoom, &mlx);
 		mlx_loop(mlx.mlx);
 	}
 	return (0);

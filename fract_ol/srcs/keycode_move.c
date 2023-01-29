@@ -6,12 +6,18 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:49:18 by yback             #+#    #+#             */
-/*   Updated: 2023/01/25 09:43:38 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:57:21 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fract_ol.h"
 #include "../include/keycodes.h"
+
+int	ft_exit(void)
+{
+	exit(0);
+	return (0);
+}
 
 void	move_with_arrows(int keycode, mlx_data *mlx)
 {

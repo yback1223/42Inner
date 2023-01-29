@@ -1,51 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 21:13:40 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 16:05:02 by yback            ###   ########.fr       */
+/*   Created: 2023/01/11 21:19:51 by yback             #+#    #+#             */
+/*   Updated: 2023/01/11 22:20:37 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fract_ol.h"
+#include "pipex.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	error(void)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s2[i] && s1[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	perror("Error ");
+	exit(EXIT_FAILURE);
 }
 
-int	ft_atoi(const char *str)
+size_t	ft_strlen(const char *s)
 {
-	long	ret;
-	int		sign;
-
-	ret = 0;
-	sign = 1;
-	while (*str == ' ' || (9 <= *str && *str <= 13))
-		str++;
-	if (*str == '+' || *str == '-')
-		if (*str++ == '-')
-			sign *= -1;
-	while ('0' <= *str && *str <= '9')
-	{
-		ret = ret * 10 + (*str++ - '0');
-		if (ret < 0)
-			return ((sign + 1) / -2);
-	}
-	return (sign * ret);
-}
-
-int	ft_strlen(const char *s)
-{
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -78,9 +53,27 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (arr);
 }
 
-double	my_abs(double num)
+void	get_path(char *command, char **envp)
 {
-	if (num < 0)
-		return (num * (-1));
-	return (num);
+	char	**paths;
+	char	*path;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+		i++;
+	paths = ft_split(envp[i] + 5, ':');
+	if (paths == 0)
+		error();
+	i = 0;
+	while (paths[i])
+	{
+		tmp = ft_strjoin("/", command);
+		path = ft_strjoin(paths[i], tmp);
+		free(tmp);
+		if (access(path, X_OK) == 0)
+			return (path);
+		i++;
+	}
 }

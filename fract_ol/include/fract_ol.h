@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:47:57 by yback             #+#    #+#             */
-/*   Updated: 2023/01/25 09:44:42 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 16:08:04 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,21 @@ typedef struct m_data
 	int		julia_input_exist;
 }	mlx_data;
 
-
+int		ft_exit(void);
+int		zoom(int keycode, int x, int y, mlx_data *mlx);
+int		keycode_funcs(int keycode, mlx_data *mlx);
 int		ft_strcmp(char *s1, char *s2);
 void	init_mlx(mlx_data *mlx, char **argv);
 void	my_mlx_pixel_put(mlx_data *mlx, int color);
-void	mandelbrot_diver_conver_check(double c_x, double c_y, int iter, mlx_data *mlx);
-void	julia_diver_conver_check(double z_x, double z_y, int iter, mlx_data *mlx);
-void	burningship_diver_conver_check(double c_x, double c_y, int iter, mlx_data *mlx);
+void	mandelbrot_check(double c_x, double c_y, int iter, mlx_data *mlx);
+void	julia_check(double z_x, double z_y, int iter, mlx_data *mlx);
+void	burningship_check(double c_x, double c_y, int iter, mlx_data *mlx);
 void	draw_mandelbrot(mlx_data *mlx);
 void	draw_julia(mlx_data *mlx);
 void	draw_burningship(mlx_data *mlx);
-float	ft_strtod(char *str, int decimal_found, int decimal_places);
+float	ft_strtod(char *str, int decimal_found, int place);
 int		what_sign(char *str, int *sign);
-float	my_pow(int decimal_places);
+float	my_pow(int place);
 double	my_abs(double num);
 void	what_to_draw(char *fractal_type, mlx_data *mlx);
 void	direct_to_draw(mlx_data *mlx);
