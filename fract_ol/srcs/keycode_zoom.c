@@ -39,7 +39,7 @@ void	zoom_out(int x, int y, t_mlx *mlx)
 	mlx->ymin = (mlx->ymin - ((dy * (WIN_HEIGHT - y)) * 0.5));
 }
 
-int	zoom(int keycode, int x, int y, t_mlx *mlx)
+int	zoom_funcs(int keycode, int x, int y, t_mlx *mlx)
 {
 	if (keycode == MOUSE_UP_ZOOM_IN)
 		zoom_in(x, y, mlx);

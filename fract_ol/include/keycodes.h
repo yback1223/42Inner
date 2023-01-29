@@ -22,4 +22,5 @@
 # define ARROW_RIGHT_MOVE_RIGHT 124
 # define Q_CHANGE_COLOR_UP 12
 # define W_CHANGE_COLOR_DOWN 13
+
 #endif

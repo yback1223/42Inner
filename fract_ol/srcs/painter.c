@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 17:13:56 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 16:08:12 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 17:57:06 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	draw_mandelbrot(t_mlx *mlx)
 		mlx->mon_x = 0;
 		while (mlx->mon_x < WIN_WIDTH)
 		{
-			c_x = MIN_X + mlx->mon_x * (MAX_X - MIN_X) / (double)WIN_WIDTH;
-			c_y = MAX_Y - mlx->mon_y * (MAX_Y - MIN_Y) / (double)WIN_HEIGHT;
+			c_x = mlx->xmin + mlx->mon_x * (mlx->xmax - mlx->xmin) / (double)WIN_WIDTH;
+			c_y = mlx->ymax - mlx->mon_y * (mlx->ymax - mlx->ymin) / (double)WIN_HEIGHT;
 			mandelbrot_check(c_x, c_y, 0, mlx);
 			mlx->mon_x++;
 		}
@@ -45,8 +45,8 @@ void	draw_julia(t_mlx *mlx)
 		mlx->mon_x = 0;
 		while (mlx->mon_x < WIN_WIDTH)
 		{
-			z_x = MIN_X + mlx->mon_x * (MAX_X - MIN_X) / (double)WIN_WIDTH;
-			z_y = MAX_Y - mlx->mon_y * (MAX_Y - MIN_Y) / (double)WIN_HEIGHT;
+			z_x = mlx->xmin + mlx->mon_x * (mlx->xmax - mlx->xmin) / (double)WIN_WIDTH;
+			z_y = mlx->ymax - mlx->mon_y * (mlx->ymax - mlx->ymin) / (double)WIN_HEIGHT;
 			julia_check(z_x, z_y, 0, mlx);
 			mlx->mon_x++;
 		}
@@ -66,8 +66,8 @@ void	draw_burningship(t_mlx *mlx)
 		mlx->mon_x = 0;
 		while (mlx->mon_x < WIN_WIDTH)
 		{
-			z_x = MIN_X + mlx->mon_x * (MAX_X - MIN_X) / (double)WIN_WIDTH;
-			z_y = MAX_Y - mlx->mon_y * (MAX_Y - MIN_Y) / (double)WIN_HEIGHT;
+			z_x = mlx->xmin + mlx->mon_x * (mlx->xmax - mlx->xmin) / (double)WIN_WIDTH;
+			z_y = mlx->ymax - mlx->mon_y * (mlx->ymax - mlx->ymin) / (double)WIN_HEIGHT;
 			burningship_check(z_x, z_y, 0, mlx);
 			mlx->mon_x++;
 		}

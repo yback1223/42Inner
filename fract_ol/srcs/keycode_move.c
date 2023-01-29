@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:49:18 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 15:57:21 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 17:53:52 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	keycode_funcs(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC_EXIT)
 		exit(0);
-	if (ARROW_LEFT_MOVE_LEFT <= keycode && keycode <= ARROW_UP_MOVE_UP)
-		move_with_arrows(keycode, mlx);
+	// if (ARROW_LEFT_MOVE_LEFT <= keycode && keycode <= ARROW_UP_MOVE_UP)
+	move_with_arrows(keycode, mlx);
 	if (keycode == Q_CHANGE_COLOR_UP)
 		mlx->color += 10;
 	if (keycode == W_CHANGE_COLOR_DOWN)

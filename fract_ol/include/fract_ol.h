@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACT_OL_H
+# define FRACT_OL_H
 # define MAX_X 2.0
 # define MIN_X -2.0
 # define MAX_Y 2.0
@@ -48,7 +48,7 @@ typedef struct m_data
 }	t_mlx;
 
 int		ft_exit(void);
-int		zoom(int keycode, int x, int y, t_mlx *mlx);
+int		zoom_funcs(int keycode, int x, int y, t_mlx *mlx);
 int		keycode_funcs(int keycode, t_mlx *mlx);
 int		ft_strcmp(char *s1, char *s2);
 void	init_mlx(t_mlx *mlx, char **argv);
