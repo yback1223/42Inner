@@ -1,42 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_utils.c                                     :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 21:28:09 by yback             #+#    #+#             */
-/*   Updated: 2023/01/11 21:30:17 by yback            ###   ########.fr       */
+/*   Created: 2022/07/10 15:10:53 by yback             #+#    #+#             */
+/*   Updated: 2022/07/12 14:16:14 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-
-char	*ft_strnstr(const char *str, const char *substr, int n)
-{
-	int			i;
-	int			j;
-
-	i = 0;
-	if (*substr == 0)
-	{
-		return ((char *)str);
-	}
-	while (str[i] != 0 && i < n)
-	{
-		j = 0;
-		while (str[i + j] == substr[j] && i + j < n)
-		{
-			j++;
-			if (substr[j] == 0)
-			{
-				return ((char *)&str[i]);
-			}
-		}	
-		i++;
-	}
-	return (0);
-}
+#include "libft.h"
 
 int	length_of_word(char *str, char c)
 {

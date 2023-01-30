@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 21:17:36 by yback             #+#    #+#             */
-/*   Updated: 2023/01/11 21:57:42 by yback            ###   ########.fr       */
+/*   Created: 2022/07/07 17:05:57 by yback             #+#    #+#             */
+/*   Updated: 2022/07/12 13:42:14 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <sys/wait.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <stdlib.h>
-
-void	error(void);
-char	**ft_split(char const *s, char c);
-char	*ft_strnstr(const char *str, const char *substr, int n);
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	if (src < dst && dst < src + len)
+	{
+		while (len > 0)
+		{
+			--len;
+			((unsigned char *)dst)[len] = ((const unsigned char *)src)[len];
+		}
+		return (dst);
+	}
+	return (ft_memcpy(dst, src, len));
+}

@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 15:09:08 by yback             #+#    #+#              #
-#    Updated: 2023/01/28 21:00:00 by yback            ###   ########.fr        #
+#    Updated: 2023/01/30 18:14:57 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,4 +44,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, startall, bonus
+.PHONY: all, clean, fclean, re, bonus
