@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:09 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 19:06:01 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/30 17:02:53 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int	main(int argc, char *argv[])
 		mlx_hook(mlx.win, 17, 2, ft_exit, 0);
 		mlx_loop(mlx.mlx);
 	}
-	system("leaks fractol");
 	return (0);
 }
