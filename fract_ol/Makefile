@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 15:09:08 by yback             #+#    #+#              #
-#    Updated: 2023/01/30 18:14:57 by yback            ###   ########.fr        #
+#    Updated: 2023/01/30 19:44:13 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC		= cc
 RM		= rm -f
 FILES	= srcs/fractol.c srcs/julia_arg.c srcs/manage_mlx.c srcs/keycode_move.c srcs/keycode_zoom.c srcs/painter_fractals.c srcs/painter.c srcs/utils.c
 OBJECTS	= $(FILES:.c=.o)
-INCLUDE	= -I./include
+HEADER	= -I./include
 
 all: $(NAME)
 
