@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:47:57 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 16:08:04 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:49:32 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MAX_ITER 130
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 800
-# define MANDALBROT 1
+# define MANDELBROT 1
 # define JULIA 2
 # define BURNING_SHIP 3
 # include "../minilibx/mlx.h"
@@ -59,7 +59,7 @@ void	burningship_check(double c_x, double c_y, int iter, t_mlx *mlx);
 void	draw_mandelbrot(t_mlx *mlx);
 void	draw_julia(t_mlx *mlx);
 void	draw_burningship(t_mlx *mlx);
-float	ft_strtod(char *str, int decimal_found, int place);
+float	ft_strtod(char *str, int decimal_found, int place, float result);
 int		what_sign(char *str, int *sign);
 float	my_pow(int place);
 double	my_abs(double num);

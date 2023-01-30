@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:32:13 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 16:02:32 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:46:36 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,12 @@ int	what_sign(char *str, int *sign)
 	return (i);
 }
 
-float	ft_strtod(char *str, int decimal_found, int place)
+float	ft_strtod(char *str, int decimal_found, int place, float result)
 {
 	int		sign;
-	float	result;
 	int		i;
 
-	sign = 1;
+	result = 0;
 	i = what_sign(str, &sign);
 	while (str[i])
 	{
@@ -65,7 +64,7 @@ float	ft_strtod(char *str, int decimal_found, int place)
 		if (!decimal_found)
 			result = result * 10 + (str[i] - '0');
 		else
-			result = result + ((float)(str[i] - '0') / my_pow(++place));
+			result = result + ((str[i] - '0') / my_pow(++place));
 		i++;
 	}
 	return (result * sign);

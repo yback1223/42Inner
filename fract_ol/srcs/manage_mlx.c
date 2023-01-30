@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:58:52 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 16:03:59 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:46:46 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_julia_input(t_mlx *mlx, char **argv)
 {
 	if (mlx->julia_input_exist == 1)
 	{
-		mlx->julia_x = ft_strtod(argv[2], 0, 0);
-		mlx->julia_y = ft_strtod(argv[3], 0, 0);
+		mlx->julia_x = ft_strtod(argv[2], 0, 0, 0);
+		mlx->julia_y = ft_strtod(argv[3], 0, 0, 0);
 	}
 	else
 	{

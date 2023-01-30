@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:09 by yback             #+#    #+#             */
-/*   Updated: 2023/01/29 17:58:16 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:06:01 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	direct_to_draw(t_mlx *mlx)
 {
-	if (mlx->fractal_type == 1)
+	if (mlx->fractal_type == MANDELBROT)
 		draw_mandelbrot(mlx);
-	if (mlx->fractal_type == 2)
+	if (mlx->fractal_type == JULIA)
 		draw_julia(mlx);
-	if (mlx->fractal_type == 3)
+	if (mlx->fractal_type == BURNING_SHIP)
 		draw_burningship(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
@@ -26,11 +26,11 @@ void	direct_to_draw(t_mlx *mlx)
 void	what_to_draw(char *fractal_type, t_mlx *mlx)
 {
 	if (ft_strcmp(fractal_type, "Mandelbrot") == 0)
-		mlx->fractal_type = 1;
+		mlx->fractal_type = MANDELBROT;
 	if (ft_strcmp(fractal_type, "Julia") == 0)
-		mlx->fractal_type = 2;
+		mlx->fractal_type = JULIA;
 	if (ft_strcmp(fractal_type, "Burning Ship") == 0)
-		mlx->fractal_type = 3;
+		mlx->fractal_type = BURNING_SHIP;
 	direct_to_draw(mlx);
 }
 
@@ -53,5 +53,6 @@ int	main(int argc, char *argv[])
 		mlx_hook(mlx.win, 17, 2, ft_exit, 0);
 		mlx_loop(mlx.mlx);
 	}
+	system("leaks fractol");
 	return (0);
 }
