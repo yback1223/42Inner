@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:31:05 by yback             #+#    #+#             */
-/*   Updated: 2023/01/30 19:38:31 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/31 11:08:34 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ void	child_process(char *argv, char **envp)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
+		close(fd[1]);
 		execute(argv, envp);
 	}
 	else
 	{
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
-		waitpid(pid, NULL, 0);
+		close(fd[0]);
+		waitpid(pid, 0, 0);
 	}
 }
 
@@ -61,7 +63,8 @@ void	here_doc(char *limiter, int argc)
 	{
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
-		wait(NULL);
+		close(fd[0]);
+		wait(0);
 	}
 }
 
@@ -85,10 +88,12 @@ int	main(int argc, char **argv, char **envp)
 			outfile = open_file(argv[argc - 1], 1);
 			infile = open_file(argv[1], 2);
 			dup2(infile, STDIN_FILENO);
+			close(infile);
 		}
 		while (i < argc - 2)
 			child_process(argv[i++], envp);
 		dup2(outfile, STDOUT_FILENO);
+		close(outfile);
 		execute(argv[argc - 2], envp);
 	}
 	exit(EXIT_SUCCESS);
