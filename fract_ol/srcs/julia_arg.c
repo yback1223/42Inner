@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:32:13 by yback             #+#    #+#             */
-/*   Updated: 2023/01/31 16:07:29 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/31 20:02:48 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ float	ft_strtod(char *str, int decimal_found, int place, float result)
 	while (str[i])
 	{
 		if (!(('0' <= str[i] && str[i] <= '9') || str[i] == '.'))
-			exit(1);
+			error();
 		if (str[i] == '.')
 		{
 			if (decimal_found == 1)
-				exit(1);
+				error();
 			i++;
 			decimal_found = 1;
 			continue ;

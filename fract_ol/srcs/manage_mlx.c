@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:58:52 by yback             #+#    #+#             */
-/*   Updated: 2023/01/30 16:46:46 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/31 19:49:35 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,11 @@ void	my_mlx_pixel_put(t_mlx *mlx, int color)
 	dst = mlx->img_addr + (mlx->mon_y * mlx->line_length
 			+ mlx->mon_x * (mlx->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	error(void)
+{
+	perror("Only Mandelbrot, Julia, Burning Ship fractals are allowed.\
+	Only Julia can have two parameters");
+	exit(1);
 }

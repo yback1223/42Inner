@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:47:57 by yback             #+#    #+#             */
-/*   Updated: 2023/01/30 16:49:32 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/31 19:45:01 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # define BURNING_SHIP 3
 # include "../minilibx/mlx.h"
 # include <stdlib.h>
+# include <stdio.h>
 
-typedef struct m_data
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
@@ -47,6 +48,7 @@ typedef struct m_data
 	int		julia_input_exist;
 }	t_mlx;
 
+void	error(void);
 int		ft_exit(void);
 int		zoom_funcs(int keycode, int x, int y, t_mlx *mlx);
 int		keycode_funcs(int keycode, t_mlx *mlx);

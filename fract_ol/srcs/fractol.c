@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:09 by yback             #+#    #+#             */
-/*   Updated: 2023/01/30 17:02:53 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/31 19:50:38 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ int	main(int argc, char *argv[])
 {
 	t_mlx	mlx;
 
-	if (argc < 2)
-		return (0);
+	if (argc < 2 || argc > 4)
+		error();
 	if (3 <= argc && argc <= 4)
+	{
 		mlx.julia_input_exist = 1;
+		if (ft_strcmp(argv[1], "Mandelbrot") == 0
+			|| ft_strcmp(argv[1], "Burning Ship") == 0)
+			error();
+	}
 	if (ft_strcmp(argv[1], "Mandelbrot") == 0
 		|| ft_strcmp(argv[1], "Julia") == 0
 		|| ft_strcmp(argv[1], "Burning Ship") == 0)
@@ -50,8 +55,9 @@ int	main(int argc, char *argv[])
 		what_to_draw(argv[1], &mlx);
 		mlx_key_hook(mlx.win, keycode_funcs, &mlx);
 		mlx_mouse_hook(mlx.win, zoom_funcs, &mlx);
-		mlx_hook(mlx.win, 17, 2, ft_exit, 0);
 		mlx_loop(mlx.mlx);
 	}
+	else
+		error();
 	return (0);
 }
