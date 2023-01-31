@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:32:13 by yback             #+#    #+#             */
-/*   Updated: 2023/01/30 16:46:36 by yback            ###   ########.fr       */
+/*   Updated: 2023/01/31 16:07:29 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	what_sign(char *str, int *sign)
 	int	i;
 
 	i = 0;
+	*sign = 1;
 	if (str[i] == '-')
 	{
 		*sign = -1;
@@ -47,7 +48,6 @@ float	ft_strtod(char *str, int decimal_found, int place, float result)
 	int		sign;
 	int		i;
 
-	result = 0;
 	i = what_sign(str, &sign);
 	while (str[i])
 	{

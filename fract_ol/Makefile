@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 15:09:08 by yback             #+#    #+#              #
-#    Updated: 2023/01/30 19:44:13 by yback            ###   ########.fr        #
+#    Updated: 2023/01/31 15:57:12 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ MLX     = mlx
 SRC		= srcs
 CFLAGS	= -Werror -Wextra -Wall
 MFLAGS  = -framework OpenGL -framework AppKit
-CC		= cc
-RM		= rm -f
+MAKE	= @make
+CC		= @cc
+RM		= @rm -f
 FILES	= srcs/fractol.c srcs/julia_arg.c srcs/manage_mlx.c srcs/keycode_move.c srcs/keycode_zoom.c srcs/painter_fractals.c srcs/painter.c srcs/utils.c
 OBJECTS	= $(FILES:.c=.o)
 HEADER	= -I./include
@@ -25,7 +26,7 @@ HEADER	= -I./include
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	make -C $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o $@ $^ \
 	-L$(MLX_DIR) -l$(MLX) $(MFLAGS)
 
@@ -36,11 +37,11 @@ bonus: all
 
 clean:
 	$(RM) $(OBJECTS)
-	make clean -C $(MLX_DIR)
+	$(MAKE) clean -C $(MLX_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
-	make clean -C $(MLX_DIR)
+	$(MAKE) clean -C $(MLX_DIR)
 
 re: fclean all
 
