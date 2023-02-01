@@ -5,51 +5,70 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/30 17:26:44 by yback             #+#    #+#              #
-#    Updated: 2023/01/31 11:57:46 by yback            ###   ########.fr        #
+#    Created: 2023/02/01 10:23:59 by yback             #+#    #+#              #
+#    Updated: 2023/02/01 10:24:00 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= pipex
 
-SRCS 	= srcs/pipex.c srcs/pipex_utils.c
-OBJS 	= ${SRCS:.c=.o}
+# SETUP
+NAME		=	pipex
+CC			=	cc
+CFLAGS		=	-Wall -Werror -Wextra
+RM			=	rm -rf
 
-SRCS_B 	= srcs_bonus/pipex_bonus.c srcs_bonus/pipex_utils_bonus.c
-OBJS_B 	= ${SRCS_B:.c=.o}
-HEADER	= -I./includes
+# HEADER
+HEADER_SRCS	=	pipex.h pipex_bonus.h
+HEADER_DIR	=	includes/
+HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-CC 		= @gcc
-RM		= @rm -f
-MAKE	= @make
-CFLAGS	= -Werror -Wextra -Wall
+# FILES
+MPATH_SRCS	=	main.c utils.c fd.c parse.c
+MPATH_DIR	=	mandatory/
+MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
+OBJ_M		=	$(MPATH:.c=.o)
 
-ifdef	BONUS_OPT
-	OBJ_TOTAL = $(OBJS_B)
-else
-	OBJ_TOTAL = $(OBJS)
-endif
+BPATH_SRCS	=	main_bonus.c utils_bonus.c fd_bonus.c parse_bonus.c
+BPATH_DIR	=	bonus/
+BPATH		=	$(addprefix $(BPATH_DIR), $(BPATH_SRCS))
+OBJ_B		=	$(BPATH:.c=.o)
 
-all: 		${NAME}
+FUNC_SRCS	=	ft_strncmp.c ft_strdup.c ft_split.c ft_strjoin.c ft_memset.c ft_strlen.c ft_putstr_fd.c
+FUNC_DIR	=	libft/
+FUNC 		=	$(addprefix $(FUNC_DIR), $(FUNC_SRCS))\
+				gnl/get_next_line.c gnl/get_next_line_utils.c
+OBJ_F		=	$(FUNC:.c=.o)
 
-bonus:
-			@make BONUS_OPT=1 $(NAME)
+#COMMANDS
+%.o:			%.c $(HEADER) Makefile
+				@${CC} ${CFLAGS} -c $< -o $@
 
-%.o: %.c $(HEADER)/*.h
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(HEADER)
+$(NAME):		$(OBJ_F) $(OBJ_M)
+				@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
+				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
-${NAME}:	${OBJ_TOTAL}
-			$(MAKE) re -C ./libft
-			$(CC) ${OBJ_TOTAL} -Llibft -lft -o ${NAME}
+all:			$(NAME)
+
+bonus:			fclean $(OBJ_F) $(OBJ_B)
+				@$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME)
+				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 clean:
-			$(MAKE) clean -C ./libft
-			$(RM) ${OBJS} ${OBJS_B}
+				@$(RM) $(OBJ_M)
+				@$(RM) $(OBJ_F)
+				@$(RM) $(OBJ_B)
+				@echo -e "$(YELLOW)object files deleted!$(DEFAULT)"
 
-fclean: 	clean
-			$(MAKE) fclean -C ./libft
-			$(RM) $(NAME)
+fclean:			clean
+				@$(RM) $(NAME)
+				@echo -e "$(RED)all deleted!$(DEFAULT)"
 
-re:			fclean all
+re:				fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY:		all clean fclean bonus re
+
+#COLORS
+RED			=	\033[1;31m
+GREEN		=	\033[1;32m
+YELLOW		=	\033[1;33m
+DEFAULT		=	\033[0m

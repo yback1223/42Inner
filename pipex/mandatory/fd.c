@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macros.h                                           :+:      :+:    :+:   */
+/*   fd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 11:09:53 by yback             #+#    #+#             */
-/*   Updated: 2023/01/31 11:17:54 by yback            ###   ########.fr       */
+/*   Created: 2023/02/01 10:15:44 by yback             #+#    #+#             */
+/*   Updated: 2023/02/01 10:16:14 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACROS_H
-# define MACROS_H
+#include "../includes/pipex.h"
 
-# define ENOUGH_SPACE 10000
-# define NEW_LINE '\n'
-# define THE_END '\0'
-# define TOP_PERMISSION 0777
+void	get_fd(t_env *info, int argc, char **argv)
+{
+	info->i_fd = open(argv[1], O_RDONLY);
+	if (info->i_fd < 0)
+		perror(ERR_INFILE);
+	info->o_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (info->o_fd < 0)
+		exit_perror(ERR_OUTFILE, 1);
+}
 
-#endif
+void	parent_free(t_env *info)
+{
+	close(info->i_fd);
+	close(info->o_fd);
+}

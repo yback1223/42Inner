@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 20:55:24 by yback             #+#    #+#              #
-#    Updated: 2023/01/31 11:57:14 by yback            ###   ########.fr        #
+#    Updated: 2022/07/14 20:28:07 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,14 +68,14 @@ $(NAME): $(OBJS)
 bonus: $(OBJS) $(B_OBJS)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c -o $@ $^
-	@ar crs $(NAME) $@
+	$(CC) $(CFLAGS) -c -o $@ $^
+	ar crs $(NAME) $@
 
 clean:
-		@rm -f $(OBJS) $(B_OBJS)
+		rm -f $(OBJS) $(B_OBJS)
 
 fclean: clean
-		@rm -f $(NAME)
+		rm -f $(NAME)
 
 re: clean all
 

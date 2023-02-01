@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 10:17:24 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 10:17:36 by yback            ###   ########.fr       */
+/*   Created: 2023/02/01 10:24:49 by yback             #+#    #+#             */
+/*   Updated: 2023/02/01 10:24:54 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -48,31 +48,36 @@ typedef struct s_cmd
 typedef struct s_env
 {
 	char			**envp;
+	int				n_cmd;
+	int				here_doc;
+	char			**hd_cmd;
 	int				idx;
 	int				i_fd;
 	int				o_fd;
-	int				pipe_fd[2];
+	int				*pipe_fd;
 	int				result;
 	char			**path;
 	pid_t			pid;
 	struct s_cmd	*cmd;
 }				t_env;
 
-/* parse.c */
+/* parse_bonus.c */
 void	parse_cmd(t_env *info, int argc, char **argv);
 void	check_cmd(t_env *info, char **argv);
 void	find_awk_sed(char **argv, int i, t_env *info);
 void	find_awk_sed2(t_env *info, char **tmp_info, int i, int tmp);
 char	*get_cmd_argv(char **path, char *cmd);
 
-/* utils.c */
+/* utils_bonus.c */
 void	exit_perror(char *msg, int code);
 void	split_free(char **to_free);
 void	usage(void);
 void	close_pipes(t_env *info);
 char	*find_path(char **envp);
 
-/* fd.c */
+/* heredoc_bonus.c */
+int		args_in(char *arg);
+void	here_doc(char *argv, t_env *info);
 void	get_fd(t_env *info, int argc, char **argv);
 void	parent_free(t_env *info);
 
