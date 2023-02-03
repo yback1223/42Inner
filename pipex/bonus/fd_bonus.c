@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:23:22 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 10:23:26 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/01 13:49:30 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	get_fd(t_env *info, int argc, char **argv)
 			perror("not valid infile");
 	}
 	if (info->here_doc)
-		info->o_fd = open(argv[argc - 1], O_RDWR | O_APPEND | O_CREAT, 0644);
+		info->o_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_APPEND, 0644);
 	else
 		info->o_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (info->o_fd < 0)
