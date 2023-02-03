@@ -6,11 +6,14 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 20:55:24 by yback             #+#    #+#              #
-#    Updated: 2022/07/14 20:28:07 by yback            ###   ########.fr        #
+#    Updated: 2023/02/03 11:49:19 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME					= libft.a
+CC						= @cc
+CFLAGS					= -Wall -Werror -Wextra
+RM						= @rm -rf
 
 SRCS					= ft_atoi.c \
 					  ft_bzero.c \
@@ -69,13 +72,13 @@ bonus: $(OBJS) $(B_OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $^
-	ar crs $(NAME) $@
+	@ar crs $(NAME) $@
 
 clean:
-		rm -f $(OBJS) $(B_OBJS)
+		$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
-		rm -f $(NAME)
+		$(RM) $(NAME)
 
 re: clean all
 
