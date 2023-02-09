@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:23:39 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 10:28:29 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/09 15:54:53 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ void	split_free(char **to_free)
 {
 	free(*to_free);
 	*to_free = NULL;
-}
-
-void	usage(void)
-{
-	ft_putstr_fd("\033[31mError: Bad argument\n\e[0m", 2);
-	ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
-	ft_putstr_fd("    ./pipex \"here_doc\" ", 1);
-	ft_putstr_fd("<LIMITER> <cmd1> <cmd2> <...> <file>\n", 1);
-	exit(EXIT_FAILURE);
 }
 
 void	close_pipes(t_env *info)

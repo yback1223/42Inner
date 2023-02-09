@@ -6,7 +6,7 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 10:23:59 by yback             #+#    #+#              #
-#    Updated: 2023/02/03 11:50:57 by yback            ###   ########.fr        #
+#    Updated: 2023/02/09 09:35:16 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,17 +39,23 @@ FUNC 		=	$(addprefix $(FUNC_DIR), $(FUNC_SRCS))\
 				gnl/get_next_line.c gnl/get_next_line_utils.c
 OBJ_F		=	$(FUNC:.c=.o)
 
+ifdef	BONUS_OPT
+	OBJ_TOTAL = $(OBJ_B)
+else
+	OBJ_TOTAL = $(OBJ_M)
+endif
+
 #COMMANDS
-%.o:			%.c $(HEADER) Makefile
+%.o:			%.c $(HEADER)
 				@${CC} ${CFLAGS} -c $< -o $@
 
-$(NAME):		$(OBJ_F) $(OBJ_M)
-				@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
+$(NAME):		$(OBJ_F) $(OBJ_TOTAL)
+				@$(CC) $(OBJ_F) $(OBJ_TOTAL) -o $(NAME)
 
 all:			$(NAME)
 
-bonus:			fclean $(OBJ_F) $(OBJ_B)
-				@$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME)
+bonus:			
+				@make BONUS_OPT=1 $(NAME)
 
 clean:
 				@$(RM) $(OBJ_M)

@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:16:04 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 11:21:01 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/09 19:44:51 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	init_info(t_env *info, int argc, char **argv, char **envp)
 {
-	ft_memset(info, 0, sizeof(t_env));
 	info->result = 0;
 	info->envp = envp;
 	get_fd(info, argc, argv);
@@ -24,8 +23,8 @@ static void	init_info(t_env *info, int argc, char **argv, char **envp)
 
 static void	sub_dup2(int zero, int first)
 {
-	dup2(zero, 0);
-	dup2(first, 1);
+	dup2(zero, STDIN_FILENO);
+	dup2(first, STDOUT_FILENO);
 }
 
 void	child(t_env p)
@@ -48,13 +47,14 @@ int	main(int argc, char **argv, char **envp)
 	t_env	info;
 
 	if (argc != 5)
-		usage();
+		exit(EXIT_FAILURE);
 	init_info(&info, argc, argv, envp);
 	parse_cmd(&info, argc, argv);
 	info.idx = -1;
 	while (++(info.idx) < 2)
 		child(info);
 	close_pipes(&info);
+	waitpid(-1, NULL, 0);
 	waitpid(-1, NULL, 0);
 	parent_free(&info);
 	return (info.result);

@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:17:24 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 10:17:36 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:22:33 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,11 @@
 /* to libft */
 # include "../libft/libft.h"
 
-/* to gnl */
-# include "../gnl/get_next_line.h"
-
-# define FALSE			0
-# define TRUE			1
-# define FAIL			0
-# define SUCCESS		1
-# define ERROR			2
-# define BUFFER_SIZE	42
 # define ERR_INFILE 	"Infile"
 # define ERR_OUTFILE 	"Outfile"
-# define ERR_INPUT		"Invalid number of arguments.\n"
 # define ERR_PIPE		"Pipe"
 # define ERR_ENVP		"Environment"
 # define ERR_CMD		"Command not found"
-# define ERR_HEREDOC	"here_doc"
 
 typedef struct s_cmd
 {
@@ -68,7 +57,6 @@ char	*get_cmd_argv(char **path, char *cmd);
 /* utils.c */
 void	exit_perror(char *msg, int code);
 void	split_free(char **to_free);
-void	usage(void);
 void	close_pipes(t_env *info);
 char	*find_path(char **envp);
 

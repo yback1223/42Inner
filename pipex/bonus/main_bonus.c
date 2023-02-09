@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:23:30 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 10:28:24 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/09 19:50:25 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	init_info(t_env *info, int argc, char **argv, char **envp)
 {
 	int	i;
 
-	ft_memset(info, 0, sizeof(t_env));
 	info->result = 0;
 	info->envp = envp;
 	get_fd(info, argc, argv);
@@ -37,8 +36,8 @@ static void	init_info(t_env *info, int argc, char **argv, char **envp)
 
 static void	sub_dup2(int zero, int first)
 {
-	dup2(zero, 0);
-	dup2(first, 1);
+	dup2(zero, STDIN_FILENO);
+	dup2(first, STDOUT_FILENO);
 }
 
 void	child(t_env p)
@@ -63,14 +62,15 @@ int	main(int argc, char **argv, char **envp)
 	t_env	info;
 
 	if (argc < args_in(argv[1]))
-		usage();
+		exit(EXIT_FAILURE);
 	init_info(&info, argc, argv, envp);
-	parse_cmd(&info, argc - (&info)->here_doc, argv + (&info)->here_doc);
+	parse_cmd(&info, argc - info.here_doc, argv + info.here_doc);
 	info.idx = -1;
 	while (++(info.idx) < info.n_cmd)
 		child(info);
 	close_pipes(&info);
-	waitpid(-1, NULL, 0);
+	while (info.idx-- > 0)
+		waitpid(-1, NULL, 0);
 	parent_free(&info);
 	return (info.result);
 }

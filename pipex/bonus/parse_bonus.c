@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:23:34 by yback             #+#    #+#             */
-/*   Updated: 2023/02/01 10:28:26 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/09 09:05:42 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ void	find_awk_sed2(t_env *info, char **tmp_info, int i, int tmp)
 {
 	info->cmd[i].cmd[tmp] = ft_strdup(tmp_info[1]);
 	info->cmd[i].cmd[tmp + 1] = NULL;
-	if (ft_strncmp(info->cmd[i].cmd[1], "\'{", 2) == 0)
-		info->result = 2;
 }
 
 char	*get_cmd_argv(char **path, char *cmd)
