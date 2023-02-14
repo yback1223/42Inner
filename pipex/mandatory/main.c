@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:16:04 by yback             #+#    #+#             */
-/*   Updated: 2023/02/09 19:44:51 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/14 14:00:32 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void	sub_dup2(int zero, int first)
 
 void	child(t_env p)
 {
+	if (p.idx == 0 && p.i_fd < 0)
+		return;
 	p.pid = fork();
 	if (!p.pid)
 	{
@@ -47,7 +49,7 @@ int	main(int argc, char **argv, char **envp)
 	t_env	info;
 
 	if (argc != 5)
-		exit(EXIT_FAILURE);
+		exit_perror("Only 4 arguments allowed!", EXIT_FAILURE);
 	init_info(&info, argc, argv, envp);
 	parse_cmd(&info, argc, argv);
 	info.idx = -1;

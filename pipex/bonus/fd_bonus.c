@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:23:22 by yback             #+#    #+#             */
-/*   Updated: 2023/02/09 20:01:23 by yback            ###   ########.fr       */
+/*   Updated: 2023/02/13 10:00:19 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	here_doc(char *argv, t_env *info)
 	{
 		write(1, "heredoc> ", 9);
 		line = get_next_line(0);
-		line[ft_strlen(line) - 1] = '\0';
 		if (!line)
 			exit(info->result);
-		if (!ft_strncmp(argv, line, ft_strlen(argv) + 1))
+		if (!ft_strncmp(argv, line, ft_strlen(argv))
+			&& line[ft_strlen(argv)] == '\n')
 			break ;
 		write(file, line, ft_strlen(line));
 		free(line);
