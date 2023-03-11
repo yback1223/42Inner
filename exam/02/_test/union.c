@@ -1,6 +1,4 @@
-#include <unistd.h>
-
-int	is_already_in_answer(char *answer, char word)
+int is_already_in_answer(char *answer, char word)
 {
 	int	i;
 
@@ -11,13 +9,13 @@ int	is_already_in_answer(char *answer, char word)
 	return (0);
 }
 
-int	ft_strlen(char *str)
+int ft_strlen(char *str)
 {
 	int	i;
-	
-	i = 0;
-	while (str[i])
-		i++;
+
+	i = -1;
+	while (str[++i])
+		;
 	return (i);
 }
 
@@ -26,8 +24,8 @@ int main(int ac, char **av)
 	int		i;
 	int		j;
 	int		k;
-	char	answer[255];
-	
+	char	*answer;
+
 	if (ac != 3)
 	{
 		write(1, "\n", 1);
@@ -36,12 +34,11 @@ int main(int ac, char **av)
 	i = -1;
 	k = 0;
 	while (av[1][++i])
-	{
-		j = -1;
-		while (av[2][++j])
-			if (av[1][i] == av[2][j] && is_already_in_answer(answer, av[2][j]) == 0)
-				answer[k++] = av[2][j];
-	}
+		if (is_already_in_answer(answer, av[1][i] == 0)
+			answer[k++] = av[1][i];
+	while (av[2][++j])
+		if (is_already_in_answer(answer, av[2][j] == 0))
+			answer[k++] = av[2][j];
 	write(1, answer, ft_strlen(answer));
 	return (0);
 }

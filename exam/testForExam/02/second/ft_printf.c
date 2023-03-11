@@ -1,12 +1,10 @@
-#include <stdarg.h>
-#include <unistd.h>
 
-int r;
+int	r;
 
-void	ft_putnbr(long dig, int len, char *sign)
+int ft_putnbr(long dig, int len, char *sign)
 {
 	if (dig >= len)
-		ft_putnbr(dig/len, len, sign);
+		ft_putnbr(dig / len, len, sign);
 	write(1, &sign[dig % len], 1);
 	r++;
 }
@@ -14,8 +12,8 @@ void	ft_putnbr(long dig, int len, char *sign)
 void	ft_puthex(unsigned dig, unsigned len, char *sign)
 {
 	if (dig >= len)
-		ft_puthex(dig/len, len, sign);
-	write(1,&sign[dig % len], 1);
+		ft_puthex(dig / len, len, sign);
+	write(1, &sign[dig % len], 1);
 	r++;
 }
 
@@ -25,7 +23,7 @@ void	case_s(va_list ap)
 	char	*str;
 
 	len = 0;
-	str = va_arg(ap, char *);
+	str = va_arg(ap, *char);
 	if (!str)
 		str = "(null)";
 	while (str[len])
@@ -36,8 +34,8 @@ void	case_s(va_list ap)
 
 void	case_d(va_list ap)
 {
-	long long	num;
-
+	long long num;
+	
 	num = va_arg(ap, int);
 	if (num < 0)
 	{
@@ -51,15 +49,15 @@ void	case_d(va_list ap)
 void	case_x(va_list ap)
 {
 	int	num;
-
+	
 	num = va_arg(ap, int);
 	ft_puthex(num, 16, "0123456789abcdef");
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char format, ...)
 {
 	va_list	ap;
-	
+
 	r = 0;
 	va_start(ap, format);
 	while (*format)
@@ -80,12 +78,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (r);
-}
-
-// #include <stdio.h>
-// int main(void)
-// {
-// 	printf("I - %d\n", printf("qwerty %s\t%d\t%x\n", "stroka1", 2147148145, -42));
-// 	printf("II - %d\n", ft_printf("qwerty %s\t%d\t%x\n", "stroka2", 2147148145, -42));
-// 	return 0;
-// }
+}		

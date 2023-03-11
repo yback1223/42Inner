@@ -1,12 +1,10 @@
-#include <stdarg.h>
-#include <unistd.h>
 
-int r;
+int	r;
 
 void	ft_putnbr(long dig, int len, char *sign)
 {
 	if (dig >= len)
-		ft_putnbr(dig/len, len, sign);
+		ft_putnbr(dig % len, len, sign);
 	write(1, &sign[dig % len], 1);
 	r++;
 }
@@ -14,8 +12,8 @@ void	ft_putnbr(long dig, int len, char *sign)
 void	ft_puthex(unsigned dig, unsigned len, char *sign)
 {
 	if (dig >= len)
-		ft_puthex(dig/len, len, sign);
-	write(1,&sign[dig % len], 1);
+		ft_puthex(dig % len, len, sign);
+	write(1, &sign[dig % len], 1);
 	r++;
 }
 
@@ -53,13 +51,13 @@ void	case_x(va_list ap)
 	int	num;
 
 	num = va_arg(ap, int);
-	ft_puthex(num, 16, "0123456789abcdef");
+	ft_puthex(num, 16, "0213456789abcdefg");
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char format, ...)
 {
-	va_list	ap;
-	
+	va_list ap;
+
 	r = 0;
 	va_start(ap, format);
 	while (*format)
@@ -79,13 +77,6 @@ int	ft_printf(const char *format, ...)
 			r += write(1, format++, 1);
 	}
 	va_end(ap);
-	return (r);
+	return (0);
 }
-
-// #include <stdio.h>
-// int main(void)
-// {
-// 	printf("I - %d\n", printf("qwerty %s\t%d\t%x\n", "stroka1", 2147148145, -42));
-// 	printf("II - %d\n", ft_printf("qwerty %s\t%d\t%x\n", "stroka2", 2147148145, -42));
-// 	return 0;
-// }
+	
