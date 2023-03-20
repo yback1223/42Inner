@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:10:47 by yback             #+#    #+#             */
-/*   Updated: 2023/03/19 17:26:26 by yback            ###   ########seoul.kr  */
+/*   Updated: 2023/03/19 19:45:41 by yback            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	yb_print(t_data *data, int pid, char *str, int is_dead)
 		printf("%lld %d %s\n", yb_get_time() - data->time_var, pid, str);
 	if (!is_dead)
 		pthread_mutex_unlock(&data->can_print);
+	pthread_mutex_destroy(&data->can_print);
 }
 
 void	philo_thinking(t_philo *philo)

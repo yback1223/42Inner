@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:45:10 by yback             #+#    #+#             */
-/*   Updated: 2023/03/19 18:25:33 by yback            ###   ########seoul.kr  */
+/*   Updated: 2023/03/19 19:46:25 by yback            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	create_philo(t_data *data)
 	}
 	while (data->not_dead != 0)
 		usleep(200);
+	// free(data->time_var);
 }
 
 void	yb_set_data(int ac, char **av, t_data *data)
@@ -89,5 +90,6 @@ int	main(int ac, char **av)
 	memset(data, 0, sizeof(t_data));
 	yb_set_data(ac, av, data);
 	free_philos(data);
+	system("leaks philo");
 	return (0);
 }
