@@ -6,12 +6,12 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 20:03:04 by yback             #+#    #+#              #
-#    Updated: 2023/03/23 17:02:37 by yback            ###   ########seoul.kr   #
+#    Updated: 2023/04/08 19:15:35 by yback            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
 RM = rm -f
 
 NAME 		=	philo
