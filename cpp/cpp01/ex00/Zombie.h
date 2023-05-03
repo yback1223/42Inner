@@ -15,7 +15,7 @@ public:
 	Zombie(std::string name);
 	~Zombie();
 	void announce(void);
-	std::string GetName();
+	std::string getName();
 };
 
 void randomChump(std::string name);

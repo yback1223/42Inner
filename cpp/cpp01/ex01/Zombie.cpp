@@ -11,17 +11,17 @@ Zombie::Zombie(std::string name) {
 }
 
 Zombie::~Zombie() {
-	std::cout << GetName() << " head shot!" << std::endl;
+	std::cout << getName() << " head shot!" << std::endl;
 }
 
 void Zombie::announce() {
-	std::cout << GetName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << getName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-std::string Zombie::GetName() {
+std::string Zombie::getName() {
 	return name;
 }
 
-void Zombie::SetName(std::string input) {
+void Zombie::setName(std::string input) {
 	this->name = input;
 }

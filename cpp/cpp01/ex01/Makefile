@@ -2,7 +2,7 @@ NAME = Zombie
 CC = c++
 CFLAGS = -Wall -Wextra -Wextra -std=c++98
 
-SRCS = main.cpp ZombieHorde.cpp Zombie.cpp
+SRCS = main.cpp zombieHorde.cpp Zombie.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

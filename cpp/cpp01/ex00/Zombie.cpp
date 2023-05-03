@@ -9,13 +9,13 @@ Zombie::Zombie(std::string name) {
 }
 
 Zombie::~Zombie() {
-	std::cout << GetName() << " head shot!" << std::endl;
+	std::cout << getName() << " head shot!" << std::endl;
 }
 
 void Zombie::announce() {
-	std::cout << GetName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << getName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-std::string Zombie::GetName() {
-	return name;
+std::string Zombie::getName() {
+	return this->name;
 }

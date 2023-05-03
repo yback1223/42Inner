@@ -18,18 +18,17 @@ void replace(std::string inFileName, std::string s1, std::string s2) {
 
 	while (std::getline(inputstream, line)) {
 		std::string result;
-		std::string::size_type cur_pos = 0;
+		std::string::size_type curPos = 0;
 
-		while (cur_pos < line.length()) {
-			std::string::size_type next_pos = line.find(s1, cur_pos);
-
-			if (next_pos == std::string::npos) {
-				result += line.substr(cur_pos);
+		while (curPos < line.length()) {
+			std::string::size_type nextPos = line.find(s1, curPos);
+			if (nextPos == std::string::npos) {
+				result += line.substr(curPos);
 				break;
 			} else {
-				result += line.substr(cur_pos, next_pos - cur_pos);
+				result += line.substr(curPos, nextPos - curPos);
 				result += s2;
-				cur_pos = next_pos + s1.length();
+				curPos = nextPos + s1.length();
 			}
 		}
 		outputstream << result << std::endl;

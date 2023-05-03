@@ -14,5 +14,5 @@ int main() {
 	randomChump("randomZombie");
 
 	delete heapZombie;
-	system("leaks Zombie");
+//	system("leaks Zombie");
 }

@@ -45,9 +45,5 @@ void Harl::complain(std::string level) {
 	lvl = (level == "WARNING") ? 2: lvl;
 	lvl = (level == "ERROR") ? 3: lvl;
 
-	if (lvl == -1) {
-		std::cerr << "Bad Arguments!" << std::endl;
-		exit(1);
-	}
 	(this->*funcs[lvl])();
 }
