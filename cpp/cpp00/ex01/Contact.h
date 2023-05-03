@@ -27,11 +27,11 @@ public:
             );
 	Contact(std::string contactFields[5]);
 
-	std::string GetFirstName();
-	std::string GetLastName();
-	std::string GetNickName();
-	std::string GetPhoneNumber();
-	std::string GetDarkestSecret();
+	std::string getFirstName();
+	std::string getLastName();
+	std::string getNickName();
+	std::string getPhoneNumber();
+	std::string getDarkestSecret();
 };
 
 #endif //CPP_CONTACT_H

@@ -32,22 +32,22 @@ Contact::Contact() {
 
 Contact::~Contact() {}
 
-std::string Contact::GetFirstName() {
+std::string Contact::getFirstName() {
 	return this->firstName;
 }
 
-std::string Contact::GetLastName() {
+std::string Contact::getLastName() {
 	return this->lastName;
 }
 
-std::string Contact::GetNickName() {
+std::string Contact::getNickName() {
 	return this->nickName;
 }
 
-std::string Contact::GetPhoneNumber() {
+std::string Contact::getPhoneNumber() {
 	return this->phoneNumber;
 }
 
-std::string Contact::GetDarkestSecret() {
+std::string Contact::getDarkestSecret() {
 	return this->darkestSecret;
 }

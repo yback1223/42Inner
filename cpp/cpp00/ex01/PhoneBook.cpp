@@ -55,9 +55,9 @@ void PhoneBook::SearchContact() {
 			break;
 		}
 		std::cout << "|         " << i + 1 << "|"
-				<< PrintOneContact(contacts[i].GetFirstName())
-				<< PrintOneContact(contacts[i].GetLastName())
-				<< PrintOneContact(contacts[i].GetNickName())
+				<< PrintOneContact(contacts[i].getFirstName())
+				<< PrintOneContact(contacts[i].getLastName())
+				<< PrintOneContact(contacts[i].getNickName())
 				<< std::endl;
 	}
 	if (idx != 0) {
@@ -97,11 +97,11 @@ void PhoneBook::DisplayContact() {
 			continue;
 		}
 		index = std::atoi(input.c_str());
-		std::cout << "First name: " << contacts[index - 1].GetFirstName() << std::endl;
-		std::cout << "Last name: " << contacts[index - 1].GetLastName() << std::endl;
-		std::cout << "Nickname: " << contacts[index - 1].GetNickName() << std::endl;
-		std::cout << "Phone number: " << contacts[index - 1].GetPhoneNumber() << std::endl;
-		std::cout << "Darkest secret: " << contacts[index - 1].GetDarkestSecret() << std::endl;
+		std::cout << "First name: " << contacts[index - 1].getFirstName() << std::endl;
+		std::cout << "Last name: " << contacts[index - 1].getLastName() << std::endl;
+		std::cout << "Nickname: " << contacts[index - 1].getNickName() << std::endl;
+		std::cout << "Phone number: " << contacts[index - 1].getPhoneNumber() << std::endl;
+		std::cout << "Darkest secret: " << contacts[index - 1].getDarkestSecret() << std::endl;
 		break;
 	}
 }
