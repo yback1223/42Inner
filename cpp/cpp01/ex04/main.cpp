@@ -7,7 +7,7 @@
 
 void replace(std::string inFileName, std::string s1, std::string s2) {
 	std::string line;
-	std::string outFileName = std::string() + inFileName + ".replace";
+	std::string outFileName = inFileName.append(".replace");
 	std::ifstream inputstream(inFileName.c_str());
 	std::ofstream outputstream(outFileName.c_str());
 

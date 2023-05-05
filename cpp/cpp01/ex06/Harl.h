@@ -16,7 +16,7 @@ private:
 public:
 	Harl();
 	~Harl();
-	void complain(std::string level);
+	void complain(int level);
 };
 
 typedef void (Harl::*HarlFuncs)(void);

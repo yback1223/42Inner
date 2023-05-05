@@ -10,7 +10,7 @@ int main(int ac, char **av) {
 	std::string lvls[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	if (ac != 2) {
-		std::cerr << "Error: Bad Arguments!" << std::endl;
+		std::cerr << "[ Probably complaining about insignificant problems ]" << std::endl;
 		exit(1);
 	}
 
@@ -18,11 +18,9 @@ int main(int ac, char **av) {
 		lvl++;
 	}
 	if (lvls[lvl] != av[1]) {
-		std::cerr << "Error: Bad Arguments!" << std::endl;
+		std::cerr << "[ Probably complaining about insignificant problems ]" << std::endl;
 		exit(1);
 	}
-	for (int i = lvl; i < 4; ++i) {
-		ex.complain(lvls[i]);
-	}
-	std::cout << std::endl << "[ Probably complaining about insignificant problems ]" << std::endl;
+
+	ex.complain(lvl);
 }

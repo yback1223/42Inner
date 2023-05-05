@@ -31,23 +31,22 @@ void Harl::error()
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(std::string level) {
+void Harl::complain(int level) {
 	HarlFuncs funcs[4] = {
 			&Harl::debug,
 			&Harl::info,
 			&Harl::warning,
 			&Harl::error
 	};
-	int lvl = -1;
 
-	lvl = (level == "DEBUG") ? 0 : lvl;
-	lvl = (level == "INFO") ? 1 : lvl;
-	lvl = (level == "WARNING") ? 2: lvl;
-	lvl = (level == "ERROR") ? 3: lvl;
-
-	if (lvl == -1) {
-		std::cerr << "Bad Arguments!" << std::endl;
-		exit(1);
+	switch (level) {
+		case 0:
+			(this->*funcs[0])();
+		case 1:
+			(this->*funcs[1])();
+		case 2:
+			(this->*funcs[2])();
+		case 3:
+			(this->*funcs[3])();
 	}
-	(this->*funcs[lvl])();
 }
