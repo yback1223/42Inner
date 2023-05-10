@@ -30,10 +30,17 @@ void replace(std::string inFileName, std::string s1, std::string s2) {
 		std::cerr << "Output file Missing!" << std::endl;
 		exit(1);
 	}
-
-	while (std::getline(inputstream, line)) {
+	int j = 0;
+	while (true) {
+		bool res = std::getline(inputstream, line, '\n');
+		if (!res ) {
+			break;
+		} else if (j != 0) {
+			outputstream << std::endl;
+		}
 		std::string result;
 		std::string::size_type curPos = 0;
+		j++;
 
 		while (curPos < line.length()) {
 			std::string::size_type nextPos = line.find(s1, curPos);
@@ -46,7 +53,7 @@ void replace(std::string inFileName, std::string s1, std::string s2) {
 				curPos = nextPos + s1.length();
 			}
 		}
-		outputstream << result << std::endl;
+		outputstream << result;
 	}
 	inputstream.close();
 	outputstream.close();
