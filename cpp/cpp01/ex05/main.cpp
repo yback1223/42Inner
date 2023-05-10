@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:32:59 by yback             #+#    #+#             */
-/*   Updated: 2023/05/03 18:33:01 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/10 17:28:53 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int ac, char **av) {
 		exit(1);
 	}
 
-	while (lvls[lvl] != av[1] && lvl < 5) {
+	while (lvls[lvl] != av[1] && lvl < 3) {
 		lvl++;
 	}
 	if (lvls[lvl] != av[1]) {
