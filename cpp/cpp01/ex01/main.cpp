@@ -14,11 +14,12 @@
 
 int main() {
 
-	Zombie zombie = Zombie("stackZombie");
+	Zombie zombie("stackZombie");
 	zombie.announce();
+	int num = 9;
 
-	Zombie *zombies = zombieHorde(9, "hordeZombie");
-	for (int i = 0; i < 9; i++) {
+	Zombie *zombies = zombieHorde(-1, "hordeZombie");
+	for (int i = 0; i < num; i++) {
 		zombies[i].announce();
 	}
 

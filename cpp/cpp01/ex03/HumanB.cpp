@@ -12,8 +12,9 @@
 
 #include "HumanB.h"
 
-HumanB::HumanB(const std::string name) : name(name), weapon(NULL){
-}
+HumanB::HumanB() {}
+
+HumanB::HumanB(const std::string name) : name(name), weapon(NULL) {}
 
 HumanB::~HumanB() {}
 
@@ -22,5 +23,10 @@ void HumanB::setWeapon(Weapon &weapon) {
 }
 
 void HumanB::attack() const {
-	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+	if (!this->weapon) {
+		std::cerr << "Error: No weapon" << std::endl;
+		exit(1);
+	} else {
+		std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+	}
 }

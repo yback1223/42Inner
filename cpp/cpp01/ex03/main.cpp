@@ -31,6 +31,13 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB *anotherHumanB = new HumanB("HeapJim");
+		anotherHumanB->setWeapon(club);
+		anotherHumanB->attack();
+		delete anotherHumanB;
+	}
 //	system("leaks Weapon");
 	return 0;
 }
