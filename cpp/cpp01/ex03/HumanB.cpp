@@ -24,8 +24,7 @@ void HumanB::setWeapon(Weapon &weapon) {
 
 void HumanB::attack() const {
 	if (!this->weapon) {
-		std::cerr << "Error: No weapon" << std::endl;
-		exit(1);
+		std::cout << name << " attacks with his fist! Need a weapon!" << std::endl;
 	} else {
 		std::cout << name << " attacks with their " << weapon->getType() << std::endl;
 	}

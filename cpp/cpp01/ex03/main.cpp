@@ -17,6 +17,8 @@
 int main()
 {
 	{
+		std::cout << "===TEST 1===" << std::endl;
+
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
 		bob.attack();
@@ -24,6 +26,8 @@ int main()
 		bob.attack();
 	}
 	{
+		std::cout << "===TEST 2===" << std::endl;
+
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
 		jim.setWeapon(club);
@@ -32,11 +36,13 @@ int main()
 		jim.attack();
 	}
 	{
+		std::cout << "===TEST 3===" << std::endl;
+
 		Weapon club = Weapon("crude spiked club");
-		HumanB *anotherHumanB = new HumanB("HeapJim");
-		anotherHumanB->setWeapon(club);
-		anotherHumanB->attack();
-		delete anotherHumanB;
+		HumanB AnotherJim("AnotherJim");
+		AnotherJim.attack();
+		AnotherJim.setWeapon(club);
+		AnotherJim.attack();
 	}
 //	system("leaks Weapon");
 	return 0;

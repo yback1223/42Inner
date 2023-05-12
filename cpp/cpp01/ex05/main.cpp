@@ -13,21 +13,12 @@
 #include "Harl.h"
 
 int main(int ac, char **av) {
-	int lvl = 0;
+
 	Harl ex;
-	std::string lvls[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	if (ac != 2) {
+	if (ac != ex.TWO) {
 		std::cerr << "Error: Bad Arguments!" << std::endl;
-		exit(1);
+		exit(ex.ERROR);
 	}
 
-	while (lvls[lvl] != av[1] && lvl < 3) {
-		lvl++;
-	}
-	if (lvls[lvl] != av[1]) {
-		std::cerr << "Error: Bad Arguments!" << std::endl;
-		exit(1);
-	}
-
-	ex.complain(lvls[lvl]);
+	ex.complain(av[ex.FIRST]);
 }

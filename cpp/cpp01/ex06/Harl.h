@@ -22,10 +22,13 @@ private:
 	void warning();
 	void error();
 public:
+	static int FIRST;
+	static int ERROR;
+	static int TWO;
 	Harl();
 	~Harl();
-	void complain(int level);
-};
+	void complain(std::string level);
+	};
 
 typedef void (Harl::*HarlFuncs)(void);
 

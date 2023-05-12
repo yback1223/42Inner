@@ -13,19 +13,24 @@
 #include <fstream>
 #include <iostream>
 
-void replace(std::string inFileName, std::string s1, std::string s2) {
+void replace(char **av) {
+	std::string inFileName = av[1];
+	std::string s1 = av[2];
+	std::string s2 = av[3];
+
 	if (s1 == "") {
 		std::cerr << "Error: Invalid Argument!" << std::endl;
 		exit(1);
 	}
 	std::string line;
-	std::ifstream inputstream(inFileName.c_str());
+	std::ifstream inputstream(inFileName);
 	if (!inputstream) {
 		std::cerr << "Input file Missing!" << std::endl;
 		exit(1);
 	}
+
 	std::string outFileName = inFileName.append(".replace");
-	std::ofstream outputstream(outFileName.c_str());
+	std::ofstream outputstream(outFileName);
 	if (!outputstream) {
 		std::cerr << "Output file Missing!" << std::endl;
 		exit(1);
@@ -33,7 +38,7 @@ void replace(std::string inFileName, std::string s1, std::string s2) {
 	int j = 0;
 	while (true) {
 		bool res = std::getline(inputstream, line, '\n');
-		if (!res ) {
+		if (!res) {
 			break;
 		} else if (j != 0) {
 			outputstream << std::endl;
@@ -64,5 +69,5 @@ int main(int ac, char **av) {
 		std::cerr << "Error: Wrong Arguments!" << std::endl;
 		return (1);
 	}
-	replace(av[1], av[2], av[3]);
+	replace(av);
 }

@@ -12,6 +12,10 @@
 
 #include "Harl.h"
 
+int Harl::FIRST = 1;
+int Harl::ERROR = 1;
+int Harl::TWO = 2;
+
 Harl::Harl() {}
 
 Harl::~Harl() {}
@@ -39,7 +43,15 @@ void Harl::error()
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(int level) {
+void Harl::complain(std::string level) {
+
+	int lvl = 0;
+
+	std::string lvls[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	while (lvls[lvl] != level && lvl < 4) {
+		lvl++;
+	}
+
 	HarlFuncs funcs[4] = {
 			&Harl::debug,
 			&Harl::info,
@@ -47,7 +59,7 @@ void Harl::complain(int level) {
 			&Harl::error
 	};
 
-	switch (level) {
+	switch (lvl) {
 		case 0:
 			(this->*funcs[0])();
 		case 1:
@@ -56,5 +68,9 @@ void Harl::complain(int level) {
 			(this->*funcs[2])();
 		case 3:
 			(this->*funcs[3])();
+			break;
+		default:
+			std::cerr << "[ Probably complaining about insignificant problems ]" << std::endl;
+			exit(1);
 	}
 }
