@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:10:18 by yback             #+#    #+#             */
-/*   Updated: 2023/05/03 19:10:20 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/16 14:44:56 by yback            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,17 @@ Fixed Fixed::operator-(const Fixed &cal) const {
 }
 
 Fixed Fixed::operator*(const Fixed &cal) const {
-//	std::cout << "constructor come on!!!" << std::endl;
 	return (Fixed) (this->toFloat() * cal.toFloat());
 }
 
 Fixed Fixed::operator/(const Fixed &cal) const {
-	return (Fixed) (this->toFloat() / cal.toFloat());
+    float divisor = cal.toFloat();
+    if (divisor == 0) {
+        std::cerr << "Error: Division by zero" << std::endl;
+        exit(1);
+    } else {
+        return (Fixed) (this->toFloat() / divisor);
+    }
 }
 
 Fixed Fixed::operator++(void) {
