@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/17 15:58:13 by yback             #+#    #+#             */
+/*   Updated: 2023/05/17 16:39:14 by yback            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //
 // Created by Yong Min Back on 2023/04/30.
 //
@@ -59,41 +71,41 @@ void ClapTrap::beRepaired(unsigned int amount) {
 }
 
 void ClapTrap::setName(std::string inputName) {
-//	std::cout << "ClapTrap " << inputName << " setName() called" << std::endl;
+	std::cout << "ClapTrap " << inputName << " setName() called" << std::endl;
 	this->name = inputName;
 }
 
 void ClapTrap::setHitPoints(int inputHitPoints) {
-//	std::cout << "ClapTrap <<" << this->name << ">> setHitPoints() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> setHitPoints() called" << std::endl;
 	this->hitPoints = inputHitPoints;
 }
 
 void ClapTrap::setEnergyPoints(int inputEnergyPoints) {
-//	std::cout << "ClapTrap <<" << this->name << ">> setEnergyPoints() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> setEnergyPoints() called" << std::endl;
 	this->energyPoints = inputEnergyPoints;
 }
 
 void ClapTrap::setAttackDamage(int inputAttackDamage) {
-//	std::cout << "ClapTrap <<" << this->name << ">> setAttackDamage() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> setAttackDamage() called" << std::endl;
 	this->attackDamage = inputAttackDamage;
 }
 
 std::string ClapTrap::getName() const {
-//	std::cout << "ClapTrap <<" << this->name << ">> getName() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> getName() called" << std::endl;
 	return this->name;
 }
 
 int ClapTrap::getHitPoints() const {
-//	std::cout << "ClapTrap <<" << this->name << ">> getHitPoints() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> getHitPoints() called" << std::endl;
 	return this->hitPoints;
 }
 
 int ClapTrap::getEnergyPoints() const {
-//	std::cout << "ClapTrap <<" << this->name << ">> getEnergyPoints() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> getEnergyPoints() called" << std::endl;
 	return this->energyPoints;
 }
 
 int ClapTrap::getAttackDamage() const {
-//	std::cout << "ClapTrap <<" << this->name << ">> getAttackDamage() called" << std::endl;
+	std::cout << "ClapTrap <<" << this->name << ">> getAttackDamage() called" << std::endl;
 	return this->attackDamage;
 }
