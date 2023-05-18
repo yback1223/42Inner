@@ -6,12 +6,12 @@
 #    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:57:53 by yback             #+#    #+#              #
-#    Updated: 2023/05/17 16:37:35 by yback            ###   ########.fr        #
+#    Updated: 2023/05/17 17:08:34 by yback            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = FragTrap
-
+CC = g++
 CFLAGS = -Wall -Wextra -Wextra -std=c++98
 
 SRCS = main.cpp ScavTrap.cpp ClapTrap.cpp FragTrap.cpp

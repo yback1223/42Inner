@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:58:02 by yback             #+#    #+#             */
-/*   Updated: 2023/05/17 15:58:04 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/17 16:45:57 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	FragTrap(std::string inputName);
 	FragTrap(const FragTrap &copy);
 	FragTrap &operator=(const FragTrap &copy);
-	virtual ~FragTrap();
+	~FragTrap();
 
 	void highFivesGuys(void);
 };

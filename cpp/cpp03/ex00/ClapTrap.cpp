@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:58:36 by yback             #+#    #+#             */
-/*   Updated: 2023/05/17 16:38:38 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/18 10:29:34 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Call ClapTrap <<" << this->getName() << ">> destructor" << std::endl;
+	std::cout << "Call ClapTrap <<" << this->getName() << ">> destructor called!" << std::endl;
 }
 
 void ClapTrap::attack(const std::string &target) {

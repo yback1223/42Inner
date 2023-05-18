@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:57:47 by yback             #+#    #+#             */
-/*   Updated: 2023/05/17 15:57:50 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/17 16:51:47 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	ScavTrap(std::string InputName);
 	ScavTrap(const ScavTrap &copy);
 	ScavTrap &operator=(const ScavTrap &copy);
-	virtual ~ScavTrap();
+	~ScavTrap();
 
 	void guardGate();
 	void attack(const std::string &target);

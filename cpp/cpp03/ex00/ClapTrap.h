@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:58:34 by yback             #+#    #+#             */
-/*   Updated: 2023/05/17 16:32:51 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/17 17:06:56 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #define CPP_CLAPTRAP_H
 
 #include <iostream>
-#include <string>
 
 class ClapTrap {
 private:
