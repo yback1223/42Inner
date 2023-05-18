@@ -6,8 +6,11 @@
 #define CPP_DOG_H
 
 #include "Animal.h"
+#include "Brain.h"
 
 class Dog : public Animal {
+private:
+	Brain *dogBrain;
 public:
 	Dog();
 	Dog(const Dog &copy);
@@ -15,6 +18,9 @@ public:
 	virtual ~Dog();
 
 	virtual void makeSound() const;
+	void fillDogBrain();
+	void getBrainEle(int index);
+	Dog* clone() const;
 };
 
 

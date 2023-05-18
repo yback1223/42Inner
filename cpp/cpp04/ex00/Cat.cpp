@@ -5,21 +5,21 @@
 #include "Cat.h"
 
 Cat::Cat() : Animal("Cat") {
-	std::cout << "Cat default constructor called!" << std::endl;
+	std::cout << this->getType() << " default constructor called!" << std::endl;
 }
 
 Cat::Cat(const Cat &copy) {
-	std::cout << "Cat copy constructor called!" << std::endl;
 	this->type = copy.getType();
+	std::cout << this->getType() << " copy constructor called!" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &copy) {
-	this->type = copy.getType();
+	Animal::operator=(copy);
 	return *this;
 }
 
 Cat::~Cat() {
-	std::cout << "Cat default destructor called!" << std::endl;
+	std::cout << this->getType() << " default destructor called!" << std::endl;
 }
 
 void Cat::makeSound() const {

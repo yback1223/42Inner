@@ -20,6 +20,7 @@ public:
 	virtual void makeSound() const;
 	std::string getType() const;
 	void setType(std::string inputType);
+	virtual Animal* clone() const = 0;
 };
 
 

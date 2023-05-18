@@ -4,33 +4,29 @@
 
 #include "Animal.h"
 
-Animal::Animal() {
-	this->setType("Animal");
-	std::cout << "Animal default constructor called!" << std::endl;
+Animal::Animal() : type("Normal Animal") {
+	std::cout << this->getType() << " default constructor called!" << std::endl;
 }
 
-Animal::Animal(std::string inputType) {
-	this->setType(inputType);
-	std::cout << "Animal naming constructor called!\n- name: " << this->getType() << std::endl;
+Animal::Animal(std::string inputType) : type(inputType) {
+	std::cout << this->getType() << " naming constructor called! - name: " << this->getType() << std::endl;
 }
 
-Animal::Animal(const Animal &animal) : type(animal.getType()) {
-	std::cout << "Animal copy constructor called!" << std::endl;
+Animal::Animal(const Animal &copy) : type(copy.getType()) {
+	std::cout <<  this->getType() << " copy constructor called!" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &animal) {
-	if (this != &animal) {
-		this->type = animal.type;
-	}
-	return (*this);
+Animal &Animal::operator=(const Animal &copy) {
+	this->setType(copy.getType());
+	return *this;
 }
 
 Animal::~Animal() {
-	std::cout << "Animal default destructor called!" << std::endl;
+	std::cout << this->getType() << " default destructor called!" << std::endl;
 }
 
 void Animal::makeSound() const {
-	std::cout << "Animal Sound~!!!!" << std::endl;
+	std::cout << "I am an Animal!!!!" << std::endl;
 }
 
 std::string Animal::getType() const {

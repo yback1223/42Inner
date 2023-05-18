@@ -5,23 +5,23 @@
 #include "Dog.h"
 
 Dog::Dog() : Animal("Dog") {
-	std::cout << "Dog default constructor called!" << std::endl;
+	std::cout << this->getType() << " default constructor called!" << std::endl;
 }
 
 Dog::Dog(const Dog& copy) {
-	std::cout << "Dog copy constructor called!" << std::endl;
 	this->type = copy.getType();
+	std::cout << this->getType() << " copy constructor called!" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& copy) {
-	this->type = copy.getType();
+	Animal::operator=(copy);
 	return *this;
 }
 
 Dog::~Dog() {
-	std::cout << "Dog default destructor called!" << std::endl;
+	std::cout << this->getType() << " default destructor called!" << std::endl;
 }
 
 void Dog::makeSound() const {
-	std::cout << "Mung!" << std::endl;
+	std::cout << "Meong!" << std::endl;
 }

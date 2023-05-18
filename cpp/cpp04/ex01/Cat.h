@@ -6,8 +6,11 @@
 #define CPP_CAT_H
 
 #include "Animal.h"
+#include "Brain.h"
 
 class Cat : public Animal {
+private:
+	Brain *catBrain;
 public:
 	Cat();
 	Cat(const Cat &copy);
@@ -15,6 +18,9 @@ public:
 	virtual ~Cat();
 
 	virtual void makeSound() const;
+	void fillCatBrain();
+	void getBrainEle(int index);
+	Cat* clone() const;
 };
 
 
