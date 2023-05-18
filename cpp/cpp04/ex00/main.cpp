@@ -27,5 +27,6 @@ int main()
 	delete j;
 	delete meta;
 
+	// system("leaks Animal");
 	return 0;
 }

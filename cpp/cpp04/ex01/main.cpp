@@ -7,25 +7,54 @@
 #include "Animal.h"
 #include "WrongAnimal.h"
 #include "WrongCat.h"
+#include "Brain.h"
+
+static int num = 87;
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	Animal *fourAnimals[4];
+	Animal *anotherFourAnimals[4];
 
-	WrongAnimal *wrongCat = new WrongCat();
-	wrongCat->makeSound();
+	for (int i = 0; i < 4; i++) {
+		if (i % 2 == 0) {
+			fourAnimals[i] = new Dog();
+		} else {
+			fourAnimals[i] = new Cat();
+		}
+	}
 
-	delete wrongCat;
-	delete i;
-	delete j;
-	delete meta;
 
+	for (int i = 0; i < 4; i++) {
+			anotherFourAnimals[i] = fourAnimals[i]->clone();
+		std::cout << anotherFourAnimals[i] << ", " << fourAnimals[i] << std::endl;
+	}
+
+
+	for (int i = 0; i < 4; i++) {
+		if (i % 2 == 0) {
+			Dog *printDog = static_cast<Dog*>(fourAnimals[i]);
+			Dog *printAnotherDog = static_cast<Dog*>(anotherFourAnimals[i]);
+
+			printDog->getBrainEle(num);
+			printAnotherDog->getBrainEle(num);
+		} else {
+			Cat *printCat = static_cast<Cat*>(fourAnimals[i]);
+			Cat *printAnotherCat = static_cast<Cat*>(anotherFourAnimals[i]);
+			
+			printCat->getBrainEle(num);
+			printAnotherCat->getBrainEle(num);
+		}
+	}
+
+	for (int i = 0; i < 4; i++) {
+		delete anotherFourAnimals[i];
+	}
+
+	for (int i = 0; i < 4; i++) {
+		delete fourAnimals[i];
+	}
+
+	// system("leaks Animal");
 	return 0;
 }
