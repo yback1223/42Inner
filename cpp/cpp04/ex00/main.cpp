@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:21:43 by yback             #+#    #+#             */
-/*   Updated: 2023/05/23 14:21:44 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/23 21:07:16 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ int main()
 	meta->makeSound();
 
 	WrongAnimal *wrongAnimal = new WrongCat();
+	WrongCat *wrongCat = new WrongCat();
 	
 	wrongAnimal->makeSound();
+	wrongCat->makeSound();
 
+	delete wrongCat;
 	delete wrongAnimal;
 	delete i;
 	delete j;

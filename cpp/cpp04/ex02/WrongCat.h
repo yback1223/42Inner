@@ -6,7 +6,7 @@
 /*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:22:41 by yback             #+#    #+#             */
-/*   Updated: 2023/05/23 14:22:42 by yback            ###   ########.fr       */
+/*   Updated: 2023/05/23 21:06:09 by yback            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public:
 	WrongCat(const WrongCat &copy);
 	WrongCat &operator=(const WrongCat &copy);
 	~WrongCat();
+
+	void makeSound();
 };
 
 #endif //CPP_WRONGCAT_H
