@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 14:21:43 by yback             #+#    #+#             */
+/*   Updated: 2023/05/23 14:21:44 by yback            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //
 // Created by Yong Min Back on 2023/05/01.
 //
@@ -19,10 +31,11 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
-	WrongAnimal *wrongCat = new WrongCat();
-	wrongCat->makeSound();
+	WrongAnimal *wrongAnimal = new WrongCat();
+	
+	wrongAnimal->makeSound();
 
-	delete wrongCat;
+	delete wrongAnimal;
 	delete i;
 	delete j;
 	delete meta;

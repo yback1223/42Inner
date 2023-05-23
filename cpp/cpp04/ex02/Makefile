@@ -1,8 +1,20 @@
-NAME = Animal
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yback <yback@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/23 14:45:57 by yback             #+#    #+#              #
+#    Updated: 2023/05/23 15:01:47 by yback            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = AAnimal
 CC = c++
 CFLAGS = -Wall -Wextra -Wextra -std=c++98
 
-SRCS = main.cpp Cat.cpp Dog.cpp Brain.cpp Animal.cpp AAnimal.cpp WrongCat.cpp WrongAnimal.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp Brain.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp AAnimal.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

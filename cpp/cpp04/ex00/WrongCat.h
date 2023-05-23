@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 14:22:41 by yback             #+#    #+#             */
+/*   Updated: 2023/05/23 14:22:42 by yback            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //
 // Created by Yong Min Back on 2023/05/01.
 //
@@ -12,9 +24,7 @@ public:
 	WrongCat();
 	WrongCat(const WrongCat &copy);
 	WrongCat &operator=(const WrongCat &copy);
-	virtual ~WrongCat();
-
-	virtual void makeSound() const;
+	~WrongCat();
 };
 
 #endif //CPP_WRONGCAT_H
