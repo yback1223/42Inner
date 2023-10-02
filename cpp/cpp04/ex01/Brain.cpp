@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yback <yback@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 14:23:31 by yback             #+#    #+#             */
+/*   Updated: 2023/05/23 14:24:04 by yback            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //
 // Created by Yong Min Back on 2023/05/01.
 //
@@ -20,8 +32,10 @@ Brain::Brain(const Brain &copy) {
 }
 
 Brain &Brain::operator=(const Brain &copy) {
-	for (int i = 0; i < 100; i++) {
-		this->setIdea(i, copy.getIdea(i));
+	if (this != &copy) {
+		for (int i = 0; i < 100; i++) {
+			this->setIdea(i, copy.getIdea(i));
+		}
 	}
 	return *this;
 }
@@ -33,5 +47,3 @@ void Brain::setIdea(int index, std::string type) {
 std::string Brain::getIdea(int index) const {
 	return this->ideas[index];
 }
-
-
