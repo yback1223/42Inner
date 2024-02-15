@@ -28,17 +28,11 @@ class AForm {
 		int getExecutedGrade() const;
 		
 		// 예외 클래스 정의
-
-		// 보통 예외 클래스들은 std::exception을 상속하여 작성한다. 
 		/**
 		 * @brief 등급(grade)이 너무 높을 때 예외 발생
 		 * 	1등급이 최상
 		 */
 		class GradeTooHighException : public std::exception {
-
-			// what() 함수는 예외에 대한 설명을 문자열로 반환
-			// throw()를 사용하면 해당 함수가 어떠한 예외를 던지지 않을 것이라고 정보를 제공
-			// 실제로 보장하지는 않는다.
 			const char* what() const throw();
 		};
 
@@ -76,7 +70,7 @@ class AForm {
 		 * 
 		 * @param bureaucrat sign을 할 인스턴스
 		 */
-		void signForm(const Bureaucrat & bureaucrat);
+		void beSigned(const Bureaucrat & bureaucrat);
 		
 		/**
 		 * @brief sign을 할 수 있는지 확인

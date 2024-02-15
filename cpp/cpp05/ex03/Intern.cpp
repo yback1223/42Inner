@@ -55,16 +55,15 @@ AForm *Intern::makeForm(std::string form, std::string target) const {
 		ppformConstructor,
 	};
 
-	AForm * res = NULL;
+	AForm * result = NULL;
 	for (size_t i = 0; i < 3; i++) {
 		if (form == FORMS[i]) {
-			res = FUNC_TABLE[i](target);
-			std::cout << "Intern creates " << res->getName() << std::endl;
+			result = FUNC_TABLE[i](target);
+			std::cout << "Intern creates " << result->getName() << std::endl;
 		}
 	}
-	if (res == NULL)
-		throw NoSuchFormException();
-	return res;
+	if (result == NULL) throw NoSuchFormException();
+	return result;
 }
 
 const char * Intern::NoSuchFormException::what() const throw() {

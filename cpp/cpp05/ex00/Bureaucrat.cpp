@@ -2,9 +2,9 @@
 
 // 생성자
 Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade) {
-	if (this->_grade < 1) throw GradeTooLowException();
-	if (this->_grade > 150) throw GradeTooHighException();
-	if (this->_name.empty()) throw NoNameException();;
+	if (this->_grade < 1) throw GradeTooHighException();
+	if (this->_grade > 150) throw GradeTooLowException();
+	if (this->_name.empty()) throw NoNameException();
 }
 
 // 복사 생성자

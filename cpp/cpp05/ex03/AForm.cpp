@@ -1,13 +1,5 @@
 #include "AForm.hpp"
 
-// 복사 생성자
-AForm::AForm(const AForm &copy):
-	_name(copy.getName()),
-	_is_singed(copy.getSinged()),
-	_signed_grade(copy.getSignedGrade()),
-	_executed_grade(copy.getExecutedGrade())
-{}
-
 // 생성자
 AForm::AForm(const std::string name, const int signed_grade, const int executed_grade):
 	_name(name),
@@ -19,6 +11,14 @@ AForm::AForm(const std::string name, const int signed_grade, const int executed_
 	if (this->_signed_grade < 1 || this->_executed_grade < 1) throw GradeTooHighException();
 	if (this->_signed_grade > 150 || this->_executed_grade > 150) throw GradeTooLowException();
 }
+
+// 복사 생성자
+AForm::AForm(const AForm &copy):
+	_name(copy.getName()),
+	_is_singed(copy.getSinged()),
+	_signed_grade(copy.getSignedGrade()),
+	_executed_grade(copy.getExecutedGrade())
+{}
 
 // 소멸자
 AForm::~AForm(){}
@@ -46,7 +46,7 @@ int AForm::getExecutedGrade() const {
 	return _executed_grade;
 }
 
-void AForm::signForm(const Bureaucrat &bureaucrat) {
+void AForm::beSigned(const Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_signed_grade) throw GradeTooLowException();
 	if(this->_is_singed) throw AlreadySignedException();
 	this->_is_singed = true;
@@ -82,13 +82,12 @@ const char * AForm::AlreadySignedException::what() const throw() {
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const AForm &object) {
-	stream << "" << object.getName() << ", form\n - Grade required to sign: " 
-		<< object.getSignedGrade()
-		<< "\n - Grade required to execute: " << object.getExecutedGrade() 
-		<< "\n - Signed: ";
-	if (object.getSinged())
-		stream << "true" << std::endl;
-	else
-		stream << "false" << std::endl;
+	stream << "" << object.getName() << ", form" << std::endl
+		<< " - Grade required to sign: " << object.getSignedGrade() << std::endl
+		<< " - Grade required to execute: " << object.getExecutedGrade() << std::endl
+		<< " - Signed: ";
+		
+	if (object.getSinged()) stream << "true" << std::endl;
+	else stream << "false" << std::endl;
 	return stream;
 }

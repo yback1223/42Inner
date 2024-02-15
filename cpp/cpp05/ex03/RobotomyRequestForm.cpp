@@ -6,7 +6,9 @@
 RobotomyRequestForm::RobotomyRequestForm(std::string target):
 	AForm("RobotomyRequestForm", 72, 45),
 	_target(target)
-{}
+{
+	// std::cout << "The target is " << this->_target << std::endl;
+}
 
 // 복사 생성자
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy):

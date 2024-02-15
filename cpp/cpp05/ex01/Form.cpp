@@ -1,12 +1,5 @@
 #include "Form.hpp"
 
-// 복사 생성자
-Form::Form(const Form &copy) :
-	_name(copy.getName()),
-	_is_signed(copy.getSigned()),
-	_signed_grade(copy.getSignedGrade()),
-	_executed_grade(copy.getExecutedGrade()) {}
-
 // 생성자
 Form::Form(const std::string name, const int signed_grade, const int executed_grade) :
 	_name(name),
@@ -18,6 +11,13 @@ Form::Form(const std::string name, const int signed_grade, const int executed_gr
 	if (this->_executed_grade < 1 || this->_signed_grade < 1) throw GradeTooHighException();
 	if (this->_executed_grade > 150 || this->_executed_grade > 150) throw GradeTooLowException();
 }
+
+// 복사 생성자
+Form::Form(const Form &copy) :
+	_name(copy.getName()),
+	_is_signed(copy.getSigned()),
+	_signed_grade(copy.getSignedGrade()),
+	_executed_grade(copy.getExecutedGrade()) {}
 
 // 소멸자
 Form::~Form() {}
@@ -45,7 +45,7 @@ int Form::getExecutedGrade() const {
 	return _executed_grade;
 }
 
-void Form::signForm(const Bureaucrat &bureaucrat) {
+void Form::beSigned(const Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_signed_grade) throw GradeTooLowException();
 	if (this->_is_signed) throw AlreadySignedException();
 	this->_is_signed = true;
@@ -70,13 +70,12 @@ const char* Form::AlreadySignedException::what() const throw() {
 
 // Stream operators
 std::ostream& operator<<(std::ostream &stream, const Form &object) {
-	stream << "" << object.getName() << " Form"
-		<< "\ngrade required to sign : " << object.getSignedGrade()
-		<< "\ngrade required to execute : " << object.getExecutedGrade()
-		<< "\nsigned status : ";
-	if (object.getSigned())
-		stream << "true" << std::endl;
-	else
-		stream << "false" << std::endl;
+	stream << "" << object.getName() << " Form" << std::endl
+		<< "grade required to sign : " << object.getSignedGrade() << std::endl
+		<< "grade required to execute : " << object.getExecutedGrade() << std::endl
+		<< "signed status : ";
+
+	if (object.getSigned()) stream << "true" << std::endl;
+	else stream << "false" << std::endl;
 	return stream;
 }

@@ -46,7 +46,7 @@ int AForm::getExecutedGrade() const {
 	return _executed_grade;
 }
 
-void AForm::signForm(const Bureaucrat &bureaucrat) {
+void AForm::beSigned(const Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_signed_grade) throw GradeTooLowException();
 	if(this->_is_singed) throw AlreadySignedException();
 	this->_is_singed = true;
@@ -82,13 +82,12 @@ const char * AForm::AlreadySignedException::what() const throw() {
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const AForm &object) {
-	stream << "" << object.getName() << ", form\n - Grade required to sign: " 
-		<< object.getSignedGrade()
-		<< "\n - Grade required to execute: " << object.getExecutedGrade() 
-		<< "\n - Signed: ";
-	if (object.getSinged())
-		stream << "true" << std::endl;
-	else
-		stream << "false" << std::endl;
+	stream << "" << object.getName() << ", form" << std::endl
+		<< " - Grade required to sign: " << object.getSignedGrade() << std::endl
+		<< " - Grade required to execute: " << object.getExecutedGrade() << std::endl
+		<< " - Signed: ";
+
+	if (object.getSinged()) stream << "true" << std::endl;
+	else stream << "false" << std::endl;
 	return stream;
 }

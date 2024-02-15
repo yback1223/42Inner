@@ -64,7 +64,7 @@ class Form {
 		 * 
 		 * @param bureaucrat 점수를 확인할 Bureaucrat 인스턴스
 		 */
-		void signForm(const Bureaucrat& bureaucrat);
+		void beSigned(const Bureaucrat& bureaucrat);
 
 	private:
 		Form();

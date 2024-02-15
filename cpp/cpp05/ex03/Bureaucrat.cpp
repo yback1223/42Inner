@@ -2,9 +2,9 @@
 
 // 생성자
 Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade) {
-	if (this->_grade < 1) throw GradeTooLowException();
-	if (this->_grade > 150) throw GradeTooHighException();
-	if (this->_name.empty()) throw NoNameException();;
+	if (this->_grade < 1) throw GradeTooHighException();
+	if (this->_grade > 150) throw GradeTooLowException();
+	if (this->_name.empty()) throw NoNameException();
 }
 
 // 복사 생성자
@@ -56,7 +56,7 @@ const char* Bureaucrat::NoNameException::what() const throw() {
 
 void Bureaucrat::signForm(AForm &form) {
 	try {
-		form.signForm(*this);
+		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << this->_name << " coudln't sign " << form.getName() << " because " << e.what() << std::endl;

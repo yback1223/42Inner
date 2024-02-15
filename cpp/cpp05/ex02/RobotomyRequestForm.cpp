@@ -1,5 +1,5 @@
 #include "RobotomyRequestForm.hpp"
-#include <ctime>
+#include <time.h>
 #include <iostream>
 
 // 생성자
@@ -32,6 +32,6 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 }
 
 bool RobotomyRequestForm::successful() const {
-	std::time_t result = std::time(0);
+    std::time_t result = std::time(0);
     return result % 2;
 }
