@@ -1,15 +1,18 @@
 #include "Bureaucrat.hpp"
 
-void printResult(std::string name, int grade) {
+void print(std::string name, int grade) {
 	try {
 		Bureaucrat bureaucrat(name, grade);
 		std::cout << bureaucrat;
+		// const로 예외 객체 불변성 보장
+		// 참조로 받아서 불필요한 객체 복사 방지
 	} catch (const std::exception& e) {
+		// e.what()은 예외 객체에 대한 설명 문자열 반환
 		std::cerr << e.what() << std::endl;
 	}
 }
 
-void printResultInc(std::string name, int grade) {
+void printInc(std::string name, int grade) {
 	try {
 		Bureaucrat bureaucrat(name, grade);
 		std::cout << bureaucrat;
@@ -19,7 +22,7 @@ void printResultInc(std::string name, int grade) {
 	}
 }
 
-void printResultDec(std::string name, int grade) {
+void printDec(std::string name, int grade) {
 	try {
 		Bureaucrat bureaucrat(name, grade);
 		std::cout << bureaucrat;
@@ -30,11 +33,11 @@ void printResultDec(std::string name, int grade) {
 }
 
 int main() {
-	printResult("A", 0);
-	printResult("B", 1);
-	printResult("C", 75);
-	printResult("D", 150);
-	printResult("E", 151);
-	printResultInc("F", 1);
-	printResultDec("G", 150);
+	print("A", 0);
+	print("B", 1);
+	print("C", 75);
+	print("D", 150);
+	print("E", 151);
+	printInc("F", 1);
+	printDec("G", 150);
 }

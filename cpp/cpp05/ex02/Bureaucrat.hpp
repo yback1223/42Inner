@@ -3,9 +3,9 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	public:
@@ -72,13 +72,20 @@ class Bureaucrat {
 		 * 점수가 너무 낮거나, 이름이 없다면 예외가 발생한다.
 		 * @param form sign을 할 form
 		 */
-		void signForm(Form &form);
+		void signForm(AForm &form);
+
+		/**
+		 * @brief form을 시행한다.
+		 * 
+		 * @param form 시행할 from 인스턴스
+		 */
+		void executeForm(AForm const & form);
 
 	private:
 		Bureaucrat();
-
 		const std::string _name;
 		int _grade;
+		
 };
 
 // Stream operators
