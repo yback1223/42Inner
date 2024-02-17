@@ -16,7 +16,7 @@ int main(int ac, char **av) {
 
 	Harl ex;
 	if (ac != ex.TWO) {
-		std::cerr << "Error: Bad Arguments!" << std::endl;
+		std::cerr << "Exception: Bad Arguments!" << std::endl;
 		exit(ex.ERROR);
 	}
 

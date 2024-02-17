@@ -19,7 +19,7 @@ void replace(char **av) {
 	std::string s2 = av[3];
 
 	if (s1 == "") {
-		std::cerr << "Error: Invalid Argument!" << std::endl;
+		std::cerr << "Exception: Invalid Argument!" << std::endl;
 		exit(1);
 	}
 	std::string line;
@@ -66,7 +66,7 @@ void replace(char **av) {
 
 int main(int ac, char **av) {
 	if (ac != 4) {
-		std::cerr << "Error: Wrong Arguments!" << std::endl;
+		std::cerr << "Exception: Wrong Arguments!" << std::endl;
 		return (1);
 	}
 	replace(av);

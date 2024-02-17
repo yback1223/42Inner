@@ -100,7 +100,7 @@ Fixed Fixed::operator*(const Fixed &cal) const {
 Fixed Fixed::operator/(const Fixed &cal) const {
     float divisor = cal.toFloat();
     if (divisor == 0) {
-        std::cerr << "Error: Division by zero" << std::endl;
+        std::cerr << "Exception: Division by zero" << std::endl;
         exit(1);
     } else {
         return (Fixed) (this->toFloat() / divisor);

@@ -12,7 +12,7 @@ int main() {
 		std::cout << "Command(EXIT, ADD, SEARCH): ";
 		std::getline(std::cin, input);
 		if (std::cin.fail()) {
-			std::cout << "Error reading input. Program Exit." << std::endl;
+			std::cout << "Exception reading input. Program Exit." << std::endl;
 			exit(1);
 		}
 		if (input == "EXIT") {

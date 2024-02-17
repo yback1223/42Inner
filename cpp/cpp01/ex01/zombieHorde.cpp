@@ -15,7 +15,7 @@
 
 Zombie *zombieHorde(int N, std::string name) {
 	if (N <= 0) {
-		std::cerr << "Error: Invalid N" << std::endl;
+		std::cerr << "Exception: Invalid N" << std::endl;
 		exit(1);
 	}
 	Zombie *horde = new Zombie[N];

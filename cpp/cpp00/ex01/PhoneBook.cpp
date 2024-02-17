@@ -25,14 +25,14 @@ Contact PhoneBook::CreateContact() {
 		std::cout << contactGuides[i];
 		std::getline(std::cin, contactFields[i]);
 		if (std::cin.fail()) {
-			std::cout << "Error reading input. Program Exit" << std::endl;
+			std::cout << "Exception reading input. Program Exit" << std::endl;
 			exit(1);
 		}
 		while (contactFields[i] == "") {
 			std::cout << contactGuides[i];
 			std::getline(std::cin, contactFields[i]);
 			if (std::cin.fail()) {
-				std::cout << "Error reading input. Program Exit" << std::endl;
+				std::cout << "Exception reading input. Program Exit" << std::endl;
 				exit(1);
 			}
 		}
@@ -90,7 +90,7 @@ void PhoneBook::DisplayContact() {
 		std::cout << std::endl << "Input index(number only): ";
 		std::getline(std::cin, input);
 		if (std::cin.fail()) {
-			std::cout << "Error reading input. Program Exit" << std::endl;
+			std::cout << "Exception reading input. Program Exit" << std::endl;
 			exit(1);
 		}
 		if (ValidateInput(input)) {

@@ -74,7 +74,7 @@ void Harl::complain(std::string level) {
 			(this->*funcs[3])();
 			break;
 		default:
-			std::cerr << "Error: Bad Arguments!" << std::endl;
+			std::cerr << "Exception: Bad Arguments!" << std::endl;
 			exit(1);
 
 
