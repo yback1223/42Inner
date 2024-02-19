@@ -1,10 +1,12 @@
 #include "Serializer.hpp"
 
+// 생성자
+Serializer::Serializer(){}
+
 // 복사 생성자
 Serializer::Serializer(const Serializer &copy) {
 	(void) copy;
 }
-
 
 // 소멸자
 Serializer::~Serializer() {}

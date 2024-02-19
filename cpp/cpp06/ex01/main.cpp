@@ -2,9 +2,9 @@
 #include "Serializer.hpp"
 
 int main() {
-    Data myData = {
-		.value = 42
-	};
+    Data myData;
+	myData.value = 42;
+	
     uintptr_t serializedData = Serializer::serialize(&myData); // serialize를 사용하여 Data 객체의 주소를 정수형으로 변환
     Data* deserializedData = Serializer::deserialize(serializedData); // deserialize를 사용하여 정수형을 다시 Data 객체 포인터로 변환
 

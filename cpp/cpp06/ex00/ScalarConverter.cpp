@@ -45,8 +45,7 @@ AType * ScalarConverter::detectType(std::string &lit) {
 		lit.pop_back();
 		return new Float(lit);
 	} else if (dot) return new Double(lit);
-	else
-		return new Int(lit);
+	else return new Int(lit);
 }
 
 void ScalarConverter::convert(std::string lit) {

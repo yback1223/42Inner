@@ -7,7 +7,7 @@
 
 class Serializer {
 	public:
-		// 생성자
+		// 복사 생성자
 		Serializer(const Serializer &copy);
 		
 		// 소멸자
