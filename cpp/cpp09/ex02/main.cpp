@@ -1,7 +1,6 @@
 #include <iostream>
 #include "PmergeMe.hpp"
 
-/// @ref https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
 int main(int argc, char *argv[]) {
 	if (argc < 2 || argv == NULL) {
 		std::cout << "Error" << std::endl;
@@ -9,24 +8,32 @@ int main(int argc, char *argv[]) {
 	}
 	try
 	{
+		// std::cout << argc << std::endl;
 		PmergeMe pm(argc - 1);
-		for (int i = 1; i < argc; i++)
-		{
-			pm.push(argv[i]);
+		for (int i = 1; i < argc; i++) {
+			pm.addNumberTmp(argv[i]);
 		}
-		std::cout << "Before: " << PmergeMe::print(pm.con1()) << std::endl;
-		std::clock_t time_vec = PmergeMe::bench(pm.con1(), PmergeMe::sortCon1);
-		std::clock_t time_list = PmergeMe::bench(pm.con2(), PmergeMe::sortCon2);
-		std::cout << "After:  " << PmergeMe::print(pm.con2()) << std::endl;
+		pm.makePairsAndPush();
 
-		std::cout << "Time to process a range of " << pm.size() << " elements with std::vector<int> : " << time_vec << " us" << std::endl;
-		std::cout << "Time to process a range of " << pm.size() << " elements with std::list<int> : " << time_list << " us" << std::endl;
+		pm.startClock();
+		pm.mergeSortCon1(pm.con1(), 0, pm.con1().size() - 1);
+		pm.moveAlone1(pm.con1());
+		std::vector<int> resultVec = pm.insertSmallNums1();
+		pm.endClock();
+		pm.printProcessingTime("std::vector");
+
+
+		pm.startClock();
+		pm.mergeSortCon2(pm.con2(), 0, pm.con2().size() - 1);
+		pm.moveAlone2(pm.con2());
+		std::deque<int> resultDeq = pm.insertSmallNums2();
+		pm.endClock();
+		pm.printProcessingTime("std::deque");
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 		return 1;
 	}
-	
 	return 0;
 }

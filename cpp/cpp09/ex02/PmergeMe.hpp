@@ -4,8 +4,10 @@
 # include <string>
 # include <sstream>
 # include <vector>
-# include <list>
+# include <deque>
 # include <ctime>
+# include <ctime>
+# include <iomanip>
 
 class PmergeMe
 {
@@ -21,24 +23,37 @@ class PmergeMe
 			virtual const char* what() const throw();
 		};
 
-		typedef std::vector<int> Container1;
-		typedef std::list<int> Container2;
+		typedef std::vector<std::pair<int, int> > Container1;
+		typedef std::deque<std::pair<int, int> > Container2;
 
 		size_t size() const;
 		Container1 & con1();
 		Container2 & con2();
 
-		void push(std::string lit);
-		static Container1 sortCon1(Container1 & con);
-		static Container2 sortCon2(Container2 & con);
-		static Container1 mergeCon1(Container1 & left_con, Container1 & right_con);
-		static Container2 mergeCon2(Container2 & left_con, Container2 & right_con);
+		void addNumberTmp(std::string lit);
+		void makePairsAndPush();
+		void makeJacobSthal();
+		void printJacob();
 
-		template<class T>
-		static std::string print(const T& con);
+		static void mergeCon1(Container1 & con, int l, int m, int r);
+		static void mergeSortCon1(Container1 & con, int l, int r);
+		static void moveAlone1(Container1 & con);
+		std::vector<int> insertSmallNums1();
+		void binarySearchInsert1(std::vector<int> & vec, int l, int r, int target);
 
-		template<class T>
-		static std::clock_t bench(T& con, T(*sort)(T &));
+		static void mergeCon2(Container2 & con, int l, int m, int r);
+		static void mergeSortCon2(Container2 & con, int l, int r);
+		static void moveAlone2(Container2 & con);
+		std::deque<int> insertSmallNums2();
+		void binarySearchInsert2(std::deque<int> & vec, int l, int r, int target);
+
+		std::string printBefore();
+		std::string printAfter(std::vector<int> resultVec);
+
+		void startClock();
+		void endClock();
+		double getElapsedTime() const;
+		void printProcessingTime(const std::string& containerType) const;
 
 	private:
 		PmergeMe();
@@ -46,31 +61,14 @@ class PmergeMe
 		PmergeMe & operator=(const PmergeMe &assign);
 
 		const size_t _size;
+		size_t _pair_vec_size;
 		Container1 _con1;
 		Container2 _con2;
+		std::vector<int> _tmp_vec;
+		std::vector<int> _jacob;
+
+		clock_t startTime, endTime;
+
 };
-
-template <class T>
-std::string PmergeMe::print(const T &con) {
-	std::ostringstream ss;
-
-	size_t num = 0;
-	for (typename T::const_iterator it = con.begin(); it != con.end(); ++it) {
-		if (++num > 10) {
-			ss << "\t [...]";
-			break;
-		}
-		ss << '\t' << *it;
-	}
-	return ss.str();
-}
-
-template <class T>
-std::clock_t PmergeMe::bench(T &con, T (*sort)(T &)) {
-	std::clock_t start = std::clock();
-	con = sort(con);
-	std::clock_t end = std::clock();
-	return end - start;
-}
 
 #endif
