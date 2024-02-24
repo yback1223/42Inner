@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
 		pm.endClock();
 		pm.printProcessingTime("std::vector");
 
-
 		pm.startClock();
 		pm.mergeSortCon2(pm.con2(), 0, pm.con2().size() - 1);
 		pm.moveAlone2(pm.con2());

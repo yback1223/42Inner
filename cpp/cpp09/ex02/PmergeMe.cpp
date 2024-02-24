@@ -9,7 +9,6 @@ PmergeMe::PmergeMe(int size): _size(size) {
 	_con1.reserve(_size);
 	_pair_vec_size = _size % 2 == 0 ? _size / 2 : _size / 2 + 1;
 }
-
 // 소멸자
 PmergeMe::~PmergeMe() {}
 
@@ -292,7 +291,3 @@ void PmergeMe::printProcessingTime(const std::string& containerType) const {
               << " elements with " << containerType << ": "
               << std::fixed << std::setprecision(5) << getElapsedTime() << " us" << std::endl;
 }
-
-
-
-
