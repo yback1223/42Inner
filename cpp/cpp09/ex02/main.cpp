@@ -8,26 +8,18 @@ int main(int argc, char *argv[]) {
 	}
 	try
 	{
-		// std::cout << argc << std::endl;
 		PmergeMe pm(argc - 1);
 		for (int i = 1; i < argc; i++) {
 			pm.addNumberTmp(argv[i]);
 		}
-		pm.makePairsAndPush();
-
+		pm.makeJacobSthal();
+		
 		pm.startClock();
-		pm.mergeSortCon1(pm.con1(), 0, pm.con1().size() - 1);
-		pm.moveAlone1(pm.con1());
-		std::vector<int> resultVec = pm.insertSmallNums1();
+		std::cout << pm.printBefore() << std::endl;
+		std::vector<int> resultVec = pm.addLast(pm.recur(pm._tmp_vec));
+		std::cout << pm.printAfter(resultVec) << std::endl;
 		pm.endClock();
 		pm.printProcessingTime("std::vector");
-
-		pm.startClock();
-		pm.mergeSortCon2(pm.con2(), 0, pm.con2().size() - 1);
-		pm.moveAlone2(pm.con2());
-		std::deque<int> resultDeq = pm.insertSmallNums2();
-		pm.endClock();
-		pm.printProcessingTime("std::deque");
 	}
 	catch(const std::exception& e)
 	{

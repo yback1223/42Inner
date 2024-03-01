@@ -6,7 +6,6 @@
 # include <vector>
 # include <deque>
 # include <ctime>
-# include <ctime>
 # include <iomanip>
 
 class PmergeMe
@@ -55,6 +54,14 @@ class PmergeMe
 		double getElapsedTime() const;
 		void printProcessingTime(const std::string& containerType) const;
 
+
+		std::vector<std::pair<int, int> > makePairs(std::vector<int> input_vec);
+		void insertSmallNums(std::vector<int>& bigs, std::vector<int> smalls);
+		std::vector<int> recur(std::vector<int> recur_vec);
+		std::vector<int> _tmp_vec;
+		std::vector<int> addLast(std::vector<int> recurred_vec);
+
+
 	private:
 		PmergeMe();
 		PmergeMe(const PmergeMe& copy);
@@ -64,8 +71,9 @@ class PmergeMe
 		size_t _pair_vec_size;
 		Container1 _con1;
 		Container2 _con2;
-		std::vector<int> _tmp_vec;
 		std::vector<int> _jacob;
+		int last_num;
+		bool last_num_flag;
 
 		clock_t startTime, endTime;
 

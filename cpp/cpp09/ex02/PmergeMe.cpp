@@ -6,8 +6,6 @@
 // 생성자
 PmergeMe::PmergeMe(int size): _size(size) {
 	if (_size < 1) throw WrongToken();
-	_con1.reserve(_size);
-	_pair_vec_size = _size % 2 == 0 ? _size / 2 : _size / 2 + 1;
 }
 // 소멸자
 PmergeMe::~PmergeMe() {}
@@ -34,85 +32,57 @@ void PmergeMe::addNumberTmp(std::string lit) {
     ss >> num;
     if (ss.fail() || num < 0) throw WrongToken();
     if (_tmp_vec.size() >= _size) throw WrongToken();
-    _tmp_vec.push_back(num);    
-}
-
-void PmergeMe::makePairsAndPush() {
-	std::cout << printBefore() << std::endl;
-    for (size_t i = 0; i < _tmp_vec.size(); i += 2) {
-        if (i + 1 == _tmp_vec.size()) {
-            _con1.push_back(std::make_pair(-1, _tmp_vec[i]));
-            _con2.push_back(std::make_pair(-1, _tmp_vec[i]));
-        } else {
-            int big = _tmp_vec[i] > _tmp_vec[i + 1] ? _tmp_vec[i] : _tmp_vec[i + 1];
-            int small = _tmp_vec[i] <= _tmp_vec[i + 1] ? _tmp_vec[i] : _tmp_vec[i + 1];
-            _con1.push_back(std::make_pair(big, small));
-            _con2.push_back(std::make_pair(big, small));
-        }
-    }
-    makeJacobSthal();
+    _tmp_vec.push_back(num);
 }
 
 void PmergeMe::makeJacobSthal() {
 	size_t n = 0;
 	_jacob.push_back(0);
 	_jacob.push_back(1);
+	last_num_flag = false;
+	if (_tmp_vec.size() % 2 != 0) {
+		last_num = _tmp_vec[_tmp_vec.size() - 1];
+		last_num_flag = true;
+		_tmp_vec.pop_back();
+	}
 
 	for (size_t i = 2;; i++) {
 		n = _jacob[i - 1] + 2 * _jacob[i - 2];
-		if (n >= _pair_vec_size) {
-			_jacob.push_back(_pair_vec_size - 1);
+		if (n >= _size) {
+			_jacob.push_back(_size - 1);
 			break;
 		}
 		_jacob.push_back(n);
 	}
 	_jacob.erase(_jacob.begin());
 	_jacob.erase(_jacob.begin());
-	// printJacob();
+	printJacob();
 }
 
-std::vector<int> PmergeMe::insertSmallNums1() {
-    std::vector<int> resultVec;
-    std::vector<int> smallNumVec;
-
-    for (size_t i = 0; i < _pair_vec_size; ++i) {
-        int poppedNum = _con1[i].first;
-        int smallNum = _con1[i].second;
-        smallNumVec.push_back(smallNum);
-        if (poppedNum == -1) break;
-        resultVec.push_back(poppedNum);
-    }
-
-    int searchEndIdx = 0;
-    for (size_t i = 0; i < _jacob.size(); ++i) {
-        int startIdx = _jacob[i];
-        for (int j = startIdx; j >= searchEndIdx; --j) {
-            if (j < static_cast<int>(smallNumVec.size())) {
-                binarySearchInsert1(resultVec, 0, static_cast<int>(resultVec.size()) - 1, smallNumVec[j]);
-            }
-        }
-        searchEndIdx = startIdx + 1;
-    }
-	std::cout << printAfter(resultVec) << std::endl;
-    return resultVec;
+std::vector<std::pair<int, int> > PmergeMe::makePairs(std::vector<int> input_vec) {
+	std::vector<std::pair<int, int> > result_pairs;
+	std::vector<std::pair<int, int> > tmp_pairs;
+	int tmp_size = input_vec.size();
+	if (tmp_size % 2 != 0) {
+		tmp_pairs.push_back(std::make_pair(-1, input_vec[input_vec.size() - 1]));
+		input_vec.pop_back();
+	}
+	for (size_t i = 0; i < input_vec.size(); i += 2) {
+		// if (i == input_vec.size() - 1) result_pairs.push_back(std::make_pair(-1, input_vec[input_vec.size() - 1]));
+		int big = input_vec[i] > input_vec[i + 1] ? input_vec[i] : input_vec[i + 1];
+		int small = input_vec[i] <= input_vec[i + 1] ? input_vec[i] : input_vec[i + 1];
+		result_pairs.push_back(std::make_pair(big, small));
+	}
+	if (tmp_size % 2 != 0) {
+		result_pairs.push_back(tmp_pairs[0]);
+	}
+	return result_pairs;
 }
 
-std::deque<int> PmergeMe::insertSmallNums2() {
-    std::deque<int> resultVec;
-    for (std::deque<std::pair<int, int> >::iterator it = _con2.begin(); it != _con2.end(); ++it) {
-        resultVec.push_back(it->first);
-    }
-
-    for (size_t i = 0; i < _jacob.size(); ++i) {
-        int idx = _jacob[i];
-        if (idx < static_cast<int>(_con2.size())) {
-            std::deque<std::pair<int, int> >::iterator it = _con2.begin();
-            std::advance(it, idx);
-            binarySearchInsert2(resultVec, 0, static_cast<int>(resultVec.size()) - 1, it->second);
-        }
-    }
-
-    return resultVec;
+void PmergeMe::insertSmallNums(std::vector<int>& bigs, std::vector<int> smalls) {
+	for (size_t i = 0; i < smalls.size(); i++) {
+		binarySearchInsert1(bigs, 0, static_cast<int>(bigs.size()) - 1, smalls[i]);
+	}
 }
 
 void PmergeMe::binarySearchInsert1(std::vector<int> &vec, int l, int r, int target) {
@@ -134,101 +104,31 @@ void PmergeMe::binarySearchInsert1(std::vector<int> &vec, int l, int r, int targ
     vec.insert(vec.begin() + l, target);
 }
 
-void PmergeMe::binarySearchInsert2(std::deque<int>& deq, int l, int r, int target) {
-    int m;
-    while (l <= r) {
-        m = l + (r - l) / 2;
-        if ((m == 0 || deq[m - 1] < target) && (m == static_cast<int>(deq.size()) || target < deq[m])) {
-            deq.insert(deq.begin() + m, target);
-            return;
-        }
-        if (deq[m] < target) {
-            l = m + 1;
-        } else {
-            r = m - 1;
-        }
-    }
-    deq.insert(deq.begin() + l, target);
-}
-
-void PmergeMe::mergeCon1(Container1 & con, int l, int m, int r) {
-    int idxL, idxR, mergedIdx;
-    int LRange = m - l + 1;
-    int RRange = r - m;
-
-    Container1 L(LRange), R(RRange);
-
-    for (idxL = 0; idxL < LRange; idxL++) L[idxL] = con[l + idxL];
-    for (idxR = 0; idxR < RRange; idxR++) R[idxR] = con[m + 1 + idxR];
-
-    mergedIdx = l;
-    idxL = 0;
-    idxR = 0;
-
-    while (idxL < LRange && idxR < RRange) {
-        if (L[idxL].first <= R[idxR].first) con[mergedIdx++] = L[idxL++];
-        else con[mergedIdx++] = R[idxR++];
-    }
-    while (idxL < LRange) con[mergedIdx++] = L[idxL++];
-    while (idxR < RRange) con[mergedIdx++] = R[idxR++];
-}
-
-void PmergeMe::mergeCon2(Container2& con, int l, int m, int r) {
-    int n1 = m - l + 1;
-    int n2 = r - m;
-
-    Container2 L, R;
-
-    for (int i = 0; i < n1; i++) L.push_back(con[l + i]);
-    for (int j = 0; j < n2; j++) R.push_back(con[m + 1 + j]);
-
-    int i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) {
-        if (L[i].first <= R[j].first) con[k++] = L[i++];
-        else con[k++] = R[j++];
+std::vector<int> PmergeMe::recur(std::vector<int> recur_vec) {
+	if (recur_vec.size() <= 2) {
+    	return recur_vec;
     }
 
-    while (i < n1) {
-        con[k++] = L[i++];
-    }
-    while (j < n2) {
-        con[k++] = R[j++];
-    }
-}
+	std::vector<std::pair<int, int> > paired_vec = makePairs(recur_vec);
+	std::vector<int> bigs, smalls;
 
-void PmergeMe::mergeSortCon1(Container1 & con, int l, int r) {
-	if (l < r) {
-		int m = l + (r - l) / 2;
-		
-		mergeSortCon1(con, l, m);
-		mergeSortCon1(con, m + 1, r);
-
-		mergeCon1(con, l, m, r);
+	for (size_t i = 0; i < paired_vec.size(); i++) {
+		bigs.push_back(paired_vec[i].first);
+		smalls.push_back(paired_vec[i].second);	
 	}
+	std::vector<int> recurred_bigs = recur(bigs);
+	std::vector<int> recurred_smalls = recur(smalls);
+
+	insertSmallNums(recurred_bigs, recurred_smalls);
+    recurred_bigs.erase(std::remove(recurred_bigs.begin(), recurred_bigs.end(), -1), recurred_bigs.end());
+	return recurred_bigs;
 }
 
-void PmergeMe::mergeSortCon2(Container2& con, int l, int r) {
-    if (l >= r) {
-        return; // 베이스 케이스
-    }
-    int m = l + (r - l) / 2;
-    mergeSortCon2(con, l, m);
-    mergeSortCon2(con, m + 1, r);
-    mergeCon2(con, l, m, r);
-}
-
-void PmergeMe::moveAlone1(Container1 & con) {
-    if (!con.empty() && con[0].first == -1) {
-        con.push_back(std::pair<int, int>(-1, con[0].second));
-        con.erase(con.begin());
-    }
-}
-
-void PmergeMe::moveAlone2(Container2& con) {
-    if (!con.empty() && con.front().first == -1) {
-        con.push_back(con.front());
-        con.pop_front();
-    }
+std::vector<int> PmergeMe::addLast(std::vector<int> recurred_vec) {
+	if (last_num_flag) {
+		binarySearchInsert1(recurred_vec, 0, recurred_vec.size() - 1, last_num);
+	}
+	return recurred_vec;
 }
 
 // Exceptions
@@ -236,6 +136,7 @@ const char * PmergeMe::WrongToken::what() const throw() {
 	return "Error";
 }
 
+// utils
 void PmergeMe::printJacob() {
     std::cout << "Jacob Nums = {";
     for (size_t i = 0; i < _jacob.size(); i++) {
@@ -249,6 +150,7 @@ std::string PmergeMe::printBefore() {
 
     size_t num = 0;
 	ss << "Before:	";
+	if (last_num_flag) _tmp_vec.push_back(last_num);
     for (std::vector<int>::const_iterator it = _tmp_vec.begin(); it != _tmp_vec.end(); ++it) {
         if (++num > 10) {
             ss << "\t [...]";
@@ -256,6 +158,8 @@ std::string PmergeMe::printBefore() {
         }
         ss << ' ' << *it;
     }
+	if (last_num_flag) _tmp_vec.pop_back();
+
     return ss.str();
 }
 
@@ -287,7 +191,7 @@ double PmergeMe::getElapsedTime() const {
 }
 
 void PmergeMe::printProcessingTime(const std::string& containerType) const {
-    std::cout << "Time to process a range of " << _tmp_vec.size() 
+    std::cout << "Time to process a range of " << _size 
               << " elements with " << containerType << ": "
               << std::fixed << std::setprecision(5) << getElapsedTime() << " us" << std::endl;
 }
