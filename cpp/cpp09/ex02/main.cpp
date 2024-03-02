@@ -15,9 +15,16 @@ int main(int argc, char *argv[]) {
 		pm.makeJacobSthal();
 		
 		pm.startClock();
-		std::cout << pm.printBefore() << std::endl;
-		std::vector<int> resultVec = pm.addLast(pm.recur(pm._tmp_vec));
-		std::cout << pm.printAfter(resultVec) << std::endl;
+		std::cout << pm.printBeforeVec(pm.getTempVec()) << std::endl;
+		std::vector<int> resultVec = pm.addLastVec(pm.recurVec(pm.getTempVec()));
+		std::cout << pm.printAfterVec(resultVec) << std::endl;
+		pm.endClock();
+		pm.printProcessingTime("std::vector");
+
+		pm.startClock();
+		std::cout << pm.printBeforeDeq(pm.getTempDeq()) << std::endl;
+		std::deque<int> resultDeq = pm.addLastDeq(pm.recurDeq(pm.getTempDeq()));
+		std::cout << pm.printAfterDeq(resultDeq) << std::endl;
 		pm.endClock();
 		pm.printProcessingTime("std::vector");
 	}

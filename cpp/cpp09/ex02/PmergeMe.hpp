@@ -22,61 +22,51 @@ class PmergeMe
 			virtual const char* what() const throw();
 		};
 
-		typedef std::vector<std::pair<int, int> > Container1;
-		typedef std::deque<std::pair<int, int> > Container2;
-
 		size_t size() const;
-		Container1 & con1();
-		Container2 & con2();
 
 		void addNumberTmp(std::string lit);
-		void makePairsAndPush();
 		void makeJacobSthal();
 		void printJacob();
 
-		static void mergeCon1(Container1 & con, int l, int m, int r);
-		static void mergeSortCon1(Container1 & con, int l, int r);
-		static void moveAlone1(Container1 & con);
-		std::vector<int> insertSmallNums1();
-		void binarySearchInsert1(std::vector<int> & vec, int l, int r, int target);
+		void binarySearchInsertVec(std::vector<int> & vec, int l, int r, int target);
+		std::vector<std::pair<int, int> > makePairsVec(std::vector<int> input_vec);
+		void insertSmallNumsVec(std::vector<int>& bigs, std::vector<int> smalls);
+		std::vector<int> recurVec(std::vector<int> recur_vec);
+		std::vector<int> addLastVec(std::vector<int> recurred_vec);
 
-		static void mergeCon2(Container2 & con, int l, int m, int r);
-		static void mergeSortCon2(Container2 & con, int l, int r);
-		static void moveAlone2(Container2 & con);
-		std::deque<int> insertSmallNums2();
-		void binarySearchInsert2(std::deque<int> & vec, int l, int r, int target);
+		void binarySearchInsertDeq(std::deque<int> & deq, int l, int r, int target);
+		std::deque<std::pair<int, int> > makePairsDeq(std::deque<int> input_deq);
+		void insertSmallNumsDeq(std::deque<int>& bigs, std::deque<int> smalls);
+		std::deque<int> recurDeq(std::deque<int> recur_deq);
+		std::deque<int> addLastDeq(std::deque<int> recurred_deq);
 
-		std::string printBefore();
-		std::string printAfter(std::vector<int> resultVec);
+		std::vector<int> getTempVec();
+		std::deque<int> getTempDeq();
 
+		// utils
+		std::string printBeforeVec(const std::vector<int>& container);
+		std::string printAfterVec(const std::vector<int>& container);
+
+		std::string printBeforeDeq(const std::deque<int>& container);
+		std::string printAfterDeq(const std::deque<int>& container);
+		
 		void startClock();
 		void endClock();
 		double getElapsedTime() const;
 		void printProcessingTime(const std::string& containerType) const;
 
-
-		std::vector<std::pair<int, int> > makePairs(std::vector<int> input_vec);
-		void insertSmallNums(std::vector<int>& bigs, std::vector<int> smalls);
-		std::vector<int> recur(std::vector<int> recur_vec);
-		std::vector<int> _tmp_vec;
-		std::vector<int> addLast(std::vector<int> recurred_vec);
-
-
 	private:
 		PmergeMe();
 		PmergeMe(const PmergeMe& copy);
 		PmergeMe & operator=(const PmergeMe &assign);
-
+		std::vector<int> _tmp_vec;
+		std::deque<int> _tmp_deq;
 		const size_t _size;
 		size_t _pair_vec_size;
-		Container1 _con1;
-		Container2 _con2;
 		std::vector<int> _jacob;
 		int last_num;
 		bool last_num_flag;
-
 		clock_t startTime, endTime;
-
 };
 
 #endif
