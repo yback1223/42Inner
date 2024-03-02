@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 		std::deque<int> resultDeq = pm.addLastDeq(pm.recurDeq(pm.getTempDeq()));
 		std::cout << pm.printAfterDeq(resultDeq) << std::endl;
 		pm.endClock();
-		pm.printProcessingTime("std::vector");
+		pm.printProcessingTime("std::deque");
 	}
 	catch(const std::exception& e)
 	{
