@@ -138,6 +138,10 @@ std::vector<int> PmergeMe::addLastVec(std::vector<int> recurred_vec) {
 	return recurred_vec;
 }
 
+std::vector<int> PmergeMe::getTempVec() {
+	return _tmp_vec;
+}
+
 // deque
 std::deque<std::pair<int, int> > PmergeMe::makePairsDeq(std::deque<int> input_deq) {
         std::deque<std::pair<int, int> > result_pairs;
@@ -223,10 +227,6 @@ std::deque<int> PmergeMe::addLastDeq(std::deque<int> recur_deq) {
 	return recur_deq;
 }
 
-std::vector<int> PmergeMe::getTempVec() {
-	return _tmp_vec;
-}
-
 std::deque<int> PmergeMe::getTempDeq() {
 	return _tmp_deq;
 }
@@ -243,7 +243,6 @@ void PmergeMe::printJacob() {
     }
     std::cout << "}\n";
 }
-
 
 void PmergeMe::startClock() {
 	startTime = clock();
@@ -324,5 +323,3 @@ std::string PmergeMe::printAfterDeq(const std::deque<int>& container) {
 
     return ss.str();
 }
-
-
